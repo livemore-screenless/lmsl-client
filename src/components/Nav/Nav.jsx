@@ -40,14 +40,15 @@ function Nav() {
         )}
 
         {/* If a user is logged in, show these links */}
-        {user.id && (
+        {/* THESE LINKS WILL NEED TO BE UPDATED ONCE COMPONENTS ARE CREATED */}
+        {user.id && user.id!=1 && (
           <>
-            <Link className="navLink" to="/user">
-              Home
+            <Link className="navLink" to="/info">
+              My Videos
             </Link>
 
             <Link className="navLink" to="/info">
-              Info Page
+              Submit a Video
             </Link>
 
             <LogOutButton className="navLink" />
@@ -55,23 +56,20 @@ function Nav() {
         )}
 
         {/* If THE ADMIN is logged in, show these links */}
+        {/* THESE LINKS WILL NEED TO BE UPDATED ONCE COMPONENTS ARE CREATED */}
         {user.id && user.id===1 && (
           <>
-            <Link className="navLink" to="/user">
-              Home
+            <Link className="navLink" to="/info">
+              Review Submissions
             </Link>
 
             <Link className="navLink" to="/info">
-              Info Page
+              Review Prompts
             </Link>
 
             <LogOutButton className="navLink" />
           </>
         )}
-
-        <Link className="navLink" to="/about">
-          About
-        </Link>
       </div>
     </div>
   );
