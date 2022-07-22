@@ -5,22 +5,24 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-
 import { useDispatch, useSelector } from 'react-redux';
 
+//head + foot
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
+//pages
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
+import MyVideos from '../MyVideos/MyVideos';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import PromptPage from '../PromptPage/PromptPage';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
+//style
 import './App.css';
 
 function App() {
@@ -76,6 +78,13 @@ function App() {
             <PromptPage />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            exact
+            path="/my-videos"
+          >
+            <MyVideos />
+          </ProtectedRoute>
+
           <Route
             exact
             path="/login"
@@ -124,6 +133,15 @@ function App() {
               <LandingPage />
             }
           </Route>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/my-videos"
+          >
+            <MyVideos />
+          </ProtectedRoute>
+
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
