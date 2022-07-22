@@ -69,6 +69,13 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            exact
+            path="/prompt-page"
+          >
+            <PromptPage />
+          </ProtectedRoute>
+
           <Route
             exact
             path="/login"
