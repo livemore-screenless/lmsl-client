@@ -47,7 +47,7 @@ function Nav() {
               My Videos
             </Link>
 
-            <Link className="navLink" to="/info">
+            <Link className="navLink" to="/prompt-page">
               Submit a Video
             </Link>
 
@@ -63,7 +63,7 @@ function Nav() {
               Review Submissions
             </Link>
 
-            <Link className="navLink" to="/info">
+            <Link className="navLink" to="/prompt-page">
               Review Prompts
             </Link>
 

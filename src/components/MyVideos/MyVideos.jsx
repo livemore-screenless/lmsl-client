@@ -4,7 +4,13 @@ function MyVideos() {
 
   return (
     <div>
-      <h2>MyVideos Page</h2>
+      <h2>My Videos</h2>
+
+      for each video 
+        show video.prompt 
+              video.video
+              user.name
+
     </div>
   );
 }
