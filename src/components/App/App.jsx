@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import PromptPage from '../PromptPage/PromptPage';
 
 import './App.css';
 
@@ -100,10 +101,17 @@ function App() {
             exact
             path="/home"
           >
+              <LandingPage /> 
+          </Route>
+
+          <Route
+            exact
+            path="/prompt-page"
+          >
             {user.id ?
               // If the user is already logged in, 
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/prompt-page" />
               :
               // Otherwise, show the Landing page
               <LandingPage />
