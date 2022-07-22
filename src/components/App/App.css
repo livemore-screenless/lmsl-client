@@ -29,10 +29,10 @@ Button
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #014041;
-  border-width: 1px 1px 3px;
-  border-radius: 4px;
-  background-color: #00acb0;
+  border-color: #27466B;
+  border-width: 1px;
+  border-radius: 20px;
+  background-color: #27466B;
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
@@ -51,11 +51,11 @@ Button
 
 .btn_sizeFull {
   display: block;
-  width: 100%;
+  width: 230px;
 }
 
 .btn:hover {
-  background-color: #008183;
+  background-color: #2D769F;
   text-decoration: none;
 }
 
@@ -67,13 +67,13 @@ Button
   border-radius: 0;
   background: none;
   font: inherit;
-  color: #444;
+  color: #27466B;
 }
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: #008183;
+  border-color: #27466B;
+  color: #196390;
 }
 
 /* --------------------------------------------------------------------------------

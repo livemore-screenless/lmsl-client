@@ -64,7 +64,8 @@ function LoginForm() {
       )}
       <center>
         <div>
-          <Typography component="div" variant="h6" color="white" className='form-head form-head-main'> Welcome Back! </Typography>
+          <Typography component="div" variant="h6" color="#27466B" className='form-head form-head-main'> Welcome Back! </Typography>
+          <br/>
         </div>
         <Input
           variant="filled"
