@@ -1,12 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, Link, useParams } from 'react-router-dom';
-import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 function MyVideos() {
   const dispatch = useDispatch();
-  const history = useHistory();
+
+  const videos = useSelector(store => store.videos.allVideosList);
 
   // this will fetch data on page load
   // need to get all data from video-responses table
@@ -18,11 +18,24 @@ function MyVideos() {
     <div>
       <h1>My Videos</h1>
 
-      for each video 
-       if video.user.id === user.id
-        show video.prompt_id 
-              video.video_url
-        
+      {videos.map(video => {
+        return (
+            <ul key={video.id}>
+                <li>{video.prompt_id}</li>
+                <li>{video.video_url}</li>
+                { video.approved &&
+                  <li>approved</li>
+                }
+                { video.approved === false &&
+                  <li>denied</li>
+                }
+                { video.approved === null &&
+                  <li>pending</li>
+                }
+            </ul>
+        )
+      })}
+
 
       for each video 
         if video.true = approved tag
