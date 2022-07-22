@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import PromptPage from '../PromptPage/PromptPage';
+import PromptVideos from '../PromptVideos/PromptVideos';
 
 import './App.css';
 
@@ -74,6 +75,13 @@ function App() {
             path="/prompt-page"
           >
             <PromptPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/prompt-videos"
+          >
+            <PromptVideos />
           </ProtectedRoute>
 
           <Route

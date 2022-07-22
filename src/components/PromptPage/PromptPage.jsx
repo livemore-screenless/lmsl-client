@@ -8,33 +8,33 @@ function PromptPage() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-// this will fetch prompts from DB and set in store allPromptsList
-// list is mapped over below
+    // this will fetch prompts from DB and set in store allPromptsList
+    // list is mapped over below
     useEffect(() => {
         dispatch({ type: 'FETCH_PROMPTS_LIST' })
     }, [])
 
     const allPromptsList = useSelector(store => store.promptsInfo.allPromptsList);
 
-return(
-<>
-<h1>LiveMore ScreenLess Video Prompts</h1>
- {allPromptsList.map(prompt => {
     return (
-        <ul key={prompt.id}>
-            <li>{prompt.question}
-            <button onClick={(evt) => {history.push(/** push to the videos page for that prompt id*/)}}
-            >View Videos</button></li>
-        </ul>
-    )
- })}
+        <>
+            <h1>LiveMore ScreenLess Video Prompts</h1>
+            <ul >
+                {allPromptsList.map(prompt => {
+                    return (
+                        <li key={prompt.id}>{prompt.question}
+                            <button onClick={(evt) => { history.push('/prompt-videos') }}
+                            >View Videos</button></li>
+                    )
+                })}
+            </ul>
 
- <span>
-    <button onClick={(evt) => {history.push(/** push to the add new prompt page */)}}
-    >Add Prompt</button>
-    <button onClick={(evt) => {history.push(/** push to the edit prompts page*/)}}
-    >Edit Prompts</button></span>
-</>
-)
+            <span>
+                <button onClick={(evt) => { history.push(/** push to the add new prompt page */) }}
+                >Add Prompt</button>
+                <button onClick={(evt) => { history.push(/** push to the edit prompts page*/) }}
+                >Edit Prompts</button></span>
+        </>
+    )
 }
 export default PromptPage;
