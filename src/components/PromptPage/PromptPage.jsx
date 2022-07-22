@@ -5,23 +5,35 @@ import axios from 'axios';
 
 function PromptPage() {
 
-    // need to get all prompts from store and map over them
-    // to get prompts will need to dispatch from here to B to set store
-    // Start with dummy data
-
-    // dispatch to saga, saga to axios get, router to DB prompts, yield to set_state in store, 
-    // grab store and map over here
-
     const dispatch = useDispatch();
     const history = useHistory();
 
+// this will fetch prompts from DB and set in store allPromptsList
+// list is mapped over below
     useEffect(() => {
-        dispatch({ type: 'FETCH_PROMPTS' })
+        dispatch({ type: 'FETCH_PROMPTS_LIST' })
     }, [])
+
+    const allPromptsList = useSelector(store => store.promptsInfo.allPromptsList);
 
 return(
 <>
-<h1>Video Response Prompts</h1>
+<h1>LiveMore ScreenLess Video Prompts</h1>
+ {allPromptsList.map(prompt => {
+    return (
+        <ul key={prompt.id}>
+            <li>{prompt.question}
+            <button onClick={(evt) => {history.push(/** push to the videos page for that prompt id*/)}}
+            >View Videos</button></li>
+        </ul>
+    )
+ })}
+
+ <span>
+    <button onClick={(evt) => {history.push(/** push to the add new prompt page */)}}
+    >Add Prompt</button>
+    <button onClick={(evt) => {history.push(/** push to the edit prompts page*/)}}
+    >Edit Prompts</button></span>
 </>
 )
 }
