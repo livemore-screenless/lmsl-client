@@ -43,7 +43,7 @@ function Nav() {
         {/* THESE LINKS WILL NEED TO BE UPDATED ONCE COMPONENTS ARE CREATED */}
         {user.id && user.id!=1 && (
           <>
-            <Link className="navLink" to="/info">
+            <Link className="navLink" to="/my-videos">
               My Videos
             </Link>
 
