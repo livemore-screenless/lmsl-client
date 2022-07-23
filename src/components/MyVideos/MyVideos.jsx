@@ -35,14 +35,6 @@ function MyVideos() {
             </ul>
         )
       })}
-
-
-      for each video 
-        if video.true = approved tag
-        if video.false = deny tag
-        if video.null = pending tag
-        if video.default = pending tag
-      
     </div>
   );
 }
