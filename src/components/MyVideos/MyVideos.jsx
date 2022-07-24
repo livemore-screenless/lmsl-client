@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 
 function MyVideos() {
   const dispatch = useDispatch();
-
   const videos = useSelector(store => store.videos.allVideosList);
 
   // this will fetch data on page load

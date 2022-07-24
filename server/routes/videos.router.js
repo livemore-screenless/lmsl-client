@@ -3,9 +3,9 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 /**
- * GET route template
+ * GET route for my-videos page
  */
- router.get('/', (req, res) => {
+ router.get('/my-videos', (req, res) => {
     console.log('made it to the get route')
     const sqlQuery = `
       SELECT * FROM "video-responses"
@@ -22,6 +22,25 @@ const router = express.Router();
       })
   });
 
+/**
+ * GET route for review-submissions page
+ */
+  router.get('/video-responses', (req, res) => {
+    console.log('made it to the get route')
+    const sqlQuery = `
+      SELECT * FROM "video-responses"
+      WHERE APPROVED IS NULL
+      ORDER BY id asc;
+    `;
+    pool.query(sqlQuery)
+      .then( result => {
+        res.send(result.rows);
+      })
+      .catch(err => {
+        console.log('ERROR: GET videos', err);
+        res.sendStatus(500)
+      })
+  });
 
 
 
