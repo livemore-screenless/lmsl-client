@@ -22,31 +22,27 @@ function* fetchUnapprovedVideos() {
     }
 }
 
-function* approveVideo() {
+function* approveVideo(action) {
     try {
-        const result = yield axios.get(`/api/videos/video-responses`);
-        yield put({ type: 'SET_VIDEO_LIST', payload: result.data })
-    }
-    catch (err) {
-        console.error('error is', err)
-    }
+        yield axios.put(`/api/videos/approve/`+ action.payload);
+    } catch {
+        console.log('approve video error');
+    } yield put({ type: 'FETCH_UNAPPROVED_VIDEOS' })
 }
 
-function* denyVideo() {
+function* denyVideo(action) {
     try {
-        const result = yield axios.get(`/api/videos/video-responses`);
-        yield put({ type: 'SET_VIDEO_LIST', payload: result.data })
-    }
-    catch (err) {
-        console.error('error is', err)
-    }
+        yield axios.put(`/api/videos/deny/`+ action.payload);
+    } catch {
+        console.log('deny video error');
+    } yield put({ type: 'FETCH_UNAPPROVED_VIDEOS' })
 }
 
 function* videosSaga() {
     yield takeLatest('FETCH_ALL_VIDEOS', fetchAllVideos);    
     yield takeLatest('FETCH_UNAPPROVED_VIDEOS', fetchUnapprovedVideos); 
-    // yield takeLatest('APPROVE_VIDEO', approveVideo);    
-    // yield takeLatest('DENY_VIDEO', denyVideo);    
+    yield takeLatest('APPROVE_VIDEO', approveVideo);    
+    yield takeLatest('DENY_VIDEO', denyVideo);    
 }
 
 export default videosSaga;

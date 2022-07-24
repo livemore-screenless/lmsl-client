@@ -42,9 +42,41 @@ const router = express.Router();
       })
   });
 
+// update video to approved
+router.put('/:id', (req, res) => {
+  const  id  = req.params.id;
+  console.log('put request for id', id);
+  let sqlQuery = `
+    UPDATE "video-responses" 
+    SET APPROVED = true
+    WHERE "id" = $1;
+  `;
+  const sqlParams = [id];
+  pool.query(sqlQuery, sqlParams)
+    .then(() => {
+      res.sendStatus(204);
+    }).catch( (error) => {
+      res.sendStatus(500); 
+    })
+})
 
-
-
+// update video to denied
+router.put('/deny/:id', (req, res) => {
+  const  id  = req.params.id;
+  console.log('put request for id', id);
+  let sqlQuery = `
+    UPDATE "video-responses" 
+    SET APPROVED = false
+    WHERE "id" = $1;
+  `;
+  const sqlParams = [id];
+  pool.query(sqlQuery, sqlParams)
+    .then(() => {
+      res.sendStatus(204);
+    }).catch( (error) => {
+      res.sendStatus(500); 
+    })
+})
 
 
 

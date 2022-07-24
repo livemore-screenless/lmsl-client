@@ -22,7 +22,7 @@ function ReviewSubmissions() {
         });
     }
 
-    // dispatch PUT route to approve video 
+    // dispatch PUT route to deny video 
     const denyVideo = event => {
         const id = event.currentTarget.id;
         dispatch({ 
