@@ -12,6 +12,24 @@ function ReviewSubmissions() {
     useEffect(() => {
         dispatch({ type: 'FETCH_UNAPPROVED_VIDEOS' })
     }, [])
+    
+    // dispatch PUT route to approve video 
+    const approveVideo = event => {
+        const id = event.currentTarget.id;
+        dispatch({ 
+            type: 'APPROVE_VIDEO', 
+            payload: id 
+        });
+    }
+
+    // dispatch PUT route to approve video 
+    const denyVideo = event => {
+        const id = event.currentTarget.id;
+        dispatch({ 
+            type: 'DENY_VIDEO', 
+            payload: id 
+        });
+    }
 
   return (
     <div>
@@ -22,8 +40,18 @@ function ReviewSubmissions() {
                 <li>this is the prompt ID: {video.prompt_id}</li>
                 <li>this is the video submission url: {video.video_url}</li>
                 <li>this is the use who submitted ID: {video.user_id}</li>
-                <button> approve </button>
-                <button> deny </button>
+                <button 
+                    id={video.id} 
+                    onClick={approveVideo}
+                > 
+                    approve 
+                </button>
+                <button 
+                    id={video.id}
+                    onClick={denyVideo}
+                > 
+                    deny 
+                </button>
             </ul>
         )
       })}

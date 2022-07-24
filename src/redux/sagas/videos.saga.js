@@ -22,9 +22,31 @@ function* fetchUnapprovedVideos() {
     }
 }
 
+function* approveVideo() {
+    try {
+        const result = yield axios.get(`/api/videos/video-responses`);
+        yield put({ type: 'SET_VIDEO_LIST', payload: result.data })
+    }
+    catch (err) {
+        console.error('error is', err)
+    }
+}
+
+function* denyVideo() {
+    try {
+        const result = yield axios.get(`/api/videos/video-responses`);
+        yield put({ type: 'SET_VIDEO_LIST', payload: result.data })
+    }
+    catch (err) {
+        console.error('error is', err)
+    }
+}
+
 function* videosSaga() {
     yield takeLatest('FETCH_ALL_VIDEOS', fetchAllVideos);    
-    yield takeLatest('FETCH_UNAPPROVED_VIDEOS', fetchUnapprovedVideos);    
+    yield takeLatest('FETCH_UNAPPROVED_VIDEOS', fetchUnapprovedVideos); 
+    // yield takeLatest('APPROVE_VIDEO', approveVideo);    
+    // yield takeLatest('DENY_VIDEO', denyVideo);    
 }
 
 export default videosSaga;
