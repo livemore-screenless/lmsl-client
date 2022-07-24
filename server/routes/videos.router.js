@@ -43,7 +43,7 @@ const router = express.Router();
   });
 
 // update video to approved
-router.put('/:id', (req, res) => {
+router.put('/approve/:id', (req, res) => {
   const  id  = req.params.id;
   console.log('put request for id', id);
   let sqlQuery = `
