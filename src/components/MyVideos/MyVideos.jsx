@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 
 function MyVideos() {
   const dispatch = useDispatch();
-
   const videos = useSelector(store => store.videos.allVideosList);
 
   // this will fetch data on page load
@@ -21,8 +20,8 @@ function MyVideos() {
       {videos.map(video => {
         return (
             <ul key={video.id}>
-                <li>{video.prompt_id}</li>
-                <li>{video.video_url}</li>
+                <li>this is the prompt ID: {video.prompt_id}</li>
+                <li>this is the video submission url: {video.video_url}</li>
                 { video.approved &&
                   <li>approved</li>
                 }

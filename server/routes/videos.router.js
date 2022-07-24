@@ -3,9 +3,9 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 /**
- * GET route template
+ * GET route for my-videos page
  */
- router.get('/', (req, res) => {
+ router.get('/my-videos', (req, res) => {
     console.log('made it to the get route')
     const sqlQuery = `
       SELECT * FROM "video-responses"
@@ -22,10 +22,61 @@ const router = express.Router();
       })
   });
 
+/**
+ * GET route for review-submissions page
+ */
+  router.get('/video-responses', (req, res) => {
+    console.log('made it to the get route')
+    const sqlQuery = `
+      SELECT * FROM "video-responses"
+      WHERE APPROVED IS NULL
+      ORDER BY id desc;
+    `;
+    pool.query(sqlQuery)
+      .then( result => {
+        res.send(result.rows);
+      })
+      .catch(err => {
+        console.log('ERROR: GET videos', err);
+        res.sendStatus(500)
+      })
+  });
 
+// update video to approved
+router.put('/:id', (req, res) => {
+  const  id  = req.params.id;
+  console.log('put request for id', id);
+  let sqlQuery = `
+    UPDATE "video-responses" 
+    SET APPROVED = true
+    WHERE "id" = $1;
+  `;
+  const sqlParams = [id];
+  pool.query(sqlQuery, sqlParams)
+    .then(() => {
+      res.sendStatus(204);
+    }).catch( (error) => {
+      res.sendStatus(500); 
+    })
+})
 
-
-
+// update video to denied
+router.put('/deny/:id', (req, res) => {
+  const  id  = req.params.id;
+  console.log('put request for id', id);
+  let sqlQuery = `
+    UPDATE "video-responses" 
+    SET APPROVED = false
+    WHERE "id" = $1;
+  `;
+  const sqlParams = [id];
+  pool.query(sqlQuery, sqlParams)
+    .then(() => {
+      res.sendStatus(204);
+    }).catch( (error) => {
+      res.sendStatus(500); 
+    })
+})
 
 
 

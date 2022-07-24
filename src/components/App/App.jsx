@@ -19,6 +19,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import MyVideos from '../MyVideos/MyVideos';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import ReviewSubmissions from '../ReviewSubmissions/ReviewSubmissions';
 import PromptPage from '../PromptPage/PromptPage';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
@@ -140,6 +141,21 @@ function App() {
             path="/my-videos"
           >
             <MyVideos />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/review-submissions"
+          >
+            {user.id !=1 ?
+              // If the user is already logged in, 
+              // redirect them to the /user page
+              <Redirect to="/my-videos" />
+              :
+              // Otherwise, show the registration page
+              <ReviewSubmissions />
+            }
           </ProtectedRoute>
 
 
