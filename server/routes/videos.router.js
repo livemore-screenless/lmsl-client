@@ -30,7 +30,7 @@ const router = express.Router();
     const sqlQuery = `
       SELECT * FROM "video-responses"
       WHERE APPROVED IS NULL
-      ORDER BY id asc;
+      ORDER BY id desc;
     `;
     pool.query(sqlQuery)
       .then( result => {
