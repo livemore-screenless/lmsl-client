@@ -8,8 +8,9 @@ const router = express.Router();
  router.get('/', (req, res) => {
     console.log('made it to the get route')
     const sqlQuery = `
-        SELECT * FROM "video-responses"
-        WHERE USER_ID = $1;
+      SELECT * FROM "video-responses"
+      WHERE USER_ID = $1
+      ORDER BY id asc;
     `;
     pool.query(sqlQuery, [req.user.id])
       .then( result => {

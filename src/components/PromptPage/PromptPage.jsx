@@ -4,7 +4,7 @@ import { useHistory, Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function PromptPage() {
-
+    const user = useSelector((store) => store.user);
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -29,11 +29,15 @@ return(
     )
  })}
 
+{/* show these buttons only if admin is logged in  */}
+{user.id && user.id===1 &&
  <span>
     <button onClick={(evt) => {history.push(/** push to the add new prompt page */)}}
     >Add Prompt</button>
     <button onClick={(evt) => {history.push(/** push to the edit prompts page*/)}}
-    >Edit Prompts</button></span>
+    >Edit Prompts</button>
+</span>
+}
 </>
 )
 }
