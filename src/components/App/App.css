@@ -15,10 +15,18 @@ img {
 }
 
 /* --------------------------------------------------------------------------------
-Container
+Containers
 -------------------------------------------------------------------------------- */
 
 .container {
+  padding: 20px;
+}
+
+.my-videos-container {
+  padding: 20px;
+}
+
+.review-submissions-container {
   padding: 20px;
 }
 

@@ -5,23 +5,27 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-
 import { useDispatch, useSelector } from 'react-redux';
 
+//head + foot
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
+//pages
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
+import MyVideos from '../MyVideos/MyVideos';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import ReviewSubmissions from '../ReviewSubmissions/ReviewSubmissions';
 import PromptPage from '../PromptPage/PromptPage';
 import PromptVideos from '../PromptVideos/PromptVideos';
 
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+
+//style
 import './App.css';
 
 function App() {
@@ -132,6 +136,30 @@ function App() {
               <LandingPage />
             }
           </Route>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/my-videos"
+          >
+            <MyVideos />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/review-submissions"
+          >
+            {user.id !=1 ?
+              // If the user is already logged in, 
+              // redirect them to the /user page
+              <Redirect to="/my-videos" />
+              :
+              // Otherwise, show the registration page
+              <ReviewSubmissions />
+            }
+          </ProtectedRoute>
+
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
