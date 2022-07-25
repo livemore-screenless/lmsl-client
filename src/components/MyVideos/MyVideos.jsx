@@ -5,12 +5,12 @@ import { useHistory } from 'react-router-dom';
 
 function MyVideos() {
   const dispatch = useDispatch();
-  const videos = useSelector(store => store.videos.allVideosList);
+  const videos = useSelector(store => store.videosInfo.allVideosList);
 
   // this will fetch data on page load
   // need to get all data from video-responses table
   useEffect(() => {
-    dispatch({ type: 'FETCH_ALL_VIDEOS' })
+    dispatch({ type: 'FETCH_MY_VIDEOS' })
   }, [])
 
   return (
