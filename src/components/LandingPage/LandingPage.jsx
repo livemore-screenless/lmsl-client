@@ -27,10 +27,10 @@ function LandingPage() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
           <Link to="/prompt-page">
-            See All
+            See All Videos
           </Link>
-
-          <h4>Login/Register here to upload videos of your own</h4>
+          <br/>
+          <br/>
           <button className="btn" onClick={onLogin}>
             Sign In
           </button>
@@ -38,6 +38,8 @@ function LandingPage() {
           <button className="btn" onClick={onRegister}>
             Register
           </button>
+          <h4>Register or Sign in to submit videos of your own</h4>
+
         </center>
       </div>
     </div>
