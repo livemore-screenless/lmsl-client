@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 function ReviewSubmissions() {
     const dispatch = useDispatch();
-    const videos = useSelector(store => store.videos.allVideosList);
+    const videos = useSelector(store => store.videosInfo.allVideosList);
 
     // this will fetch data on page load
     // need to get all videos with null approval
