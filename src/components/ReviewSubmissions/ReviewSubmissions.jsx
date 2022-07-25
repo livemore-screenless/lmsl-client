@@ -32,14 +32,14 @@ function ReviewSubmissions() {
     }
 
   return (
-    <div>
+    <div className='review-submissions-container'>
       <h2>Review Submissions</h2>
       {videos.map(video => {
         return (
-            <ul key={video.id}>
-                <li>this is the prompt ID: {video.prompt_id}</li>
-                <li>this is the video submission url: {video.video_url}</li>
-                <li>this is the use who submitted ID: {video.user_id}</li>
+            <div key={video.id}>
+                <p>{video.question}</p>
+                <p>this is the video submission url: {video.video_url}</p>
+                <p>Submitted by: {video.username}</p>
                 <button 
                     id={video.id} 
                     onClick={approveVideo}
@@ -52,7 +52,7 @@ function ReviewSubmissions() {
                 > 
                     deny 
                 </button>
-            </ul>
+            </div>
         )
       })}
     </div>

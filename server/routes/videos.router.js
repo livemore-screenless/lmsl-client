@@ -30,8 +30,9 @@ const router = express.Router();
     console.log('made it to the get route')
     const sqlQuery = `
       SELECT * FROM "video-responses"
-      WHERE APPROVED IS NULL
-      ORDER BY id desc;
+      JOIN "prompts" ON "prompts"."id"="video-responses"."prompt_id"
+      JOIN "user" ON "user"."id"="video-responses"."user_id"
+      WHERE APPROVED IS NULL;
     `;
     pool.query(sqlQuery)
       .then( result => {
@@ -44,7 +45,7 @@ const router = express.Router();
   });
 
 // update video to approved
-router.put('/:id', (req, res) => {
+router.put('/approve/:id', (req, res) => {
   const  id  = req.params.id;
   console.log('put request for id', id);
   let sqlQuery = `
