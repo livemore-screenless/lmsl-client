@@ -6,13 +6,14 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 
 
-router.get('/all-videos', rejectUnauthenticated, (req, res) => {
+router.get('/:id/all-videos', rejectUnauthenticated, (req, res) => {
 
     const sqlQuery = `
-    
+    SELECT * FROM "video-responses"
+    WHERE "prompt_id" = $1;
     `;
 
-    pool.query(sqlQuery)
+    pool.query(sqlQuery, [req.params.id])
         .then(result => {
             console.log('question is', result.rows)
             res.send(result.rows);
@@ -27,7 +28,7 @@ router.get('/all-videos', rejectUnauthenticated, (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-  // POST route code here
+    // POST route code here
 });
 
 module.exports = router;

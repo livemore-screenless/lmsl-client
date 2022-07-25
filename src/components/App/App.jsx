@@ -79,7 +79,7 @@ function App() {
 
           <ProtectedRoute
             exact
-            path="/prompt-videos"
+            path="/prompt-videos/:id"
           >
             <PromptVideos />
           </ProtectedRoute>

@@ -23,7 +23,7 @@ function PromptPage() {
                 {allPromptsList.map(prompt => {
                     return (
                         <li key={prompt.id}>{prompt.question}
-                            <button onClick={(evt) => { history.push('/prompt-videos') }}
+                            <button onClick={(evt) => { history.push(`/prompt-videos/${prompt.id}`) }}
                             >View Videos</button></li>
                     )
                 })}
