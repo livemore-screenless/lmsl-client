@@ -57,10 +57,11 @@ router.get('/:id/all-videos', rejectUnauthenticated, (req, res) => {
   router.get('/video-responses', (req, res) => {
     console.log('made it to the get route')
     const sqlQuery = `
-      SELECT * FROM "video-responses"
-      JOIN "prompts" ON "prompts"."id"="video-responses"."prompt_id"
-      JOIN "user" ON "user"."id"="video-responses"."user_id"
-      WHERE APPROVED IS NULL;
+    SELECT "video-responses".id, "video-responses".video_url, "user".username, "prompts".question
+    FROM "video-responses"
+    JOIN "prompts" ON "prompts"."id"="video-responses"."prompt_id"
+    JOIN "user" ON "user"."id"="video-responses"."user_id"
+    WHERE APPROVED IS NULL;
     `;
     pool.query(sqlQuery)
       .then( result => {
