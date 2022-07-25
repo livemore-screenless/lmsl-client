@@ -8,9 +8,10 @@ const router = express.Router();
  router.get('/my-videos', (req, res) => {
     console.log('made it to the get route')
     const sqlQuery = `
-      SELECT * FROM "video-responses"
-      WHERE USER_ID = $1
-      ORDER BY id asc;
+      SELECT *
+      FROM "video-responses"
+      JOIN "prompts" ON "prompts"."id"="video-responses"."prompt_id"
+      WHERE USER_ID = $1;
     `;
     pool.query(sqlQuery, [req.user.id])
       .then( result => {

@@ -14,24 +14,24 @@ function MyVideos() {
   }, [])
 
   return (
-    <div>
+    <div className="my-videos-container">
       <h1>My Videos</h1>
 
       {videos.map(video => {
         return (
-            <ul key={video.id}>
-                <li>this is the prompt ID: {video.prompt_id}</li>
-                <li>this is the video submission url: {video.video_url}</li>
+            <div key={video.id}>
+                <h3>{video.question}</h3>
+                <p>this is the video submission url: {video.video_url}</p>
                 { video.approved &&
-                  <li>approved</li>
+                  <p>approved</p>
                 }
                 { video.approved === false &&
-                  <li>denied</li>
+                  <p>denied</p>
                 }
                 { video.approved === null &&
-                  <li>pending</li>
+                  <p>pending</p>
                 }
-            </ul>
+            </div>
         )
       })}
     </div>
