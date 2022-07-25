@@ -22,7 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import ReviewSubmissions from '../ReviewSubmissions/ReviewSubmissions';
 import PromptPage from '../PromptPage/PromptPage';
 import PromptVideos from '../PromptVideos/PromptVideos';
-
+import VideoItem from '../VideoItem/VideoItem';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 //style
@@ -86,6 +86,13 @@ function App() {
             path="/prompt-videos/:id"
           >
             <PromptVideos />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/prompt-videos/:id/:videoId"
+          >
+            <VideoItem />
           </ProtectedRoute>
 
           <Route
