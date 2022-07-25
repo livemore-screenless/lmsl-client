@@ -18,12 +18,12 @@ function LandingPage() {
 
 
   return (
-    <div className="container">
+    <div className="container landing-container">
       <div >
         <center>
-          <h1>[logo maybe]</h1>
-          <h1>Video Competition</h1>
-          <p>
+          <h1 className='landing-header'>[logo maybe]</h1>
+          <h1 className='landing-header'>DIGITAL WELLBEING COMPETITION</h1>
+          <p className='landing-copy'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
           <Link to="/prompt-page">
