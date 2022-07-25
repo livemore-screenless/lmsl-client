@@ -21,6 +21,8 @@ import MyVideos from '../MyVideos/MyVideos';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import ReviewSubmissions from '../ReviewSubmissions/ReviewSubmissions';
 import PromptPage from '../PromptPage/PromptPage';
+import PromptVideos from '../PromptVideos/PromptVideos';
+
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 //style
@@ -81,9 +83,9 @@ function App() {
 
           <ProtectedRoute
             exact
-            path="/my-videos"
+            path="/prompt-videos/:id"
           >
-            <MyVideos />
+            <PromptVideos />
           </ProtectedRoute>
 
           <Route

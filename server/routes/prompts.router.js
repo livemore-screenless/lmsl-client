@@ -4,10 +4,8 @@ const pool = require('../modules/pool');
 const axios = require('axios');
 const { rejectUnauthenticated } = require('../modules/authentication-middleware')
 
-/**
- * GET route template
- */
-// Getting all wines and info back from server
+
+
 router.get('/all-prompts', rejectUnauthenticated, (req, res) => {
 
     const sqlQuery = `

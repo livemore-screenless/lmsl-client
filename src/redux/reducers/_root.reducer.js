@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
-import promptsInfo from './prompts.reducer'
-import videos from './videos.reducer'
+import promptsInfo from './prompts.reducer';
+import videosInfo from './videos.reducer'
 
 
 // rootReducer is the primary reducer for our entire project
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
   promptsInfo,
-  videos
+  videosInfo
 });
 
 export default rootReducer;
