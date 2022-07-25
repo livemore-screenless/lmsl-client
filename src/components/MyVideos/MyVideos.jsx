@@ -20,7 +20,7 @@ function MyVideos() {
       {videos.map(video => {
         return (
             <ul key={video.id}>
-                <li>this is the prompt ID: {video.prompt_id}</li>
+                <li>{video.question}</li>
                 <li>this is the video submission url: {video.video_url}</li>
                 { video.approved &&
                   <li>approved</li>
