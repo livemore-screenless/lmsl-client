@@ -16,7 +16,8 @@ router.get('/:id/all-videos', rejectUnauthenticated, (req, res) => {
     FROM "video-responses"
     JOIN "user"
     ON "video-responses".user_id = "user".id
-    WHERE "prompt_id" = $1;
+    WHERE "prompt_id" = $1
+    AND "video-responses".approved = TRUE;
     `;
 
     pool.query(sqlQuery, [req.params.id])
@@ -28,7 +29,36 @@ router.get('/:id/all-videos', rejectUnauthenticated, (req, res) => {
             console.error('error in getting all videos', err);
             res.sendStatus(500);
         })
-})
+});
+
+/** GET route for specific video on page load for that prompt
+ */
+router.get('/:id/:videoId/video-item', rejectUnauthenticated, (req, res) => {
+
+    const sqlQuery = `
+    SELECT 
+    "video-responses".id,
+    "video-responses".video_url,
+    "user".username,
+    prompts.question
+    FROM "video-responses"
+    JOIN "user"
+    ON "video-responses".user_id = "user".id
+    JOIN prompts
+    ON "video-responses".prompt_id = prompts.id
+    WHERE "video-responses".id = $1;
+    `;
+
+    pool.query(sqlQuery, [req.params.videoId])
+        .then(result => {
+            console.log('question is', result.rows)
+            res.send(result.rows);
+        })
+        .catch(err => {
+            console.error('error in getting all videos', err);
+            res.sendStatus(500);
+        })
+});
 
 /**
  * GET route for my-videos page

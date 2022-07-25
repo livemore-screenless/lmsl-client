@@ -24,7 +24,8 @@ function* fetchMyVideos() {
 
 function* fetchVideoItem(action) {
     try {
-        const result = yield axios.get(`/api/videos/${action.payload.id}/${action.payload.videoId}`);
+        const result = yield axios.get(`/api/videos/${action.payload.id}/${action.payload.videoId}/video-item`);
+        console.log('data is', result.data)
         yield put({ type: 'SET_VIDEO_ITEM', payload: result.data })
     }
     catch (err) {
