@@ -9,6 +9,16 @@ const allPromptsList = (state = [], action) => {
     }
 }
 
+const allReactionsList = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_REACTIONS_LIST':
+            return action.payload
+        default:
+            return state;
+    }
+}
+
 export default combineReducers({
-    allPromptsList
+    allPromptsList,
+    allReactionsList
 });

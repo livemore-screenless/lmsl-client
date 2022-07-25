@@ -22,7 +22,6 @@ router.get('/:id/all-videos', rejectUnauthenticated, (req, res) => {
 
     pool.query(sqlQuery, [req.params.id])
         .then(result => {
-            console.log('question is', result.rows)
             res.send(result.rows);
         })
         .catch(err => {

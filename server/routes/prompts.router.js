@@ -21,7 +21,24 @@ router.get('/all-prompts', rejectUnauthenticated, (req, res) => {
             console.error('error in getting all prompts', err);
             res.sendStatus(500);
         })
-})
+});
+
+router.get('/:id/:videoId/reactions', rejectUnauthenticated, (req, res) => {
+// get reactions to loop over and the reaction numbers for each
+    const sqlQuery = `
+    SELECT * FROM reactions;
+    `;
+
+    pool.query(sqlQuery)
+        .then(result => {
+            console.log('reactions are', result.rows)
+            res.send(result.rows);
+        })
+        .catch(err => {
+            console.error('error in getting all videos', err);
+            res.sendStatus(500);
+        })
+});
 
 /**
  * POST route template

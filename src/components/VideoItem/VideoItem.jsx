@@ -25,25 +25,35 @@ function VideoItem() {
     }, [id, videoId])
 
     const videoItem = useSelector(store => store.videosInfo.videoItem[0]);
+    const reactions = useSelector(store => store.promptsInfo.allReactionsList);
+
 
     return (
         <>
-            <h3>{videoItem.question}</h3>
-            <div>
-                <video width="320" height="240" controls>
-                    {/* Below is dummy data for src, need to be updated after urls in db exist from AWS */}
-                    {/* eventually it will be videoItem.video_url */}
-                    <source src="./waterfall_vid.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <h4>{videoItem.username}</h4>
-           
+            {videoItem && (
+                <>
 
-            <span>
-                <button onClick={(evt) => { history.push(/* push to the add new video page for this url id */) }}
-                >Submit your own video</button>
-            </span>
+                    <h3>{videoItem.question}</h3>
+                    <div>
+                        <video width="320" height="240" controls>
+                            {/* Below is dummy data for src, need to be updated after urls in db exist from AWS */}
+                            {/* eventually it will be videoItem.video_url */}
+                            <source src="./waterfall_vid.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <h4>{videoItem.username}</h4>
+
+                    {reactions.map(reaction => {
+                        return (
+                            // need to make an onclick that will post to db
+                            // edit button that will edit buttons
+                            // dispatch to get count for each and put next to it
+                            <button>{reaction.reaction}</button>
+                        )
+                    })}
+                </>
+            )}
         </>
     )
 }
