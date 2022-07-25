@@ -14,12 +14,12 @@ function MyVideos() {
   }, [])
 
   return (
-    <div>
+    <div className="my-videos-container">
       <h1>My Videos</h1>
 
       {videos.map(video => {
         return (
-            <>
+            <div key={video.id}>
                 <h3>{video.question}</h3>
                 <p>this is the video submission url: {video.video_url}</p>
                 { video.approved &&
@@ -31,7 +31,7 @@ function MyVideos() {
                 { video.approved === null &&
                   <p>pending</p>
                 }
-            </>
+            </div>
         )
       })}
     </div>
