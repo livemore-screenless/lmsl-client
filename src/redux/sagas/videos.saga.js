@@ -15,7 +15,7 @@ function* fetchAllVideos(action) {
 function* fetchMyVideos() {
     try {
         const result = yield axios.get(`/api/videos/my-videos`);
-        yield put({ type: 'SET_VIDEO_LIST', payload: result.data })
+        yield put({ type: 'SET_MY_VIDEO_LIST', payload: result.data })
     }
     catch (err) {
         console.error('error is', err)
