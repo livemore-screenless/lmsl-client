@@ -39,10 +39,9 @@ function PromptVideos() {
             </ul>
 
             <span>
-                <button onClick={(evt) => { history.push(/** push to the add new prompt page */) }}
-                >Add Prompt</button>
-                <button onClick={(evt) => { history.push(/** push to the edit prompts page*/) }}
-                >Edit Prompts</button></span>
+                <button onClick={(evt) => { history.push(/* push to the add new video page for this url id */) }}
+                >Submit your own video</button>
+                </span>
         </>
     )
 }
