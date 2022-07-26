@@ -18,17 +18,6 @@ img {
 Containers
 -------------------------------------------------------------------------------- */
 
-.container {
-  padding: 20px;
-}
-
-.my-videos-container {
-  padding: 20px;
-}
-
-.review-submissions-container {
-  padding: 20px;
-}
 
 /* --------------------------------------------------------------------------------
 Button
@@ -126,4 +115,17 @@ input {
 
 .landing-copy {
  font-weight: 300;
+}
+
+.page-subheadings {
+  color: #2D769F;
+  font-weight: 700;
+}
+
+ul {
+  list-style: none
+}
+
+.prompts{
+  cursor: pointer;
 }
