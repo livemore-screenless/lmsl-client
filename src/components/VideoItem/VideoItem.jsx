@@ -49,11 +49,15 @@ function VideoItem() {
 
                     {/* mapping over the reactions to create buttons to react to video */}
                     {reactions.map(reaction => {
+                        let reactionNum = reaction.id 
                         return (
-                            // need to make an onclick that will post to db
+                            // need to make an onclick that will post to db, no more clicks after 1st
                             // edit button that will edit buttons
-                            // dispatch to get count for each and put next to it, only admin
-                            <span key={reaction.id}><button>{reaction.reaction}</button>
+                            <span key={reaction.id}><button
+                            onClick={() => {
+                                dispatch({ type: 'ADD_NEW_REACTION', payload: {reactionNum, id, videoId}})
+                            }}
+                            >{reaction.reaction}</button>
 
                                 {/* only show votes if user is an admin */}
                                 {user.admin === true &&
@@ -61,7 +65,7 @@ function VideoItem() {
                                         {reactionCounts.map(count => {
                                             if (count.reaction_id === reaction.id) {
                                                 return (
-                                                    <span>Votes: {count.count}</span>
+                                                    <span key={reaction.id}>Votes: {count.count}</span>
                                                 )
                                             }
                                         })}
