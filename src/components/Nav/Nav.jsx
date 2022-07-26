@@ -47,7 +47,7 @@ function Nav() {
             </Link>
 
             <Link className="navLink" to="/prompt-page">
-              CONTRIBUTE A VIDEO
+              VIEW VIDEOS
             </Link>
 
             <LogOutButton className="navLink" />
