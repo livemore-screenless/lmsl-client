@@ -37,9 +37,9 @@ function* fetchReactionCounts(action) {
 function* addNewReaction(action) {
     try {
         const result = yield axios.post(`/api/prompts/${action.payload.id}/${action.payload.videoId}/${action.payload.reactionNum}/new-reaction`);
-        console.log('POST results', result.data[0].id)
+        console.log('POST results', result.data[0])
         // TODO after lunch - trigger FETCH COUNTS with the results found here, do I need prompt id?
-        // yield put({ type: 'FETCH_REACTION_COUNTS', payload: {} })
+        yield put({ type: 'FETCH_REACTION_COUNTS', payload: {videoId: result.data[0].video_response_id} })
     }
     catch (err) {
         console.error('error is', err)
