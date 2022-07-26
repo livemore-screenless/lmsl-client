@@ -32,39 +32,39 @@ function ReviewSubmissions() {
     }
 
   return (
-    <div className='review-submissions-container'>
-        <center>
-            <h2 className='page-subheadings'>Review Submissions</h2>
-      {videos.map(video => {
-        return (
-            <div key={video.id}>
-                <p>{video.question}</p>
-                <p>Submitted by: {video.username}</p>
-                <video width="428" height="321" controls>
-                    {/* Below is dummy data for src, need to be updated after urls in db exist */}
-                    <source src={video.video_url} type="video/youtube" />
-                    Your browser does not support the video tag.
-                </video>
-                <br/>
-                <button 
-                    id={video.id} 
-                    onClick={approveVideo}
-                    className="btn"
-                > 
-                    approve 
-                </button>
-                <button 
-                    id={video.id}
-                    onClick={denyVideo}
-                    className="btn"
-                > 
-                    deny 
-                </button>
-                <br/>
-                <br/>
-            </div>
-        )
-      })}
+    <div>
+    <center>
+        <h2 className='page-subheadings'>Review Submissions</h2>
+        {videos.map(video => {
+            return (
+                <div key={video.id}>
+                    <p>{video.question}</p>
+                    <p>Submitted by: {video.username}</p>
+                    <video width="428" height="321" controls>
+                        {/* Below is dummy data for src, need to be updated after urls in db exist */}
+                        <source src={video.video_url} type="video/youtube" />
+                        Your browser does not support the video tag.
+                    </video>
+                    <br/>
+                    <button 
+                        id={video.id} 
+                        onClick={approveVideo}
+                        className="btn"
+                    > 
+                        approve 
+                    </button>
+                    <button 
+                        id={video.id}
+                        onClick={denyVideo}
+                        className="btn"
+                    > 
+                        deny 
+                    </button>
+                    <br/>
+                    <br/>
+                </div>
+            )
+        })}
     </center>
     </div>
   );

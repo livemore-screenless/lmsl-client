@@ -16,7 +16,7 @@ function PromptPage() {
     }, [])
 
     return (
-        <>
+        <div>
         <center>
             <h2 className='page-subheadings'>View Videos</h2>
             <h4 className='page-subheadings'>Click on a prompt to view videos</h4>
@@ -49,7 +49,7 @@ function PromptPage() {
                 </span>
                 }
             </center>
-        </>
+        </div>
     )
 }
 export default PromptPage;

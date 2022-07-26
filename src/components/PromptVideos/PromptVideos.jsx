@@ -18,7 +18,7 @@ function PromptVideos() {
     const allVideosList = useSelector(store => store.videosInfo.allVideosList);
 
     return (
-        <>
+        <div>
         <center>
             <h2 className='page-subheadings'>
                 [here we want to have the prompt name for all the below videos]
@@ -28,7 +28,7 @@ function PromptVideos() {
                 className='btn'
                 onClick={(evt) => { history.push(/* push to the add new video page for this url id */) }}
             >
-                Submit your own video
+                Contribute
             </button>
             {/* Below is mapping over all the video URLs from the DB */}
             <ul>
@@ -42,13 +42,13 @@ function PromptVideos() {
                                 <source src={video.url} type="video/youtube" />
                                 Your browser does not support the video tag.
                             </video>
-                            <h4>{video.username}</h4>
+                            <p>Submitted by: {video.username}</p>
                         </li>
                     )
                 })}
             </ul>
         </center>
-        </>
+        </div>
     )
 }
 export default PromptVideos;
