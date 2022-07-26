@@ -19,7 +19,17 @@ function PromptVideos() {
 
     return (
         <>
-            <h1>LiveMore ScreenLess Video Prompts</h1>
+        <center>
+            <h2 className='page-subheadings'>
+                [here we want to have the prompt name for all the below videos]
+            </h2>
+            <br/>
+            <button 
+                className='btn'
+                onClick={(evt) => { history.push(/* push to the add new video page for this url id */) }}
+            >
+                Submit your own video
+            </button>
             {/* Below is mapping over all the video URLs from the DB */}
             <ul>
                 {allVideosList.map(video => {
@@ -27,9 +37,9 @@ function PromptVideos() {
                         <li key={video.id}
                             onClick={(evt) => { history.push(/** push to the videoItem page*/) }}
                         >
-                            <video width="320" height="240" controls>
+                            <video width="428" height="321" controls>
                                 {/* Below is dummy data for src, need to be updated after urls in db exist */}
-                                <source src="./waterfall_vid.mp4" type="video/mp4" />
+                                <source src={video.url} type="video/youtube" />
                                 Your browser does not support the video tag.
                             </video>
                             <h4>{video.username}</h4>
@@ -37,11 +47,7 @@ function PromptVideos() {
                     )
                 })}
             </ul>
-
-            <span>
-                <button onClick={(evt) => { history.push(/* push to the add new video page for this url id */) }}
-                >Submit your own video</button>
-                </span>
+        </center>
         </>
     )
 }
