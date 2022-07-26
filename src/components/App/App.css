@@ -132,3 +132,11 @@ input {
   color: #2D769F;
   font-weight: 700;
 }
+
+ul {
+  list-style: none
+}
+
+b{
+  cursor: pointer;
+}
