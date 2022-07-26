@@ -24,7 +24,7 @@ router.get('/all-prompts', rejectUnauthenticated, (req, res) => {
 });
 
 router.get('/:id/:videoId/reactions', rejectUnauthenticated, (req, res) => {
-// get reactions to loop over and the reaction numbers for each
+    // get reactions to loop over and the reaction numbers for each
     const sqlQuery = `
     SELECT * FROM reactions;
     `;
@@ -40,11 +40,27 @@ router.get('/:id/:videoId/reactions', rejectUnauthenticated, (req, res) => {
         })
 });
 
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-  // POST route code here
+router.get('/:id/:videoId/reaction-counts', rejectUnauthenticated, (req, res) => {
+    const sqlQuery = `
+        SELECT 
+    "video-reactions".reaction_id,
+    COUNT("video-reactions".reaction_id)
+    FROM "video-reactions"
+    WHERE "video-reactions".video_response_id = $1
+    GROUP BY "video-reactions".reaction_id;
+        `;
+
+    pool.query(sqlQuery , [req.params.videoId])
+        .then(result => {
+            console.log('reaction counts are', result.rows)
+            res.send(result.rows);
+        })
+        .catch(err => {
+            console.error('error in getting all videos', err);
+            res.sendStatus(500);
+        })
 });
+
+
 
 module.exports = router;

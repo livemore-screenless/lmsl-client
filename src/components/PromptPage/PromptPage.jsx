@@ -30,7 +30,7 @@ function PromptPage() {
             </ul>
 
 {/* show these buttons only if admin is logged in  */}
-{user.id && user.id===1 &&
+{user.id && user.admin === true &&
  <span>
     <button onClick={(evt) => {history.push(/** push to the add new prompt page */)}}
     >Add Prompt</button>

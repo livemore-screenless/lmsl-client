@@ -16,16 +16,19 @@ function VideoItem() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { id, videoId } = useParams();
+    const user = useSelector((store) => store.user);
 
     // this will fetch prompts from DB and set in store allPromptsList
     // list is mapped over below
     useEffect(() => {
         dispatch({ type: 'FETCH_VIDEO_ITEM', payload: { id, videoId } }),
-        dispatch({ type: 'FETCH_VIDEO_REACTIONS', payload: { id, videoId } })
+            dispatch({ type: 'FETCH_VIDEO_REACTIONS', payload: { id, videoId } }),
+            dispatch({ type: 'FETCH_REACTION_COUNTS', payload: { id, videoId } })
     }, [id, videoId])
 
     const videoItem = useSelector(store => store.videosInfo.videoItem[0]);
     const reactions = useSelector(store => store.promptsInfo.allReactionsList);
+    const reactionCounts = useSelector(store => store.promptsInfo.reactionCounts);
 
 
     return (
@@ -44,12 +47,28 @@ function VideoItem() {
                     </div>
                     <h4>{videoItem.username}</h4>
 
+                    {/* mapping over the reactions to create buttons to react to video */}
                     {reactions.map(reaction => {
                         return (
                             // need to make an onclick that will post to db
                             // edit button that will edit buttons
-                            // dispatch to get count for each and put next to it
-                            <button>{reaction.reaction}</button>
+                            // dispatch to get count for each and put next to it, only admin
+                            <span key={reaction.id}><button>{reaction.reaction}</button>
+
+                                {/* only show votes if user is an admin */}
+                                {user.admin === true &&
+                                    <>
+                                        {reactionCounts.map(count => {
+                                            if (count.reaction_id === reaction.id) {
+                                                return (
+                                                    <span>Votes: {count.count}</span>
+                                                )
+                                            }
+                                        })}
+                                    </>
+                                }
+                            </span>
+
                         )
                     })}
                 </>
