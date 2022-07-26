@@ -31,7 +31,7 @@ function MyVideos() {
                 { video.approved === null &&
                   <p>This submission is currently pending.</p>
                 }
-                <video width="640" height="480" controls>
+                <video width="428" height="321" controls>
                     {/* Below is dummy data for src, need to be updated after urls in db exist */}
                     <source src={video.video_url} type="video/youtube" />
                     Your browser does not support the video tag.
