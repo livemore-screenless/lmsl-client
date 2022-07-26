@@ -33,13 +33,19 @@ function ReviewSubmissions() {
 
   return (
     <div className='review-submissions-container'>
-      <h2>Review Submissions</h2>
+        <center>
+            <h2 className='page-subheadings'>Review Submissions</h2>
       {videos.map(video => {
         return (
             <div key={video.id}>
                 <p>{video.question}</p>
-                <p>this is the video submission url: {video.video_url}</p>
                 <p>Submitted by: {video.username}</p>
+                <video width="640" height="480" controls>
+                    {/* Below is dummy data for src, need to be updated after urls in db exist */}
+                    <source src={video.video_url} type="video/youtube" />
+                    Your browser does not support the video tag.
+                </video>
+                <br/>
                 <button 
                     id={video.id} 
                     onClick={approveVideo}
@@ -52,9 +58,12 @@ function ReviewSubmissions() {
                 > 
                     deny 
                 </button>
+                <br/>
+                <br/>
             </div>
         )
       })}
+    </center>
     </div>
   );
 }
