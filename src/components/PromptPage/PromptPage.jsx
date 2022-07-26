@@ -25,11 +25,8 @@ function PromptPage() {
                     return (
                         <>
                         <li key={prompt.id}>
-                            <b onClick={(evt) => { history.push(`/prompt-videos/${prompt.id}`) }}>{prompt.question}</b>
-                            <br/>
+                            <p className='prompts' onClick={(evt) => { history.push(`/prompt-videos/${prompt.id}`) }}>{prompt.question}</p>
                         </li>
-                        <br/>
-                        <br/>
                         </>
                     )
                 })}
