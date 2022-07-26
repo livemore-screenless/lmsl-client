@@ -31,7 +31,7 @@ function PromptVideos() {
                             </h2>
                             <br/>
                             <li key={video.id}
-                                onClick={(evt) => { history.push(/** push to the videoItem page*/) }}
+                                onClick={(evt) => { history.push(`/prompt-videos/${id}/${video.id}`) }}
                             >
                                 <video width="428" height="321" controls>
                                     {/* Below is dummy data for src, need to be updated after urls in db exist */}
