@@ -49,12 +49,14 @@ function ReviewSubmissions() {
                 <button 
                     id={video.id} 
                     onClick={approveVideo}
+                    className="btn"
                 > 
                     approve 
                 </button>
                 <button 
                     id={video.id}
                     onClick={denyVideo}
+                    className="btn"
                 > 
                     deny 
                 </button>

@@ -127,3 +127,8 @@ input {
 .landing-copy {
  font-weight: 300;
 }
+
+.page-subheadings {
+  color: #2D769F;
+  font-weight: 700;
+}
