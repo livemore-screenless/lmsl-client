@@ -47,7 +47,7 @@ function PromptVideos() {
             </ul>
                 <button 
                     className='btn'
-                    onClick={(evt) => { history.push(/* push to the add new video page for this url id */) }}
+                    onClick={(evt) => { history.push(`/user-upload/${id}`) }}
                 >
                     Contribute
                 </button>
