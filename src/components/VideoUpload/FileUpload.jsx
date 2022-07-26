@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const VideoUpload = () => {
-  //store it locally in state before uploading it to aws
-  const [selectedFile, setSelectedFile] = useState({});
+const FileUpload = () => {
+    //store it locally in state before uploading it to aws
+  const [selectedFile, setSelectedFile] = useState({})
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -17,8 +18,17 @@ const VideoUpload = () => {
         data: formData,
         headers: { "Content-Type": "multipart/form-data" },
       });
-    } catch (error) {
-      console.log(error);
+
+      console.log(response);
+      // dispatch({
+      //   type: "ADD_FILE_TO_DB",
+      //   payload: {
+      //     url: response.data.Location
+      //   }
+      // })
+    } catch(error) {
+      console.log(error)
+
     }
   };
 
@@ -35,5 +45,6 @@ const VideoUpload = () => {
     </div>
   );
 };
+  
+export default FileUpload;
 
-export default VideoUpload;

@@ -25,7 +25,7 @@ router.post("/", upload.array("file"), async (req, res) => {
     const file = req.files[0]
     const result = await s3Uploadv2(file);
     //result.location and res.send it 
-  res.json({ status: "success", result });
+  res.send(result)
 }
 catch(error) {
   console.log(error)
