@@ -9,14 +9,15 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get('/:id/all-videos', rejectUnauthenticated, (req, res) => {
 
     const sqlQuery = `
-    SELECT 
-    "video-responses".id,
-    "video-responses".video_url,
-    "user".username
-    FROM "video-responses"
-    JOIN "user"
-    ON "video-responses".user_id = "user".id
-    WHERE "prompt_id" = $1;
+      SELECT 
+      "video-responses".id,
+      "video-responses".video_url,
+      "user".username,
+      "prompts".question
+      FROM "video-responses"
+      JOIN "user" ON "video-responses".user_id = "user".id
+      JOIN "prompts" ON "prompts"."id"="video-responses"."prompt_id"   
+      WHERE "prompt_id" = $1;
     `;
 
     pool.query(sqlQuery, [req.params.id])

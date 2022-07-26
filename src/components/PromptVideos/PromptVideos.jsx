@@ -20,33 +20,35 @@ function PromptVideos() {
     return (
         <div>
         <center>
-            <h2 className='page-subheadings'>
-                [here we want to have the prompt name for all the below videos]
-            </h2>
-            <br/>
-            <button 
-                className='btn'
-                onClick={(evt) => { history.push(/* push to the add new video page for this url id */) }}
-            >
-                Contribute
-            </button>
             {/* Below is mapping over all the video URLs from the DB */}
             <ul>
                 {allVideosList.map(video => {
                     return (
-                        <li key={video.id}
-                            onClick={(evt) => { history.push(/** push to the videoItem page*/) }}
-                        >
-                            <video width="428" height="321" controls>
-                                {/* Below is dummy data for src, need to be updated after urls in db exist */}
-                                <source src={video.url} type="video/youtube" />
-                                Your browser does not support the video tag.
-                            </video>
-                            <p>Submitted by: {video.username}</p>
-                        </li>
+                        <>
+                            <h2 className='page-subheadings'>
+                                {video.question}
+                            </h2>
+                            <br/>
+                            <li key={video.id}
+                                onClick={(evt) => { history.push(/** push to the videoItem page*/) }}
+                            >
+                                <video width="428" height="321" controls>
+                                    {/* Below is dummy data for src, need to be updated after urls in db exist */}
+                                    <source src={video.url} type="video/youtube" />
+                                    Your browser does not support the video tag.
+                                </video>
+                                <p>Submitted by: {video.username}</p>
+                            </li>
+                        </>
                     )
                 })}
             </ul>
+                <button 
+                    className='btn'
+                    onClick={(evt) => { history.push(/* push to the add new video page for this url id */) }}
+                >
+                    Contribute
+                </button>
         </center>
         </div>
     )
