@@ -22,7 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import ReviewSubmissions from '../ReviewSubmissions/ReviewSubmissions';
 import PromptPage from '../PromptPage/PromptPage';
 import PromptVideos from '../PromptVideos/PromptVideos';
-import webcamUpload from '../VideoUpload/WebcamUpload';
+import WebcamUpload from '../VideoUpload/WebcamUpload';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import UserUploadPage from '../VideoUpload/UserUploadPage';
 
@@ -150,7 +150,7 @@ function App() {
             exact
             path="/user-upload"
             >
-            <webcamUpload />
+            <WebcamUpload />
             <UserUploadPage />
           </ProtectedRoute>
           
