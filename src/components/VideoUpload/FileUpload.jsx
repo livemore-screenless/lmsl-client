@@ -3,7 +3,7 @@ import axios from 'axios'
 
 
 
-const VideoUpload = () => {
+const FileUpload = () => {
     //store it locally in state before uploading it to aws
   const [selectedFile, setSelectedFile] = useState({})
 
@@ -19,6 +19,7 @@ const VideoUpload = () => {
         data: formData,
         headers: { "Content-Type": "multipart/form-data" },
       });
+      console.log(response)
     } catch(error) {
       console.log(error)
     }
@@ -39,4 +40,4 @@ const VideoUpload = () => {
     )
   }
   
-export default VideoUpload;
+export default FileUpload;
