@@ -22,6 +22,17 @@ function* fetchMyVideos() {
     }
 }
 
+function* fetchVideoItem(action) {
+    try {
+        const result = yield axios.get(`/api/videos/${action.payload.id}/${action.payload.videoId}/video-item`);
+        console.log('data is', result.data)
+        yield put({ type: 'SET_VIDEO_ITEM', payload: result.data })
+    }
+    catch (err) {
+        console.error('error is', err)
+    }
+}
+
 
 function* fetchUnapprovedVideos() {
     try {
@@ -54,7 +65,9 @@ function* videosSaga() {
     yield takeLatest('FETCH_UNAPPROVED_VIDEOS', fetchUnapprovedVideos); 
     yield takeLatest('APPROVE_VIDEO', approveVideo);    
     yield takeLatest('DENY_VIDEO', denyVideo);
-    yield takeLatest('FETCH_VIDEO_LIST', fetchAllVideos);    
+    yield takeLatest('FETCH_VIDEO_LIST', fetchAllVideos);  
+    yield takeLatest('FETCH_VIDEO_ITEM', fetchVideoItem);  
+      
     
 }
 

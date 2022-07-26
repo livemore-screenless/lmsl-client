@@ -18,6 +18,7 @@ function PromptVideos() {
     const allVideosList = useSelector(store => store.videosInfo.allVideosList);
 
     return (
+
         <div>
         <center>
             {/* Below is mapping over all the video URLs from the DB */}
@@ -40,6 +41,7 @@ function PromptVideos() {
                                 <p>Submitted by: {video.username}</p>
                             </li>
                         </>
+
                     )
                 })}
             </ul>

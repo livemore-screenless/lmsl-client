@@ -18,7 +18,19 @@ const myVideosList = (state = [], action) => {
     }
 }
 
+const videoItem = (state = {}, action) => {
+    switch (action.type) {
+        case 'SET_VIDEO_ITEM':
+            return action.payload
+        default:
+            return state;
+    }
+}
+
 export default combineReducers({
     allVideosList,
-    myVideosList
+
+    myVideosList,
+    videoItem
+
 });

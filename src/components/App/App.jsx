@@ -22,6 +22,8 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import ReviewSubmissions from '../ReviewSubmissions/ReviewSubmissions';
 import PromptPage from '../PromptPage/PromptPage';
 import PromptVideos from '../PromptVideos/PromptVideos';
+import VideoItem from '../VideoItem/VideoItem';
+
 import WebcamUpload from '../VideoUpload/WebcamUpload';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import UserUploadPage from '../VideoUpload/UserUploadPage';
@@ -87,6 +89,13 @@ function App() {
             path="/prompt-videos/:id"
           >
             <PromptVideos />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/prompt-videos/:id/:videoId"
+          >
+            <VideoItem />
           </ProtectedRoute>
 
           <Route

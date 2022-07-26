@@ -31,5 +31,6 @@ CREATE TABLE "video-reactions" (
     id SERIAL PRIMARY KEY,
     "video_response_id" INT REFERENCES "video-responses",
     "user_id" INT REFERENCES "user",
-    "reaction_id" INT REFERENCES "reactions"
+    "reaction_id" INT REFERENCES "reactions",
+    CONSTRAINT "one_vote" UNIQUE ("video_response_id", "user_id")
 );

@@ -31,6 +31,7 @@ function PromptPage() {
                     )
                 })}
             </ul>
+
             {/* show these buttons only if admin is logged in  */}
                 {user.id && user.id===1 &&
                 <span>
@@ -51,5 +52,6 @@ function PromptPage() {
             </center>
         </div>
     )
+
 }
 export default PromptPage;
