@@ -23,7 +23,10 @@ import ReviewSubmissions from '../ReviewSubmissions/ReviewSubmissions';
 import PromptPage from '../PromptPage/PromptPage';
 import PromptVideos from '../PromptVideos/PromptVideos';
 import VideoItem from '../VideoItem/VideoItem';
+
+import WebcamUpload from '../VideoUpload/WebcamUpload';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import UserUploadPage from '../VideoUpload/UserUploadPage';
 
 //style
 import './App.css';
@@ -152,6 +155,14 @@ function App() {
             <MyVideos />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            exact
+            path="/user-upload"
+            >
+            <WebcamUpload />
+            <UserUploadPage />
+          </ProtectedRoute>
+          
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact

@@ -18,6 +18,7 @@ router.get('/:id/all-videos', rejectUnauthenticated, (req, res) => {
     ON "video-responses".user_id = "user".id
     WHERE "prompt_id" = $1
     AND "video-responses".approved = TRUE;
+
     `;
 
     pool.query(sqlQuery, [req.params.id])

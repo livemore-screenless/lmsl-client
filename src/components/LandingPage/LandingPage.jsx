@@ -12,23 +12,34 @@ function LandingPage() {
     history.push('/login');
   };
 
+  const onRegister = (event) => {
+    history.push('/registration');
+  };
+
 
   return (
-    <div className="container">
+    <div className="container landing-container">
       <div >
         <center>
-          <h1><div>LiveMore ScreenLess</div> <div>Video Competition</div></h1>
-          <div>competition details go here - will need copy from lmsl. Something like:</div>
-          <div>This is a site dedicated to educating people about how to use technology in a healthy manner. You can upload videos answering prompts regaring this use and they will be judged for creativity etc. </div>
-
+          <h1 className='landing-header'>[logo maybe]</h1>
+          <h1 className='landing-header'>DIGITAL WELLBEING COMPETITION</h1>
+          <p className='landing-copy'>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
           <Link to="/prompt-page">
-            See All
+            See All Videos
           </Link>
-
-          <h4>Login/Register here to upload videos of your own</h4>
+          <br/>
+          <br/>
           <button className="btn" onClick={onLogin}>
-            Login/Register
+            Sign In
           </button>
+
+          <button className="btn" onClick={onRegister}>
+            Register
+          </button>
+          <h4>Register or Sign in to submit videos of your own</h4>
+
         </center>
       </div>
     </div>

@@ -29,6 +29,8 @@ const videoItem = (state = {}, action) => {
 
 export default combineReducers({
     allVideosList,
+
     myVideosList,
     videoItem
+
 });

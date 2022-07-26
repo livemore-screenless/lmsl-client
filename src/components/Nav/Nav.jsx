@@ -10,8 +10,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 //this is the mui styling 
 const useStyles = makeStyles((theme) => ({
   logo: {
-    maxWidth: 300,
-    marginRight: 15,
+    maxWidth: 103.59,
   },
 }));
 
@@ -28,14 +27,14 @@ function Nav() {
 
   return (
     <div className="nav">
-      <img src={require('./trademark-12.png')} onClick={home} className={classes.logo}/>
+      <img src={require('./trademark-03.png')} onClick={home} className={classes.logo}/>
       <br/><br/>
       <div>
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
           <Link className="navLink" to="/login">
-            Login / Register
+            SIGN IN / REGISTER
           </Link>
         )}
 
@@ -44,11 +43,11 @@ function Nav() {
         {user.id && user.id!=1 && (
           <>
             <Link className="navLink" to="/my-videos">
-              My Videos
+              MY VIDEOS
             </Link>
 
             <Link className="navLink" to="/prompt-page">
-              Submit a Video
+              VIEW VIDEOS
             </Link>
 
             <LogOutButton className="navLink" />
@@ -60,11 +59,11 @@ function Nav() {
         {user.id && user.id===1 && (
           <>
             <Link className="navLink" to="/review-submissions">
-              Review Submissions
+              REVIEW SUBMISSIONS
             </Link>
 
             <Link className="navLink" to="/prompt-page">
-              Review Prompts
+              REVIEW PROMPTS
             </Link>
 
             <LogOutButton className="navLink" />

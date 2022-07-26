@@ -18,32 +18,41 @@ function PromptVideos() {
     const allVideosList = useSelector(store => store.videosInfo.allVideosList);
 
     return (
-        <>
-            <h1>LiveMore ScreenLess Video Prompts</h1>
-            {/* Below is mapping over all the video URLs from the DB 
-            Do we want to make this into a carousel?*/}
+
+        <div>
+        <center>
+            {/* Below is mapping over all the video URLs from the DB */}
             <ul>
                 {allVideosList.map(video => {
                     return (
-                        <li key={video.id}
-                            onClick={(evt) => { history.push(`/prompt-videos/${id}/${video.id}`) }}
-                        >
-                            <video width="320" height="240" controls>
-                                {/* Below is dummy data for src, need to be updated after urls in db exist from AWS */}
-                                <source src="./waterfall_vid.mp4" type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-                            <h4>{video.username}</h4>
-                        </li>
+                        <>
+                            <h2 className='page-subheadings'>
+                                {video.question}
+                            </h2>
+                            <br/>
+                            <li key={video.id}
+                                onClick={(evt) => { history.push(/** push to the videoItem page*/) }}
+                            >
+                                <video width="428" height="321" controls>
+                                    {/* Below is dummy data for src, need to be updated after urls in db exist */}
+                                    <source src={video.url} type="video/youtube" />
+                                    Your browser does not support the video tag.
+                                </video>
+                                <p>Submitted by: {video.username}</p>
+                            </li>
+                        </>
+
                     )
                 })}
             </ul>
-
-            <span>
-                <button onClick={(evt) => { history.push(/* push to the add new video page for this url id */) }}
-                >Submit your own video</button>
-                </span>
-        </>
+                <button 
+                    className='btn'
+                    onClick={(evt) => { history.push(/* push to the add new video page for this url id */) }}
+                >
+                    Contribute
+                </button>
+        </center>
+        </div>
     )
 }
 export default PromptVideos;
