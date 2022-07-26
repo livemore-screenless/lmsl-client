@@ -19,7 +19,13 @@ const FileUpload = () => {
         data: formData,
         headers: { "Content-Type": "multipart/form-data" },
       });
-      console.log(response)
+      console.log(response);
+      // dispatch({
+      //   type: "ADD_FILE_TO_DB",
+      //   payload: {
+      //     url: response.data.Location
+      //   }
+      // })
     } catch(error) {
       console.log(error)
     }
