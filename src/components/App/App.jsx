@@ -24,6 +24,7 @@ import PromptPage from '../PromptPage/PromptPage';
 import PromptVideos from '../PromptVideos/PromptVideos';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import UserUploadPage from '../VideoUpload/UserUploadPage';
 
 //style
 import './App.css';
@@ -145,6 +146,13 @@ function App() {
             <MyVideos />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            exact
+            path="/user-upload"
+            >
+            <UserUploadPage />
+          </ProtectedRoute>
+          
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
