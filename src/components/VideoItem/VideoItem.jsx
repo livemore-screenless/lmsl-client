@@ -5,10 +5,7 @@ import axios from 'axios';
 
 function VideoItem() {
     /**TODO
-     *  x fetch prompt, username, rating buttons, and specific video for that prompt
-     * page load will GET the cout of the video reactions for that video-response
-     *          do this in the prompts saga and reducer and router          
-     * reaction buttons will post to video-reactions
+     
      * admin - edit buttons with PUT, video award button, edit the buttons button
      * change protected route route
      */
@@ -30,6 +27,7 @@ function VideoItem() {
     const reactions = useSelector(store => store.promptsInfo.allReactionsList);
     const reactionCounts = useSelector(store => store.promptsInfo.reactionCounts);
 
+    const [clicked, setClicked] = useState(false);
 
     return (
         <>
@@ -47,17 +45,28 @@ function VideoItem() {
                     </div>
                     <h4>{videoItem.username}</h4>
 
+
                     {/* mapping over the reactions to create buttons to react to video */}
                     {reactions.map(reaction => {
-                        let reactionNum = reaction.id 
+                        let reactionNum = reaction.id
                         return (
-                            // need to make an onclick that will post to db, no more clicks after 1st
                             // edit button that will edit buttons
-                            <span key={reaction.id}><button
-                            onClick={() => {
-                                dispatch({ type: 'ADD_NEW_REACTION', payload: {reactionNum, id, videoId}})
-                            }}
-                            >{reaction.reaction}</button>
+                            <span key={reaction.id}>
+                                {/* if item has been clicked show a disabled button */}
+                                {clicked ?
+                                    <button
+                                        disabled
+                                    >{reaction.reaction}</button>
+                                    :
+                                    <button
+                                        onClick={() => {
+                                            dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } })
+                                            setClicked(true)
+                                        }}
+
+                                    >{reaction.reaction}</button>
+                                }
+
 
                                 {/* only show votes if user is an admin */}
                                 {user.admin === true &&
@@ -75,6 +84,26 @@ function VideoItem() {
 
                         )
                     })}
+                    
+                    {/* {user.admin === true &&
+                        <div><button
+                            onClick={setEdit(true)
+                                () => {
+                                reactions.map(reaction => {
+                                    return (
+                                        <span key={reaction.id}>                                
+                                                <button
+                                                    onClick={() => {
+                                                        dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } })
+                                                    }}
+
+                                                >{reaction.reaction}</button>
+
+                                        </span>
+                                    )
+                                })}
+                            }
+                        >Edit Reactions</button></div>}                     */}
                 </>
             )}
         </>
