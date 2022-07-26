@@ -1,10 +1,10 @@
 import React from 'react'
-import VideoUpload from './VideoUpload'
+import FileUpload from './FileUpload'
 
 function UserUploadPage() {
   return (
     <div>
-        <VideoUpload />
+        <FileUpload />
     </div>
   )
 }

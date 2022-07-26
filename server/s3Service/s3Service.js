@@ -6,7 +6,7 @@ require('dotenv').config();
 const s3Uploadv2 = async (file) => {
     //lowercase equal to the imported S3
     const s3 = new S3()
-    console.log('this be the buff', file)
+    console.log('s3Upload file', file)
     const param = {
         //because bucket name is environment variable - it's found in .env
         Bucket: process.env.AWS_BUCKET_NAME,
