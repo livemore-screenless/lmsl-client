@@ -44,7 +44,7 @@ function SubNav() {
               View Videos
             </Link>
 
-            <LogOutButton className="navLink" />
+            <LogOutButton className="sub-navLink" />
           </>
         )}
 
