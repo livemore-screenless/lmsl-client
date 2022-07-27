@@ -18,14 +18,17 @@ function SubNav() {
   }
 
   return (
-    <div className="nav">
+    <div className="sub-nav">
+      <Link to="/home">
+        <h2 className="sub-nav-title">Video Competition</h2>
+      </Link>
       <br/><br/>
       <div>
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
-            SIGN IN / REGISTER
+          <Link className="sub-navLink" to="/login">
+            Sign in / Register
           </Link>
         )}
 
@@ -33,12 +36,12 @@ function SubNav() {
         {/* THESE LINKS WILL NEED TO BE UPDATED ONCE COMPONENTS ARE CREATED */}
         {user.id && user.id!=1 && (
           <>
-            <Link className="navLink" to="/my-videos">
-              MY VIDEOS
+            <Link className="sub-navLink" to="/my-videos">
+              My Videos
             </Link>
 
-            <Link className="navLink" to="/prompt-page">
-              VIEW VIDEOS
+            <Link className="sub-navLink" to="/prompt-page">
+              View Videos
             </Link>
 
             <LogOutButton className="navLink" />
@@ -49,15 +52,15 @@ function SubNav() {
         {/* THESE LINKS WILL NEED TO BE UPDATED ONCE COMPONENTS ARE CREATED */}
         {user.id && user.id===1 && (
           <>
-            <Link className="navLink" to="/review-submissions">
-              REVIEW SUBMISSIONS
+            <Link className="sub-navLink" to="/review-submissions">
+              Review Submissions
             </Link>
 
-            <Link className="navLink" to="/prompt-page">
-              REVIEW PROMPTS
+            <Link className="sub-navLink" to="/prompt-page">
+              Review Prompts
             </Link>
 
-            <LogOutButton className="navLink" />
+            <LogOutButton className="sub-navLink" />
           </>
         )}
       </div>
