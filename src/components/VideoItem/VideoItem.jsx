@@ -4,11 +4,6 @@ import { useHistory, Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function VideoItem() {
-    /**TODO
-     
-     * admin - edit buttons with PUT, video award button, edit the buttons button
-     * change protected route route
-     */
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -87,25 +82,10 @@ function VideoItem() {
                         )
                     })}
                     
-                    {/* {user.admin === true &&
+                    {user.admin === true &&
                         <div><button
-                            onClick={setEdit(true)
-                                () => {
-                                reactions.map(reaction => {
-                                    return (
-                                        <span key={reaction.id}>                                
-                                                <button
-                                                    onClick={() => {
-                                                        dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } })
-                                                    }}
-
-                                                >{reaction.reaction}</button>
-
-                                        </span>
-                                    )
-                                })}
-                            }
-                        >Edit Reactions</button></div>}                     */}
+                        onClick={() => {history.push(`/edit-reactions`)}}
+                        >Edit Reactions</button></div>}                    
                 </>
             )}
         </>

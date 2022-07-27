@@ -45,11 +45,22 @@ function* addNewReaction(action) {
     }
 }
 
+function* updateReactions(action) {
+    try {
+        const result = yield axios.put(`/api/prompts/update-reaction`, action.payload);
+        yield put({ type: 'SET_REACTIONS_LIST', payload: result.data })
+    }
+    catch (err) {
+        console.error('error is', err)
+    }
+}
+
 function* promptSaga() {
     yield takeLatest('FETCH_PROMPTS_LIST', fetchAllPrompts);    
     yield takeLatest('FETCH_VIDEO_REACTIONS', fetchVideoReactions);    
     yield takeLatest('FETCH_REACTION_COUNTS', fetchReactionCounts);    
     yield takeLatest('ADD_NEW_REACTION', addNewReaction);    
+    yield takeLatest('UPDATE_REACTIONS', updateReactions);    
 }
 
 export default promptSaga;

@@ -84,4 +84,25 @@ router.post('/:id/:videoId/:buttonId/new-reaction', rejectUnauthenticated, (req,
         })
 });
 
+router.put('/update-reaction', rejectUnauthenticated, (req, res) => {
+    // get reactions to loop over and the reaction numbers for each
+    const sqlQuery = `
+    UPDATE reactions 
+    SET reaction = $1
+    WHERE id = $2;
+    `;
+
+    const sqlParams = [req.body.newReaction, req.body.reactionId]
+    
+    pool.query(sqlQuery, sqlParams)
+        .then(result => {
+            console.log('reactions are', result.rows)
+            res.send(result.rows);
+        })
+        .catch(err => {
+            console.error('error in getting all videos', err);
+            res.sendStatus(500);
+        })
+});
+
 module.exports = router;
