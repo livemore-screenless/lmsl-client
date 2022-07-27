@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from 'react-redux';
 //head + foot
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
+import SubNav from '../SubNav/SubNav';
+
 
 //pages
 import AboutPage from '../AboutPage/AboutPage';
@@ -44,6 +46,7 @@ function App() {
     <Router>
       <div>
         <Nav />
+        <SubNav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
