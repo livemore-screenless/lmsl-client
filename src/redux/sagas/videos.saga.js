@@ -67,8 +67,7 @@ function* videosSaga() {
     yield takeLatest('DENY_VIDEO', denyVideo);
     yield takeLatest('FETCH_VIDEO_LIST', fetchAllVideos);  
     yield takeLatest('FETCH_VIDEO_ITEM', fetchVideoItem);  
-      
-    
+   
 }
 
 export default videosSaga;

@@ -142,10 +142,21 @@ router.put('/deny/:id', (req, res) => {
 
 
 /**
- * POST route template
+ * POST route to post File from AWS to DB
  */
-router.post('/', (req, res) => {
-  // POST route code here
-});
+// router.post('/', rejectUnauthenticated (req, res) => {
+//   const sqlQuery = `
+//   INSERT INTO "
+//   `
+//   const sqlParams = [
+//     req.body.location
+//   ]
+//   pool.query(sqlQuery, sqlParams)
+//   .then(() => res.sendStatus(201))
+//   .catch((err) => {
+//     console.log('Failed to POST in AWS to DB file', err)
+//     res.sendStatus(500)
+//   })
+// });
 
 module.exports = router;

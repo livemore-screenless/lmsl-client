@@ -4,16 +4,11 @@ require('dotenv').config()
 const pool = require('../modules/pool');
 const router = express.Router();
 
-
-
-
-
 const multer = require("multer");
 //install uuid which allows for unique identifier for file names
 const uuid = require("uuid").v4
 //store the file in memory and then you pass it into 'upload' down below
 const storage = multer.memoryStorage()
-
 
 // you would pass in fileFilter after storage if you wanted to filter by certain file types
 // uuid-originalname
@@ -24,8 +19,26 @@ router.post("/", upload.array("file"), async (req, res) => {
   try{
     const file = req.files[0]
     const result = await s3Uploadv2(file);
-    //result.location and res.send it 
-  res.send(result)
+    // result.location and res.send it 
+    const sqlQuery = `
+    INSERT INTO "video-responses"
+    (user_id, video_url)
+    VALUES ($1, $2);
+    `
+    const sqlParams = [
+      //req.body.prompt? HELP JEAN LUC
+      req.user.id,
+      result.Location
+      //DEFAULT AS FALSE INSTEAD OF NULL?
+    ]
+    await pool.query(sqlQuery, sqlParams)
+              //can only send headers once
+    .then(() => res.send(result))
+    .catch((err) => {
+      console.log('Failed to POST in AWS to DB file', err)
+      res.sendStatus(500)
+    })
+    
 }
 catch(error) {
   console.log(error)

@@ -159,7 +159,7 @@ function App() {
             exact
             path="/user-upload"
             >
-            <WebcamUpload />
+            {/* <WebcamUpload /> */}
             <UserUploadPage />
           </ProtectedRoute>
           
