@@ -7,6 +7,7 @@ function UserUploadPage() {
     <div>
         <FileUpload />
         <WebcamUpload />
+
     </div>
   )
 }

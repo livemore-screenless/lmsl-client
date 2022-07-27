@@ -19,6 +19,8 @@ const FileUpload = () => {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
+
+      //server side you need the rec.user.id
       console.log(response);
       // dispatch({
       //   type: "ADD_FILE_TO_DB",

@@ -159,6 +159,7 @@ function App() {
             exact
             path="/user-upload/:id"
             >
+
             <UserUploadPage />
           </ProtectedRoute>
           
