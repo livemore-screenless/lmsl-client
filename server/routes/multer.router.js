@@ -14,8 +14,9 @@ const storage = multer.memoryStorage()
 // uuid-originalname
 // pass in 'storage'                limits this makes it whatever byte limit you set as / and only 1 file
 const upload = multer({ storage, limits: {fileSize: 1000000000, files: 1} });
-router.post("/", upload.array("file"), async (req, res) => {
+router.post("/:id", upload.array("file"), async (req, res) => {
   console.log('this is the post endpoint', req.files[0])
+  console.log('req.params', req.params)
   try{
     const file = req.files[0]
     const result = await s3Uploadv2(file);

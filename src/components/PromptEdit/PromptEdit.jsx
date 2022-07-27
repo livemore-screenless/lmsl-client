@@ -30,7 +30,24 @@ function PromptEdit(){
   }
 
   return (
-    <div>PromptEdit</div>
+    <div>
+      {/* <form onSubmit={handleSubmit}>
+        <div>Edit the Prompts</div>
+          <label htmlFor="promptOne">
+            Prompt One:
+              <input
+                type="text"
+                name="Prompt One"
+                value={prompts.question}
+                onChange={(event) => 
+                  dispatch({
+                    type:"UPDATE YADAYA",
+                    payload: { question: event.target.value},
+                  })
+              }
+          </label>
+      </form> */}
+    </div>
   )
 } 
 
