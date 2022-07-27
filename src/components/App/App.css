@@ -111,10 +111,15 @@ input {
 .landing-header {
   color: #2D769F;
   font-weight: 700;
+  font-size: 64px;
+  line-height: 77px;
 }
 
 .landing-copy {
  font-weight: 300;
+ font-size: 20px;
+ max-width: 50%;
+ line-height: 30px;
 }
 
 .page-subheadings {
@@ -128,4 +133,8 @@ ul {
 
 .prompts{
   cursor: pointer;
+}
+
+.videos-btn{
+  font-size: 20px;
 }

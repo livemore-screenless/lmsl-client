@@ -15,7 +15,6 @@ import SubNav from '../SubNav/SubNav';
 
 //pages
 import AboutPage from '../AboutPage/AboutPage';
-import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import MyVideos from '../MyVideos/MyVideos';
@@ -69,14 +68,6 @@ function App() {
             path="/prompt-page"
           >
             <PromptPage />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
-            exact
-            path="/info"
-          >
-            <InfoPage />
           </ProtectedRoute>
 
           <ProtectedRoute
