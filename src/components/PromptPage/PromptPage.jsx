@@ -41,9 +41,10 @@ function PromptPage() {
                     >
                         Add Prompt
                     </button>
+                    
                     <button 
                         className="btn"
-                        onClick={(evt) => {history.push(/** push to the edit prompts page*/)}}
+                        onClick={(evt) => {history.push("/prompt-edit")}}
                     >
                         Edit Prompts
                     </button>

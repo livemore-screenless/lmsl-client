@@ -22,14 +22,13 @@ router.post("/", upload.array("file"), async (req, res) => {
     // result.location and res.send it 
     const sqlQuery = `
     INSERT INTO "video-responses"
-    (user_id, video_url)
-    VALUES ($1, $2);
+    (prompt_id, user_id, video_url)
+    VALUES ($1, $2, $3);
     `
     const sqlParams = [
-      //req.body.prompt? HELP JEAN LUC
+      req.params.id,
       req.user.id,
       result.Location
-      //DEFAULT AS FALSE INSTEAD OF NULL?
     ]
     await pool.query(sqlQuery, sqlParams)
               //can only send headers once
