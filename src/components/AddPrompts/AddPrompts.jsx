@@ -19,7 +19,6 @@ function AddPrompts() {
     });
 
     setQuestion("");
-    // console.log('>>>>>>>>',questions )
     history.push("/prompt-page");
   };
 
