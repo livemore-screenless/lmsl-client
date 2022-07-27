@@ -45,15 +45,21 @@ function* addNewReaction(action) {
     }
 }
 
-// function* addNewPrompt(action){
-
-// }
+// posting into our database
+function* addNewPrompt(action){
+    yield axios({
+        method: "POST",
+        url: "/api/prompts",
+        data: action.payload,
+      });
+    }
 
 function* promptSaga() {
     yield takeLatest('FETCH_PROMPTS_LIST', fetchAllPrompts);    
     yield takeLatest('FETCH_VIDEO_REACTIONS', fetchVideoReactions);    
     yield takeLatest('FETCH_REACTION_COUNTS', fetchReactionCounts);    
-    yield takeLatest('ADD_NEW_REACTION', addNewReaction);    
+    yield takeLatest('ADD_NEW_REACTION', addNewReaction);  
+    yield takeLatest('NEW_PROMPTS_LIST', addNewPrompt);
 }
 
 export default promptSaga;

@@ -24,7 +24,7 @@ import ReviewSubmissions from '../ReviewSubmissions/ReviewSubmissions';
 import PromptPage from '../PromptPage/PromptPage';
 import PromptVideos from '../PromptVideos/PromptVideos';
 import VideoItem from '../VideoItem/VideoItem';
-import addPrompts from '../AddPrompts/AddPrompts';
+import AddPrompts from '../AddPrompts/AddPrompts';
 import WebcamUpload from '../VideoUpload/WebcamUpload';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import UserUploadPage from '../VideoUpload/UserUploadPage';
@@ -84,6 +84,12 @@ function App() {
             path="/prompt-page"
           >
             <PromptPage />
+          </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path="/edit-page"
+          >
+            <AddPrompts />
           </ProtectedRoute>
 
           <ProtectedRoute
