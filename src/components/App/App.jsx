@@ -157,9 +157,9 @@ function App() {
 
           <ProtectedRoute
             exact
-            path="/user-upload"
+            path="/user-upload/:id"
             >
-            {/* <WebcamUpload /> */}
+
             <UserUploadPage />
           </ProtectedRoute>
           
