@@ -45,6 +45,10 @@ function* addNewReaction(action) {
     }
 }
 
+// function* addNewPrompt(action){
+
+// }
+
 function* promptSaga() {
     yield takeLatest('FETCH_PROMPTS_LIST', fetchAllPrompts);    
     yield takeLatest('FETCH_VIDEO_REACTIONS', fetchVideoReactions);    
