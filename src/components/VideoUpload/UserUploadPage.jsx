@@ -6,7 +6,7 @@ function UserUploadPage() {
   return (
     <div>
         <FileUpload />
-        {/* <WebcamUpload /> */}
+        
     </div>
   )
 }
