@@ -27,8 +27,8 @@ const FileUpload = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input type="file" onChange={handleFileSelect} />
-        <input type="submit" value="Upload File" />
+        <input className="btnOutlined" type="file" onChange={handleFileSelect} />
+        <input className="btn" type="submit" value="Upload File" />
       </form>
     </div>
   );

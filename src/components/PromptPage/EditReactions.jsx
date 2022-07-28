@@ -32,7 +32,7 @@ function EditReactions() {
             <center>
                 {user.admin === true && reaction &&
                     <>
-                        <h2>Edit Prompt Below</h2>
+                        <h2>Edit Reaction Below</h2>
                         <form onSubmit={handleSubmit}>
                             <>
                                 <div className='landing-copy'>Reaction: {reaction.reaction}</div>
