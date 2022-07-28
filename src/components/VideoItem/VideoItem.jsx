@@ -26,6 +26,9 @@ function VideoItem() {
 
     return (
         <>
+            <Link className="sub-navLink" to="/prompt-page">
+              Back
+            </Link>
             {videoItem && (
                 <>
 
