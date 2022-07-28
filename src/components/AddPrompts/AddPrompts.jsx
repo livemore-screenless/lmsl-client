@@ -24,14 +24,17 @@ function AddPrompts() {
 
   return (
     <>
+    <center>
+      <div className="landing-copy">What prompt would you like to add?</div>
       <form onSubmit={handleSubmit}>
         <input
           onChange={(event) => setQuestion(event.target.value)}
           value={question}
-          className="admin-inputs"
+          className='input-box'
         />
-        <input type="submit" value="Add" className="admin-inputs addprompts" />
+        <input type="submit" value="Add Prompt" className="btn" />
       </form>
+      </center>
     </>
   );
 }

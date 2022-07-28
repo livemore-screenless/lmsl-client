@@ -35,16 +35,17 @@ function EditReactions() {
                         <h2>Edit Prompt Below</h2>
                         <form onSubmit={handleSubmit}>
                             <>
-                                <div>Reaction: {reaction.reaction}</div>
-                                <div>Change to:</div>
+                                <div className='landing-copy'>Reaction: {reaction.reaction}</div>
+                                <div className='landing-copy'>Change to:</div>
                                 <input type="text"
+                                className='input-box'
                                     key={reaction.id}
                                     value={reaction.reaction}
                                     onChange={(evt) => {
                                         dispatch({ type: 'UPDATE_REACTIONS', payload: { reaction: evt.target.value } })
                                     }} />
                             </>
-                            <button type='submit'>Submit Changes</button>
+                            <button className='btnOutlined' type='submit'>Submit Changes</button>
 
                         </form>
                     </>
@@ -55,7 +56,7 @@ function EditReactions() {
                     </>
                 )
                 }
-                <Link to='/prompt-page'>Back to Prompts</Link>
+                <Link className='landing-copy' to='/prompt-page'>Back to Prompts</Link>
             </center>
         </>
     )
