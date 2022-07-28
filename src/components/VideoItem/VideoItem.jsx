@@ -34,8 +34,7 @@ function VideoItem() {
                     <center>
                         <h3>{videoItem.question}</h3>
                         <div>
-                            <video width="320" height="240" controls>                        
-                                <source src={videoItem.video_url} type="video/mp4" />
+                            <video src={videoItem.video_url} type="video/mp4" width="320" height="240" controls>                        
                                 Your browser does not support the video tag.
                             </video>
                 
