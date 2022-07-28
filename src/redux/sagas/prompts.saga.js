@@ -14,9 +14,19 @@ function* fetchAllPrompts() {
 
 function* fetchVideoReactions(action) {
     try {
-        const result = yield axios.get(`/api/prompts/${action.payload.id}/${action.payload.videoId}/reactions`);
+        const result = yield axios.get(`/api/prompts/all/reactions`);
         console.log('reactions are', result.data)
         yield put({ type: 'SET_REACTIONS_LIST', payload: result.data })
+    }
+    catch (err) {
+        console.error('error is', err)
+    }
+}
+
+function* fetchSingleReaction(action) {
+    try {
+        const result = yield axios.get(`/api/prompts/${action.payload}/reaction`);
+        yield put({ type: 'SET_SINGLE_REACTION', payload: result.data[0] })
     }
     catch (err) {
         console.error('error is', err)
@@ -45,6 +55,17 @@ function* addNewReaction(action) {
     }
 }
 
+
+function* saveNewReaction(action) {
+    try {
+        const result = yield axios.put(`/api/prompts/update-reaction`, action.payload);
+        yield put({ type: 'FETCH_VIDEO_REACTIONS' })
+    }
+    catch (err) {
+        console.error('error is', err)
+    }
+}
+
 //function grabs prompts details for the edit
 function* fetchPromptsToArchive(action) {
     console.log("in ARCHIVE saga");
@@ -61,12 +82,20 @@ function* fetchPromptsToArchive(action) {
     }
   }
 
+
 function* promptSaga() {
     yield takeLatest('FETCH_PROMPTS_LIST', fetchAllPrompts);    
     yield takeLatest('FETCH_VIDEO_REACTIONS', fetchVideoReactions);    
     yield takeLatest('FETCH_REACTION_COUNTS', fetchReactionCounts);    
     yield takeLatest('ADD_NEW_REACTION', addNewReaction);
     yield takeLatest("FETCH_PROMPT_TO_ARCHIVE", fetchPromptsToArchive)    
+    yield takeLatest('FETCH_SINGLE_REACTION', fetchSingleReaction);    
+    yield takeLatest('ADD_NEW_REACTION', addNewReaction);    
+    yield takeLatest('SAVE_NEW_REACTION', saveNewReaction);    
+
+    
+
+
 }
 
 export default promptSaga;

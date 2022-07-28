@@ -23,13 +23,33 @@ router.get('/all-prompts', rejectUnauthenticated, (req, res) => {
         })
 });
 
-router.get('/:id/:videoId/reactions', rejectUnauthenticated, (req, res) => {
+router.get('/all/reactions', rejectUnauthenticated, (req, res) => {
     // get reactions to loop over and the reaction numbers for each
     const sqlQuery = `
     SELECT * FROM reactions;
     `;
 
     pool.query(sqlQuery)
+        .then(result => {
+            console.log('reactions are', result.rows)
+            res.send(result.rows);
+        })
+        .catch(err => {
+            console.error('error in getting all videos', err);
+            res.sendStatus(500);
+        })
+});
+
+router.get('/:id/reaction', rejectUnauthenticated, (req, res) => {
+    // get reactions to loop over and the reaction numbers for each
+    const sqlQuery = `
+    SELECT * FROM reactions
+    WHERE id = $1;
+    `;
+    
+    const queryParams = [req.params.id]
+
+    pool.query(sqlQuery, queryParams)
         .then(result => {
             console.log('reactions are', result.rows)
             res.send(result.rows);
@@ -104,6 +124,27 @@ router.post('/:id/:videoId/:buttonId/new-reaction', rejectUnauthenticated, (req,
 
     pool.query(sqlQuery, queryParams)
         .then(result => {
+            res.send(result.rows);
+        })
+        .catch(err => {
+            console.error('error in getting all videos', err);
+            res.sendStatus(500);
+        })
+});
+
+router.put('/update-reaction', rejectUnauthenticated, (req, res) => {
+    // get reactions to loop over and the reaction numbers for each
+    const sqlQuery = `
+    UPDATE reactions 
+    SET reaction = $1
+    WHERE id = $2;
+    `;
+
+    const sqlParams = [req.body.reaction, req.body.id]
+
+    pool.query(sqlQuery, sqlParams)
+        .then(result => {
+            console.log('reactions are', result.rows)
             res.send(result.rows);
         })
         .catch(err => {
