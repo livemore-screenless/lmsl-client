@@ -34,7 +34,14 @@ function ReviewSubmissions() {
   return (
     <div>
     <center>
-        <h2 className='page-subheadings'>Review Submissions</h2>
+        <h2 className='page-subheadings'>Review Submissions</h2> 
+        {videos.length === 0 &&
+            <p>
+                You are up-to-date on submissions
+                <br/>
+                🎉 nothing to review 🎉
+            </p>
+        }
         {videos.map(video => {
             return (
                 <div key={video.id}>
