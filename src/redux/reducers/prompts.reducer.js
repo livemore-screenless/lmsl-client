@@ -41,10 +41,10 @@ const reactionCounts = (state = [], action) => {
     }
 }
 
-const editPromptReducer = (state = [], action) => {
+const archivePromptReducer = (state = [], action) => {
     switch (action.type) {
         //this is for a single item for the edit
-    case "SET_NEW_PROMPT":
+    case "SET_ARCHIVE_PROMPT":
         return action.payload
     default:
         return state;
@@ -55,9 +55,9 @@ export default combineReducers({
     allPromptsList,
     allReactionsList,
     reactionCounts,
+    archivePromptReducer
+
 
     singleReaction,
-
-    editPromptReducer
 
 });
