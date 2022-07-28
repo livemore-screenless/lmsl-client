@@ -7,12 +7,14 @@ CREATE TABLE "user" (
     "email" VARCHAR (255) UNIQUE,
     "password" VARCHAR (1000) NOT NULL,
     "admin" BOOLEAN DEFAULT FALSE
+ON DELETE CASCADE
 );
 
 CREATE TABLE "prompts" (
     id SERIAL PRIMARY KEY,
     question VARCHAR (1000),
     archived BOOLEAN DEFAULT FALSE
+ON DELETE CASCADE
 );
 
 CREATE TABLE "video-responses" (

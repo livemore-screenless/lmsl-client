@@ -37,9 +37,8 @@ function PromptVideos() {
                             <li key={video.id}
                                 onClick={(evt) => { history.push(`/prompt-videos/${id}/${video.id}`) }}
                             >
-                                <video width="428" height="321" controls>
+                                <video src={video.video_url} type="video/youtube" width="428" height="321" controls>
                                     {/* Below is dummy data for src, need to be updated after urls in db exist */}
-                                    <source src={video.video_url} type="video/youtube" />
                                     Your browser does not support the video tag.
                                 </video>
                                 <p>Submitted by: {video.username}</p>
