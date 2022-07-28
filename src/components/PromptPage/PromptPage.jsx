@@ -62,7 +62,7 @@ function PromptPage() {
         
             <center>
             {/* show these buttons only if admin is logged in  */}
-                {user.id && user.id===1 &&
+                {user.admin &&
                 <span>
                     <button 
                         className="btn"
