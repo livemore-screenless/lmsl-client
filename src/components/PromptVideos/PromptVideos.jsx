@@ -20,15 +20,19 @@ function PromptVideos() {
     return (
 
         <div>
+            <Link className="sub-navLink" to="/prompt-page">
+              Back
+            </Link>
         <center>
+
+            { allVideosList && allVideosList[0] &&
+                <h2 className='page-subheadings'>{allVideosList[0].question}</h2>
+            }
             {/* Below is mapping over all the video URLs from the DB */}
             <ul>
                 {allVideosList.map(video => {
                     return (
                         <>
-                            <h2 className='page-subheadings'>
-                                {video.question}
-                            </h2>
                             <br/>
                             <li key={video.id}
                                 onClick={(evt) => { history.push(`/prompt-videos/${id}/${video.id}`) }}

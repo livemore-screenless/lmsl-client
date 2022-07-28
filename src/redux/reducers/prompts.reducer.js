@@ -18,6 +18,20 @@ const allReactionsList = (state = [], action) => {
     }
 }
 
+const singleReaction = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_SINGLE_REACTION':
+            return action.payload;
+        case 'UPDATE_REACTIONS':
+            return {
+                ...state,
+                ...action.payload
+            }
+        default:
+            return state;
+    }
+}
+
 const reactionCounts = (state = [], action) => {
     switch (action.type) {
         case 'SET_REACTION_COUNTS':
@@ -27,8 +41,23 @@ const reactionCounts = (state = [], action) => {
     }
 }
 
+const archivePromptReducer = (state = [], action) => {
+    switch (action.type) {
+        //this is for a single item for the edit
+    case "SET_ARCHIVE_PROMPT":
+        return action.payload
+    default:
+        return state;
+    }
+}
+
 export default combineReducers({
     allPromptsList,
     allReactionsList,
-    reactionCounts
+    reactionCounts,
+    archivePromptReducer
+
+
+    singleReaction,
+
 });
