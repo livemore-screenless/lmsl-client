@@ -11,7 +11,8 @@ CREATE TABLE "user" (
 
 CREATE TABLE "prompts" (
     id SERIAL PRIMARY KEY,
-    question VARCHAR (1000)
+    question VARCHAR (1000),
+    archived BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE "video-responses" (

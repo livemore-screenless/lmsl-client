@@ -31,69 +31,74 @@ function VideoItem() {
             </Link>
             {videoItem && (
                 <>
+                    <center>
+                        <h3>{videoItem.question}</h3>
+                        <div>
+                            <video width="320" height="240" controls>                        
+                                <source src={videoItem.video_url} type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                
+                        </div>
 
-                    <h3>{videoItem.question}</h3>
-                    <div>
-                        <video width="320" height="240" controls>
-                            {/* Below is dummy data for src, need to be updated after urls in db exist from AWS */}
-                            {/* eventually it will be videoItem.video_url */}
-                            <source src={videoItem.video_url} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
+                        {user.admin === true && <div><button className='btn'>Award Video</button></div>} {/**Button does nothing until there is an award to give */}
+                        
+                        <p className='landing-copy'
+                        >Submitted by: {videoItem.username} 
+                        </p>
 
-                    </div>
-                    <p>Submitted by: {videoItem.username} {user.admin === true && <button>Award Video</button>}</p> {/**Button does nothing until there is an award to give */}
+                        {clicked &&
+                            <div className='landing-copy'>Only 1 vote allowed per video</div>}
+                        {/* mapping over the reactions to create buttons to react to video */}
+                        {reactions.map(reaction => {
+                            let reactionNum = reaction.id
+                            return (
+                                // edit button that will edit buttons
+                                <span key={reaction.id}>
+                                    {/* if item has been clicked show a disabled button */}
+                                    {clicked ?
+                                        <>
+                                            <button
+                                                className="btn"
+                                                disabled
+                                            >{reaction.reaction}</button>
 
-
-                    {/* mapping over the reactions to create buttons to react to video */}
-                    {reactions.map(reaction => {
-                        let reactionNum = reaction.id
-                        return (
-                            // edit button that will edit buttons
-                            <span key={reaction.id}>
-                                {/* if item has been clicked show a disabled button */}
-                                {clicked ?
-                                    <>
+                                        </>
+                                        :
                                         <button
-                                            disabled
+                                            className="btn"
+                                            onClick={() => {
+                                                dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } })
+                                                setClicked(true)
+                                            }}
                                         >{reaction.reaction}</button>
-                                        <span>Only 1 vote allowed per video</span>
-                                    </>
-                                    :
-                                    <button
-                                        onClick={() => {
-                                            dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } })
-                                            setClicked(true)
-                                        }}
 
-                                    >{reaction.reaction}</button>
-
-                                }
+                                    }
 
 
-                                {/* only show votes if user is an admin */}
-                                {user.admin === true &&
-                                    <div>
-                                        {reactionCounts.map(count => {
-                                            if (count.reaction_id === reaction.id) {
-                                                return (
-                                                    <span key={reaction.id}>Votes: {count.count}</span>
-                                                )
-                                            }
-                                        })}
+                                    {/* only show votes if user is an admin */}
+                                    {user.admin === true &&
+                                        <span>
+                                            {reactionCounts.map(count => {
+                                                if (count.reaction_id === reaction.id) {
+                                                    return (
+                                                        <span className='landing-copy' key={reaction.id}>Votes: {count.count}</span>
+                                                    )
+                                                }
+                                            })}
+                                        </span>
+                                    }
+                                    {user.admin === true &&
+                                        <div><button
+                                            className='btnOutlined'
+                                            onClick={() => { history.push(`/${reaction.id}/edit-reactions`) }}
+                                        >Edit Reaction</button></div>}
+                                </span>
 
-                                    </div>
-                                }
-                                {user.admin === true &&
-                                    <div><button
-                                        onClick={() => { history.push(`/${reaction.id}/edit-reactions`) }}
-                                    >Edit Reaction</button></div>}
-                            </span>
+                            )
+                        })}
 
-                        )
-                    })}
-
-
+                    </center>
                 </>
             )}
         </>

@@ -29,32 +29,35 @@ function EditReactions() {
 
     return (
         <>
-            {user.admin === true && reaction &&
-                <>
-                    <h2>Edit Prompt Below</h2>
-                    <form onSubmit={handleSubmit}>
-                        <>
-                            <div>Reaction: {reaction.reaction}</div>
-                            <div>Change to:</div>
-                            <input type="text"
-                                key={reaction.id}
-                                value={reaction.reaction}
-                                onChange={(evt) => {
-                                    dispatch({ type: 'UPDATE_REACTIONS', payload: { reaction: evt.target.value } })
-                                }} />
-                        </>
-                        <button type='submit'>Submit Changes</button>
+            <center>
+                {user.admin === true && reaction &&
+                    <>
+                        <h2>Edit Reaction Below</h2>
+                        <form onSubmit={handleSubmit}>
+                            <>
+                                <div className='landing-copy'>Reaction: {reaction.reaction}</div>
+                                <div className='landing-copy'>Change to:</div>
+                                <input type="text"
+                                className='input-box'
+                                    key={reaction.id}
+                                    value={reaction.reaction}
+                                    onChange={(evt) => {
+                                        dispatch({ type: 'UPDATE_REACTIONS', payload: { reaction: evt.target.value } })
+                                    }} />
+                            </>
+                            <button className='btnOutlined' type='submit'>Submit Changes</button>
 
-                    </form>
-                </>
-            }
-            {clicked === true && (
-            <>
-            <div>Reaction has been changed to: {reaction.reaction}</div>
-            </>
-            )
-            }
-            <Link to='/prompt-page'>Back to Prompts</Link>
+                        </form>
+                    </>
+                }
+                {clicked === true && (
+                    <>
+                        <div>Reaction has been changed to: {reaction.reaction}</div>
+                    </>
+                )
+                }
+                <Link className='landing-copy' to='/prompt-page'>Back to Prompts</Link>
+            </center>
         </>
     )
 }
