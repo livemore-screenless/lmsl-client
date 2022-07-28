@@ -13,7 +13,8 @@ router.get('/all-videos', rejectUnauthenticated, (req, res) => {
       "video-responses".id,
       "video-responses".video_url,
       "user".username,
-      prompts.question
+      "prompts".question,
+      "prompts".id AS prompt_id
       FROM "video-responses"
       JOIN "user"
       ON "video-responses".user_id = "user".id

@@ -39,8 +39,18 @@ function PromptPage() {
                             >
                             <Typography>{prompt.question}</Typography>
                             </AccordionSummary>
-                            <AccordionDetails onClick={(evt) => { history.push(`/prompt-videos/${prompt.id}`) }}>
-                                Vids 
+                            <AccordionDetails>
+                                {allVideosList.map(video => {
+                                    {video.prompt_id === prompt.id
+                                    return (
+                                        <p 
+                                            onClick={(evt) => { history.push(`/prompt-videos/${prompt.id}/${video.id}`) }}
+                                        >
+                                                {video.video_url}
+                                        </p>
+                                    )
+                                }
+                                })}
                             </AccordionDetails>
                         </Accordion>
                         </>
