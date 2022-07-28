@@ -35,6 +35,19 @@ Button
   margin: 10px
 }
 
+.btnOutlined {
+  display: inline-block;
+  padding: 10px 20px;
+  border-width: 1px;
+  border-radius: 20px;
+  background-color: #f8f8f8;
+  color: #2D769F;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+  margin: 10px
+}
+
 .btn_sizeMin {
   min-height: 50px;
   min-width: 100px;

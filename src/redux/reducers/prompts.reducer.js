@@ -55,9 +55,7 @@ export default combineReducers({
     allPromptsList,
     allReactionsList,
     reactionCounts,
-    archivePromptReducer
-
-
-    singleReaction,
+    archivePromptReducer,
+    singleReaction
 
 });
