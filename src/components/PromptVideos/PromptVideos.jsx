@@ -20,8 +20,11 @@ function PromptVideos() {
     return (
 
         <div>
+            <Link className="sub-navLink" to="/prompt-page">
+              Back
+            </Link>
         <center>
-            { allVideosList &&
+            { allVideosList && allVideosList[0] &&
                 <h2 className='page-subheadings'>{allVideosList[0].question}</h2>
             }
             {/* Below is mapping over all the video URLs from the DB */}
