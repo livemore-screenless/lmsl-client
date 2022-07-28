@@ -45,6 +45,7 @@ function PromptPage() {
                                     if (video.prompt_id === prompt.id) {
                                         return (
                                             <p 
+                                                key={video.id}
                                                 onClick={(evt) => { history.push(`/prompt-videos/${prompt.id}/${video.id}`) }}
                                             >
                                                     {video.video_url}
