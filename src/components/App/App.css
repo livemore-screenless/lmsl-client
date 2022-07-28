@@ -6,7 +6,6 @@ body,
 
 body {
   font-family: Lato, sans-serif;
-  margin: 0px;
 }
 
 img {
@@ -125,6 +124,11 @@ input {
 .page-subheadings {
   color: #2D769F;
   font-weight: 700;
+  font-size: 32px;
+  line-height: 32px;
+  margin-left: 10%;
+  margin-right: 10%;
+
 }
 
 ul {
