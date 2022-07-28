@@ -46,18 +46,18 @@ function* addNewReaction(action) {
 }
 
 //function grabs prompts details for the edit
-function* fetchPromptsToEdit(action) {
-    console.log("in edit saga");
+function* fetchPromptsToArchive(action) {
+    console.log("in ARCHIVE saga");
     try {
       //GET request and setting res equal to what its finding for that id
       const res = yield axios.get(`/api/prompts/${action.payload.id}`);
       yield put({
         //SETTING Prompt is then setting to get the payload of "res.data"
-        type: "SET_NEW_PROMPT",
+        type: "SET_ARCHIVE_PROMPT",
         payload: res.data,
       });
     } catch (err) {
-      console.log(`err in edit prompt saga`, err);
+      console.log(`err in ARCHIVE prompt saga`, err);
     }
   }
 
@@ -66,7 +66,7 @@ function* promptSaga() {
     yield takeLatest('FETCH_VIDEO_REACTIONS', fetchVideoReactions);    
     yield takeLatest('FETCH_REACTION_COUNTS', fetchReactionCounts);    
     yield takeLatest('ADD_NEW_REACTION', addNewReaction);
-    yield takeLatest("FETCH_PROMPT_TO_EDIT", fetchPromptsToEdit)    
+    yield takeLatest("FETCH_PROMPT_TO_ARCHIVE", fetchPromptsToArchive)    
 }
 
 export default promptSaga;

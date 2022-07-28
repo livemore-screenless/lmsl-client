@@ -44,9 +44,9 @@ function PromptPage() {
                     
                     <button 
                         className="btn"
-                        onClick={(evt) => {history.push("/prompt-edit")}}
+                        onClick={(evt) => {history.push("/prompt-archive")}}
                     >
-                        Edit Prompts
+                        Archive Prompts
                     </button>
                 </span>
                 }
