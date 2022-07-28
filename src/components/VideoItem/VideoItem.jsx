@@ -4,11 +4,6 @@ import { useHistory, Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function VideoItem() {
-    /**TODO
-     
-     * admin - edit buttons with PUT, video award button, edit the buttons button
-     * change protected route route
-     */
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -19,7 +14,7 @@ function VideoItem() {
     // list is mapped over below
     useEffect(() => {
         dispatch({ type: 'FETCH_VIDEO_ITEM', payload: { id, videoId } }),
-            dispatch({ type: 'FETCH_VIDEO_REACTIONS', payload: { id, videoId } }),
+            dispatch({ type: 'FETCH_VIDEO_REACTIONS' }),
             dispatch({ type: 'FETCH_REACTION_COUNTS', payload: { id, videoId } })
     }, [id, videoId])
 
@@ -42,7 +37,7 @@ function VideoItem() {
                             <source src={videoItem.video_url} type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>
-                        
+
                     </div>
                     <p>Submitted by: {videoItem.username} {user.admin === true && <button>Award Video</button>}</p> {/**Button does nothing until there is an award to give */}
 
@@ -55,9 +50,12 @@ function VideoItem() {
                             <span key={reaction.id}>
                                 {/* if item has been clicked show a disabled button */}
                                 {clicked ?
-                                    <button
-                                        disabled
-                                    >{reaction.reaction}</button>
+                                    <>
+                                        <button
+                                            disabled
+                                        >{reaction.reaction}</button>
+                                        <span>Only 1 vote allowed per video</span>
+                                    </>
                                     :
                                     <button
                                         onClick={() => {
@@ -66,12 +64,13 @@ function VideoItem() {
                                         }}
 
                                     >{reaction.reaction}</button>
+
                                 }
 
 
                                 {/* only show votes if user is an admin */}
                                 {user.admin === true &&
-                                    <>
+                                    <div>
                                         {reactionCounts.map(count => {
                                             if (count.reaction_id === reaction.id) {
                                                 return (
@@ -79,33 +78,19 @@ function VideoItem() {
                                                 )
                                             }
                                         })}
-                                        
-                                    </>
+
+                                    </div>
                                 }
+                                {user.admin === true &&
+                                    <div><button
+                                        onClick={() => { history.push(`/${reaction.id}/edit-reactions`) }}
+                                    >Edit Reaction</button></div>}
                             </span>
 
                         )
                     })}
-                    
-                    {/* {user.admin === true &&
-                        <div><button
-                            onClick={setEdit(true)
-                                () => {
-                                reactions.map(reaction => {
-                                    return (
-                                        <span key={reaction.id}>                                
-                                                <button
-                                                    onClick={() => {
-                                                        dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } })
-                                                    }}
 
-                                                >{reaction.reaction}</button>
 
-                                        </span>
-                                    )
-                                })}
-                            }
-                        >Edit Reactions</button></div>}                     */}
                 </>
             )}
         </>

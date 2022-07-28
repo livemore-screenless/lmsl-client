@@ -24,6 +24,7 @@ import PromptEdit from '../PromptEdit/PromptEdit';
 import PromptPage from '../PromptPage/PromptPage';
 import PromptVideos from '../PromptVideos/PromptVideos';
 import VideoItem from '../VideoItem/VideoItem';
+import EditReactions from '../PromptPage/EditReactions';
 
 import WebcamUpload from '../VideoUpload/WebcamUpload';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -162,6 +163,14 @@ function App() {
             >
 
             <UserUploadPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/:id/edit-reactions"
+            >
+
+            <EditReactions />
           </ProtectedRoute>
           
           <ProtectedRoute
