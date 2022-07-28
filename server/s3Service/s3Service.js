@@ -16,7 +16,7 @@ const s3Uploadv2 = async (file) => {
         Body: file.buffer,
         //to make s3 know what type of file it is
         // separate what type of video files we want to accept here
-        ContentType: 'video/mp4, image/jpeg',
+        ContentType: 'video/mp4, video/webm',
         
     }
             //callback based but can turn it into a promise
