@@ -56,7 +56,7 @@ export default combineReducers({
     allReactionsList,
     reactionCounts,
 
-    singleReaction
+    singleReaction,
 
     editPromptReducer
 
