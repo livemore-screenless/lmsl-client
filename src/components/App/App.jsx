@@ -168,7 +168,7 @@ function App() {
 
           <ProtectedRoute
             exact
-            path="/edit-reactions"
+            path="/:id/edit-reactions"
             >
 
             <EditReactions />

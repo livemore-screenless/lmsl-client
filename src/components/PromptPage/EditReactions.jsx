@@ -11,38 +11,30 @@ function EditReactions() {
     const user = useSelector((store) => store.user);
 
     useEffect(() => {
-        dispatch({ type: 'FETCH_VIDEO_REACTIONS', payload: { id, videoId } })
-    }, [id, videoId])
+        dispatch({ type: 'FETCH_SINGLE_REACTION', payload: id })
+    }, [id])
 
-    const reactions = useSelector(store => store.promptsInfo.allReactionsList);
+    const reaction = useSelector(store => store.promptsInfo.singleReaction[0]);
 
     return (
         <>
             {user.admin === true &&
                 <>
-                    <h2>Edit Prompts Below</h2>
-                    {/* <form action=""> */}
-                        {/* value input will be reaction question */}
-                        {reactions.map(reaction => {
-                            return (
-                                <>
-                                    <div>Reaction: {reaction.reaction}</div>
-                                    <div>Change to:</div>
-                                    <input type="text"
-                                        key={reaction.id}
-                                        // value={reaction.reaction}
-                                        onChange={(evt) => {
-                                            dispatch({ type: 'UPDATE_REACTIONS', payload: {newReaction: evt.target.value, reactionId: reaction.id}})
-                                        }
-                                        } />
-                                </>
+                    <h2>Edit Prompt Below</h2>
+                    <form action="">
+                        <>
+                            <div>Reaction: {reaction.reaction}</div>
+                            <div>Change to:</div>
+                            <input type="text"
+                                key={reaction.id}
+                                value={reaction.reaction}
+                                onChange={(evt) => {
+                                    dispatch({ type: 'UPDATE_REACTIONS', payload: { newReaction: evt.target.value, reactionId: reaction.id } })
+                                }} />
+                        </>
+                        <button type='submit'>Submit Changes</button>
 
-                            )
-                        })}
-                        {/* <button
-                            type='submit'>Submit Changes</button> */}
-
-                    {/* </form> */}
+                    </form>
                 </>
             }
 

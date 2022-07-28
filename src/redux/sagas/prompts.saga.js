@@ -23,6 +23,16 @@ function* fetchVideoReactions(action) {
     }
 }
 
+function* fetchSingleReaction(action) {
+    try {
+        const result = yield axios.get(`/api/prompts/${action.payload}/reaction`);
+        yield put({ type: 'SET_SINGLE_REACTION', payload: result.data })
+    }
+    catch (err) {
+        console.error('error is', err)
+    }
+}
+
 function* fetchReactionCounts(action) {
     try {
         const result = yield axios.get(`/api/prompts/${action.payload.id}/${action.payload.videoId}/reaction-counts`);
@@ -59,6 +69,7 @@ function* promptSaga() {
     yield takeLatest('FETCH_PROMPTS_LIST', fetchAllPrompts);    
     yield takeLatest('FETCH_VIDEO_REACTIONS', fetchVideoReactions);    
     yield takeLatest('FETCH_REACTION_COUNTS', fetchReactionCounts);    
+    yield takeLatest('FETCH_SINGLE_REACTION', fetchSingleReaction);    
     yield takeLatest('ADD_NEW_REACTION', addNewReaction);    
     yield takeLatest('UPDATE_REACTIONS', updateReactions);    
 }
