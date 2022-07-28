@@ -14,7 +14,7 @@ function VideoItem() {
     // list is mapped over below
     useEffect(() => {
         dispatch({ type: 'FETCH_VIDEO_ITEM', payload: { id, videoId } }),
-            dispatch({ type: 'FETCH_VIDEO_REACTIONS', payload: { id, videoId } }),
+            dispatch({ type: 'FETCH_VIDEO_REACTIONS' }),
             dispatch({ type: 'FETCH_REACTION_COUNTS', payload: { id, videoId } })
     }, [id, videoId])
 

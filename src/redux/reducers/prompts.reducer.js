@@ -21,7 +21,12 @@ const allReactionsList = (state = [], action) => {
 const singleReaction = (state = [], action) => {
     switch (action.type) {
         case 'SET_SINGLE_REACTION':
-            return action.payload
+            return action.payload;
+        case 'UPDATE_REACTIONS':
+            return {
+                ...state,
+                ...action.payload
+            }
         default:
             return state;
     }

@@ -14,14 +14,25 @@ function EditReactions() {
         dispatch({ type: 'FETCH_SINGLE_REACTION', payload: id })
     }, [id])
 
-    const reaction = useSelector(store => store.promptsInfo.singleReaction[0]);
+    const [clicked, setClicked] = useState(false);
+
+    const reaction = useSelector(store => store.promptsInfo.singleReaction);
+
+    function handleSubmit(evt) {
+        evt.preventDefault();
+        dispatch({
+            type: 'SAVE_NEW_REACTION',
+            payload: reaction
+        })
+        setClicked(true)
+    }
 
     return (
         <>
-            {user.admin === true &&
+            {user.admin === true && reaction &&
                 <>
                     <h2>Edit Prompt Below</h2>
-                    <form action="">
+                    <form onSubmit={handleSubmit}>
                         <>
                             <div>Reaction: {reaction.reaction}</div>
                             <div>Change to:</div>
@@ -29,7 +40,7 @@ function EditReactions() {
                                 key={reaction.id}
                                 value={reaction.reaction}
                                 onChange={(evt) => {
-                                    dispatch({ type: 'UPDATE_REACTIONS', payload: { newReaction: evt.target.value, reactionId: reaction.id } })
+                                    dispatch({ type: 'UPDATE_REACTIONS', payload: { reaction: evt.target.value } })
                                 }} />
                         </>
                         <button type='submit'>Submit Changes</button>
@@ -37,7 +48,13 @@ function EditReactions() {
                     </form>
                 </>
             }
-
+            {clicked === true && (
+            <>
+            <div>Reaction has been changed to: {reaction.reaction}</div>
+            </>
+            )
+            }
+            <Link to='/prompt-page'>Back to Prompts</Link>
         </>
     )
 }

@@ -23,7 +23,7 @@ router.get('/all-prompts', rejectUnauthenticated, (req, res) => {
         })
 });
 
-router.get('/:id/:videoId/reactions', rejectUnauthenticated, (req, res) => {
+router.get('/all/reactions', rejectUnauthenticated, (req, res) => {
     // get reactions to loop over and the reaction numbers for each
     const sqlQuery = `
     SELECT * FROM reactions;
@@ -112,7 +112,7 @@ router.put('/update-reaction', rejectUnauthenticated, (req, res) => {
     WHERE id = $2;
     `;
 
-    const sqlParams = [req.body.newReaction, req.body.reactionId]
+    const sqlParams = [req.body.reaction, req.body.id]
 
     pool.query(sqlQuery, sqlParams)
         .then(result => {
