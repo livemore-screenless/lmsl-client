@@ -15,12 +15,12 @@ import SubNav from '../SubNav/SubNav';
 
 //pages
 import AboutPage from '../AboutPage/AboutPage';
-import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import MyVideos from '../MyVideos/MyVideos';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import ReviewSubmissions from '../ReviewSubmissions/ReviewSubmissions';
+import PromptEdit from '../PromptEdit/PromptEdit';
 import PromptPage from '../PromptPage/PromptPage';
 import PromptVideos from '../PromptVideos/PromptVideos';
 import VideoItem from '../VideoItem/VideoItem';
@@ -73,18 +73,17 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
-            exact
-            path="/info"
-          >
-            <InfoPage />
-          </ProtectedRoute>
-
-          <ProtectedRoute
             exact
             path="/prompt-page"
           >
             <PromptPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/prompt-edit"
+          >
+            <PromptEdit />
           </ProtectedRoute>
 
           <ProtectedRoute

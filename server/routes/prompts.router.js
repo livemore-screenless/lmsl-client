@@ -81,6 +81,34 @@ router.get('/:id/:videoId/reaction-counts', rejectUnauthenticated, (req, res) =>
         })
 });
 
+//Grabbing the prompts from DB to EDIT them
+router.get("/:id", rejectUnauthenticated, (req, res) => {
+    if (req.user.admin) {
+      const sqlQuery = `
+    SELECT *
+    FROM "prompts"
+    WHERE id = $1
+    `;
+      //putting it in a bracket to nicely package the items
+      const sqlParams = [req.params.id];
+      pool
+        .query(sqlQuery, sqlParams)
+        .then((dbRes) => {
+          // if there isn't anything to change, you get a 404
+          if (dbRes.rows.length === 0) {
+            res.sendStatus(404);
+          } else {
+            // this sends the 1 item when you put the [0]
+            res.send(dbRes.rows[0]);
+          }
+        })
+        .catch((err) => {
+          console.log("Err in GET BY ID", err);
+          res.sendStatus(500);
+        });
+    }
+  });
+  
 router.post('/:id/:videoId/:buttonId/new-reaction', rejectUnauthenticated, (req, res) => {
     const sqlQuery = `
     INSERT INTO "video-reactions" ("video_response_id", "user_id", "reaction_id")

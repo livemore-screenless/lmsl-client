@@ -14,22 +14,22 @@ const storage = multer.memoryStorage()
 // uuid-originalname
 // pass in 'storage'                limits this makes it whatever byte limit you set as / and only 1 file
 const upload = multer({ storage, limits: {fileSize: 1000000000, files: 1} });
-router.post("/", upload.array("file"), async (req, res) => {
+router.post("/:id", upload.array("file"), async (req, res) => {
   console.log('this is the post endpoint', req.files[0])
+  console.log('req.params', req.params)
   try{
     const file = req.files[0]
     const result = await s3Uploadv2(file);
     // result.location and res.send it 
     const sqlQuery = `
     INSERT INTO "video-responses"
-    (user_id, video_url)
-    VALUES ($1, $2);
+    (prompt_id, user_id, video_url)
+    VALUES ($1, $2, $3);
     `
     const sqlParams = [
-      //req.body.prompt? HELP JEAN LUC
+      req.params.id,
       req.user.id,
       result.Location
-      //DEFAULT AS FALSE INSTEAD OF NULL?
     ]
     await pool.query(sqlQuery, sqlParams)
               //can only send headers once
