@@ -6,16 +6,18 @@ const FileUpload = () => {
     //store it locally in state before uploading it to aws
   const [selectedFile, setSelectedFile] = useState({})
   const { id } = useParams()
-
-  console.log('this is useParams id', id)
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     //zFormData constructors making a new form data object
     const formData = new FormData();
     formData.append("file", selectedFile);
-    
+    console.log('selectedFile', selectedFile)
+    //should be a saga
     try {
-      axios.post(`/api/upload/${id}`,formData, { "Content-Type": "multipart/form-data" },
+      axios.post(`/api/upload/${id}`,
+      formData, 
+      { "Content-Type": "multipart/form-data" },
       );
     } catch(error) {
       console.log(error)
