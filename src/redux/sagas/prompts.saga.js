@@ -56,6 +56,16 @@ function* addNewReaction(action) {
 }
 
 
+// posting into our database
+function* addNewPrompt(action){
+    yield axios({
+        method: "POST",
+        url: "/api/prompts",
+        data: action.payload,
+      });
+    }
+
+
 function* saveNewReaction(action) {
     try {
         const result = yield axios.put(`/api/prompts/update-reaction`, action.payload);
@@ -86,14 +96,15 @@ function* fetchPromptsToArchive(action) {
 function* promptSaga() {
     yield takeLatest('FETCH_PROMPTS_LIST', fetchAllPrompts);    
     yield takeLatest('FETCH_VIDEO_REACTIONS', fetchVideoReactions);    
-    yield takeLatest('FETCH_REACTION_COUNTS', fetchReactionCounts);    
-    yield takeLatest('ADD_NEW_REACTION', addNewReaction);
+    yield takeLatest('FETCH_REACTION_COUNTS', fetchReactionCounts);     
+    yield takeLatest('ADD_NEW_REACTION', addNewReaction);  
+    yield takeLatest('NEW_PROMPTS_LIST', addNewPrompt);
     yield takeLatest("FETCH_PROMPT_TO_ARCHIVE", fetchPromptsToArchive)    
-    yield takeLatest('FETCH_SINGLE_REACTION', fetchSingleReaction);    
-    yield takeLatest('ADD_NEW_REACTION', addNewReaction);    
+    yield takeLatest('FETCH_SINGLE_REACTION', fetchSingleReaction);     
     yield takeLatest('SAVE_NEW_REACTION', saveNewReaction);    
 
     
+
 
 
 }

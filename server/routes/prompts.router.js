@@ -131,6 +131,17 @@ router.post('/:id/:videoId/:buttonId/new-reaction', rejectUnauthenticated, (req,
             res.sendStatus(500);
         })
 });
+router.post( '/', rejectUnauthenticated, ( req, res )=>{
+    console.log( 'in POST', req.body );
+    let sqlPost = `INSERT INTO "prompts" (question) VALUES ( $1 )`
+    pool.query( sqlPost, [ req.body.question]).then( ( results )=>{
+        res.sendStatus( 200 );
+    }).catch( ( error )=>{
+        console.log( 'error in POSTING FEEDBACK',error );
+        
+    })
+  });
+  
 
 router.put('/update-reaction', rejectUnauthenticated, (req, res) => {
     // get reactions to loop over and the reaction numbers for each

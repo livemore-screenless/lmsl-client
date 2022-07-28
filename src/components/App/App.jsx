@@ -24,7 +24,10 @@ import PromptEdit from '../PromptEdit/PromptEdit';
 import PromptPage from '../PromptPage/PromptPage';
 import PromptVideos from '../PromptVideos/PromptVideos';
 import VideoItem from '../VideoItem/VideoItem';
+import AddPrompts from '../AddPrompts/AddPrompts';
+
 import EditReactions from '../PromptPage/EditReactions';
+
 
 import WebcamUpload from '../VideoUpload/WebcamUpload';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -84,6 +87,12 @@ function App() {
             path="/prompt-edit"
           >
             <PromptEdit />
+          </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path="/edit-page"
+          >
+            <AddPrompts />
           </ProtectedRoute>
 
           <ProtectedRoute
