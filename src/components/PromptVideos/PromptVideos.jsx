@@ -24,6 +24,7 @@ function PromptVideos() {
               Back
             </Link>
         <center>
+
             { allVideosList && allVideosList[0] &&
                 <h2 className='page-subheadings'>{allVideosList[0].question}</h2>
             }
