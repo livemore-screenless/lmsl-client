@@ -12,8 +12,12 @@ function PromptPage() {
     const user = useSelector((store) => store.user);
     const dispatch = useDispatch();
     const history = useHistory();
+
     const allPromptsList = useSelector(store => store.promptsInfo.allPromptsList);
     const allVideosList = useSelector(store => store.videosInfo.allVideosList);
+    const reactions = useSelector(store => store.promptsInfo.allReactionsList);
+    const singleReaction = useSelector(store => store.promptsInfo.singleReaction);
+
     const [question, setQuestion] = useState("");
     const [prompt, setPrompt] = useState(false);
     const [reactionClick, setReactionClick] = useState(false);
@@ -32,6 +36,16 @@ function PromptPage() {
         setQuestion("");
         history.push("/prompt-page");
     };
+
+    function handleSubmitNewReaction(evt) {
+        evt.preventDefault();
+        dispatch({
+            type: 'SAVE_NEW_REACTION',
+            payload: singleReaction
+        })
+
+    }
+
     // this will fetch prompts from DB and set in store allPromptsList
     // list is mapped over below
     useEffect(() => {
@@ -40,7 +54,7 @@ function PromptPage() {
             dispatch({ type: 'FETCH_VIDEO_REACTIONS' })
     }, [])
 
-    const reactions = useSelector(store => store.promptsInfo.allReactionsList);
+
 
     return (
         <div>
@@ -144,14 +158,25 @@ function PromptPage() {
                 {user.admin && reactionClick &&
                     <>
                         <div>
-                            {reactions.map(reaction => {
-                                return (
-                                    <span><button
-                                        className='btnOutlined'
-                                        onClick={() => { history.push(`/${reaction.id}/edit-reactions`) }}
-                                    >Edit reaction: {reaction.reaction}</button></span>
-                                )
-                            })}
+                            <form onSubmit={handleSubmitNewReaction}>
+                                {reactions.map(reaction => {
+
+                                    return (
+                                        <span><button
+                                            className='btnOutlined'
+                                            onClick={() => { dispatch({ type: 'FETCH_SINGLE_REACTION', payload: reaction.id }) }}
+                                        >Edit reaction: {reaction.reaction}</button></span>
+                                    )
+                                })}
+                                <input type="text"
+                                    className='input-box'
+                                    key={singleReaction.id}
+                                    value={singleReaction.reaction}
+                                    onChange={(evt) => {
+                                        dispatch({ type: 'UPDATE_REACTIONS', payload: { reaction: evt.target.value } })
+                                    }} />
+                                <button className='btnOutlined' type='submit'>Submit Changes</button>
+                            </form>
                         </div>
                     </>
                 }

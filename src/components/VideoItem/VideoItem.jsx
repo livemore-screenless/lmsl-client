@@ -88,12 +88,7 @@ function VideoItem() {
                                                 }
                                             })}
                                         </span>
-                                    }
-                                    {user.admin === true &&
-                                        <div><button
-                                            className='btnOutlined'
-                                            onClick={() => { history.push(`/${reaction.id}/edit-reactions`) }}
-                                        >Edit Reaction</button></div>}
+                                    }            
                                 </span>
 
                             )
