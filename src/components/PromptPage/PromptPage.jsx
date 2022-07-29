@@ -53,7 +53,13 @@ function PromptPage() {
                                 aria-controls="panel1a-content"
                                 id="panel1a-header"
                             >
-                            <Typography>{prompt.question}</Typography>
+                            <span>
+                                <div>{prompt.question}
+                                <Link className="submit-link" to="/login">
+                                    Submit Video
+                                </Link>
+                                </div>
+                            </span>
                             </AccordionSummary>
                             <AccordionDetails>
                                 {allVideosList.map(video => {
@@ -77,7 +83,7 @@ function PromptPage() {
                 })}
             </ul>
         
-            <center>
+            <center className='add-prompts-condit'>
             {/* show these buttons only if admin is logged in  */}
                 {user.admin && prompt && 
                     <>
@@ -95,7 +101,7 @@ function PromptPage() {
                 {user.admin && !prompt && 
                 <span>
                     <button 
-                        className="sub-navLink"
+                        className="add-prompts-btn"
                         value={prompt} 
                         onClick={() => setPrompt(!prompt)}
                     >
@@ -106,7 +112,7 @@ function PromptPage() {
                 {user.admin && prompt && 
                 <span>
                     <button 
-                        className="sub-navLink"
+                        className="nevermind-btn"
                         value={prompt} 
                         onClick={() => setPrompt(!prompt)}
                     >
