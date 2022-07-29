@@ -79,6 +79,12 @@ function PromptPage() {
                                 })}
                             </AccordionDetails>
                         </Accordion>
+                        {user.admin &&
+                                <button className="delete-link" 
+                                    onClick={console.log('delete pressed')}>
+                                        Delete Prompt
+                                </button>
+                            }
                         </>
                     )
                 })}
