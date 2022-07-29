@@ -35,7 +35,7 @@ function PromptArchive({prompt}){
       payload: prompt.id,
     });
 
-    // history.push('/prompt-page');
+    history.push('/prompt-page');
     console.log(">>.>>>>>>>", prompt.id);
   };
   return (

@@ -167,7 +167,7 @@ router.put('/update-reaction', rejectUnauthenticated, (req, res) => {
 module.exports = router;
 
 
-router.put("/archived",rejectUnauthenticated, (req, res) => {
+router.put("/:id/archived",rejectUnauthenticated, (req, res) => {
     const id = req.params.id;
     console.log("put request for id", id);
     let sqlQuery = `
