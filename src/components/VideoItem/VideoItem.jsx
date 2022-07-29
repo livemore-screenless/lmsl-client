@@ -32,7 +32,7 @@ function VideoItem() {
             {videoItem && (
                 <>
                     <center>
-                        <h3>{videoItem.question}</h3>
+                    <p className='page-subheadings'>{videoItem.question}</p>
                         <div>
                             <video src={videoItem.video_url} type="video/mp4" width="320" height="240" controls>                        
                                 Your browser does not support the video tag.
@@ -46,8 +46,6 @@ function VideoItem() {
                         >Submitted by: {videoItem.username} 
                         </p>
 
-                        {clicked &&
-                            <div className='landing-copy'>Only 1 vote allowed per video</div>}
                         {/* mapping over the reactions to create buttons to react to video */}
                         {reactions.map(reaction => {
                             let reactionNum = reaction.id
@@ -96,7 +94,8 @@ function VideoItem() {
 
                             )
                         })}
-
+                    {clicked &&
+                            <div className='landing-copy'>Thanks for your vote!</div>}
                     </center>
                 </>
             )}
