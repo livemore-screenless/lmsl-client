@@ -97,7 +97,6 @@ function* saveNewReaction(action) {
       const response = yield axios({
         method: "PUT",
         url: `/api/prompts/${action.payload}/archived`
-        
       });
       console.log("GET Completed prompts:", action.payload);
       yield put({ type: "FETCH_PROMPTS_LIST" });
