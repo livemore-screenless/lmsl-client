@@ -62,7 +62,6 @@ const WebcamUpload = () => {
 
   return (
     <>
-      <h3>Happy Recording!</h3>
       <div>
         {/* does a recorded video exists, if so, preview it. Otherwise record the video opponent */}
         {mediaBlobUrl ? <video src={mediaBlobUrl} controls autoPlay loop /> : <RecordVideos stream={previewStream} />}
