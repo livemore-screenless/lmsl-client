@@ -63,8 +63,8 @@ function* addNewPrompt(action){
         url: "/api/prompts",
         data: action.payload,
       });
-    }
-
+    yield put({ type: 'FETCH_PROMPTS_LIST' })
+}
 
 function* saveNewReaction(action) {
     try {
