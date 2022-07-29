@@ -92,6 +92,15 @@ function* fetchPromptsToArchive(action) {
     }
   }
 
+function* deletePrompt(action) {
+    // delete prompt
+    try {
+        yield axios.delete(`/api/prompts/`+ action.payload);
+    } catch {
+        console.log('delete prompts error');
+    } yield put({ type: 'FETCH_PROMPTS_LIST' })
+};
+
 
 function* promptSaga() {
     yield takeLatest('FETCH_PROMPTS_LIST', fetchAllPrompts);    
@@ -102,11 +111,7 @@ function* promptSaga() {
     yield takeLatest("FETCH_PROMPT_TO_ARCHIVE", fetchPromptsToArchive)    
     yield takeLatest('FETCH_SINGLE_REACTION', fetchSingleReaction);     
     yield takeLatest('SAVE_NEW_REACTION', saveNewReaction);    
-
-    
-
-
-
+    yield takeLatest('DELETE_PROMPT', deletePrompt);
 }
 
 export default promptSaga;

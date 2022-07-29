@@ -164,4 +164,28 @@ router.put('/update-reaction', rejectUnauthenticated, (req, res) => {
         })
 });
 
+
+// delete record from db 
+router.delete('/:id', (req, res) => {
+    let promptID = req.params.id;
+    console.log('Delete request for id', promptID);
+    let sqlQuery = `
+      DELETE FROM "prompts" 
+      WHERE "id" = $1;
+    `;
+    const sqlParams = [
+        promptID,             
+    ];
+    pool.query(sqlQuery, sqlParams)
+      .then(() => {
+        console.log('prompt deleted');
+        res.sendStatus(204);
+      }).catch( (error) => {
+        console.log(`Error making database query`, error);
+        res.sendStatus(500); 
+      })
+  })
+
+
+
 module.exports = router;
