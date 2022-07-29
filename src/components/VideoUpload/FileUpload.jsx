@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
+
 
 const FileUpload = () => {
     //store it locally in state before uploading it to aws
   const [selectedFile, setSelectedFile] = useState({})
   const { id } = useParams()
+  const history = useHistory();
   
   const handleSubmit = async (event) => {
     event.preventDefault();
