@@ -56,6 +56,15 @@ function PromptPage() {
 
 
 
+    const deletePrompt = event => {
+        const id = event.currentTarget.id;
+        console.log('id', id)
+        if (confirm("Are you sure you want to delete this prompt?") == true) {
+            dispatch({ type: 'DELETE_PROMPT', payload: id})
+        } 
+    }
+
+
     return (
         <div>
             <center>
@@ -65,38 +74,49 @@ function PromptPage() {
                 {allPromptsList.map(prompt => {
                     return (
                         <>
-                            <Accordion key={prompt.id}>
-                                <AccordionSummary
-                                    expandIcon={<ExpandMoreIcon />}
-                                    aria-controls="panel1a-content"
-                                    id="panel1a-header"
-                                >
-                                    <span>
-                                        <div>{prompt.question}
-                                            <button className="submit-link"
-                                                onClick={() => { history.push(`/user-upload/${prompt.id}`) }}>
+
+                        <Accordion key={prompt.id}>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                            >
+                            <span>
+                                <div>
+                                    {prompt.question}
+                                    {!user.admin &&
+                                        <button className="submit-link" 
+                                            onClick={() => {history.push(`/user-upload/${prompt.id}`)}}>
                                                 Submit Video
-                                            </button>
-                                        </div>
-                                    </span>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    {allVideosList.map(video => {
-
-                                        if (video.prompt_id === prompt.id) {
-                                            return (
-                                                <p
-                                                    key={video.id}
-                                                    onClick={(evt) => { history.push(`/prompt-videos/${prompt.id}/${video.id}`) }}
-                                                >
-                                                    {video.video_url}
-                                                </p>
-                                            )
-                                        }
-
-                                    })}
-                                </AccordionDetails>
-                            </Accordion>
+                                        </button>
+                                    }
+                                    {user.admin &&
+                                        <button 
+                                            id={prompt.id}
+                                            className="delete-link" 
+                                            onClick={deletePrompt}
+                                        >
+                                                Delete Prompt
+                                        </button>
+                                    }
+                                </div>
+                            </span>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                {allVideosList.map(video => {
+                                    if (video.prompt_id === prompt.id) {
+                                        return (
+                                            <p 
+                                                key={video.id}
+                                                onClick={() => { history.push(`/prompt-videos/${prompt.id}/${video.id}`) }}
+                                            >
+                                                {video.video_url}
+                                            </p>
+                                        )
+                                    }
+                                })}
+                            </AccordionDetails>
+                        </Accordion>
                         </>
                     )
                 })}

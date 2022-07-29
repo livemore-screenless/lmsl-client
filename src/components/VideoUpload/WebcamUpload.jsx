@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {useReactMediaRecorder} from "react-media-recorder";
 import { useParams } from 'react-router-dom'
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function RecordVideos({ stream }) {
   let videoPreviewRef = React.useRef();
@@ -33,6 +33,7 @@ const WebcamUpload = () => {
   };
   const [selectedVideo, setSelectedVideo] = useState({})
   const { id } = useParams()
+  const history = useHistory();
 
   //destructuring out from useReactMediaRecorder "hook" to use them
   const { status, startRecording, stopRecording, mediaBlobUrl, previewStream, clearBlobUrl } =
@@ -58,11 +59,12 @@ const WebcamUpload = () => {
       } catch(error) {
         console.log(error)
       }
+      history.push("/prompt-page")
+      alert("All videos must be reviewed by Administrator.")
   }
 
   return (
     <>
-      <h3>Happy Recording!</h3>
       <div>
         {/* does a recorded video exists, if so, preview it. Otherwise record the video opponent */}
         {mediaBlobUrl ? <video src={mediaBlobUrl} controls autoPlay loop /> : <RecordVideos stream={previewStream} />}
@@ -79,9 +81,7 @@ const WebcamUpload = () => {
       </button>
       <h3>Preview Recording</h3>
       <div>
-        <Link to="/prompt-page">
             <button onClick={handleUpload}>Contribute Video</button>
-        </Link>
       </div>
     </>
   );
