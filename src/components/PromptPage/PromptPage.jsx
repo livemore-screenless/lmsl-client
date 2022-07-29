@@ -55,12 +55,18 @@ function PromptPage() {
                             >
                             <span>
                                 <div>{prompt.question}
-                                {user.admin &&
-                                    <button className="delete-link" 
-                                        onClick={console.log('delete pressed')}>
-                                            Delete Prompt
-                                    </button>
+                                {!user.admin &&
+                                <button className="submit-link" 
+                                onClick={() => {history.push(`/user-upload/${prompt.id}`)}}>
+                                    Submit Video
+                                </button>
                                 }
+                                {user.admin &&
+                            <button className="delete-link" 
+                                onClick={console.log('delete pressed')}>
+                                    Delete Prompt
+                            </button>
+                        }
                                 </div>
                             </span>
                             </AccordionSummary>
