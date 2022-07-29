@@ -25,6 +25,7 @@ const FileUpload = () => {
       console.log(error)
     }
     history.push("/prompt-page")
+    alert("All videos must be reviewed by Administrator.")
   };
   const handleFileSelect = (event) => {
     setSelectedFile(event.target.files[0]);
