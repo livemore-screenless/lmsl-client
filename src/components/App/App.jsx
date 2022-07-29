@@ -75,12 +75,6 @@ function App() {
             <PromptPage />
           </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/prompt-page"
-          >
-            <PromptPage />
-          </ProtectedRoute>
 
           <ProtectedRoute
             exact

@@ -55,9 +55,10 @@ function PromptPage() {
                             >
                             <span>
                                 <div>{prompt.question}
-                                <Link className="submit-link" to="/login">
+                                <button className="submit-link" 
+                                onClick={() => {history.push(`/user-upload/${prompt.id}`)}}>
                                     Submit Video
-                                </Link>
+                                </button>
                                 </div>
                             </span>
                             </AccordionSummary>
