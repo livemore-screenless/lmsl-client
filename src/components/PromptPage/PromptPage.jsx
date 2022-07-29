@@ -38,10 +38,11 @@ function PromptPage() {
         dispatch({ type: 'FETCH_VIDEO_LIST' })
     }, [])
 
-    function deletePrompt(){
+    const deletePrompt = event => {
         console.log('delete pressed')
-        window.confirm("Are you sure you want the delete this prompt? You cant undo this action!"); 
-        dispatch({ type: 'DELETE_PROMPT', payload: id})
+        const id = event.currentTarget.id;
+        console.log('id', id)
+        // dispatch({ type: 'DELETE_PROMPT', payload: id})
     }
 
     return (
