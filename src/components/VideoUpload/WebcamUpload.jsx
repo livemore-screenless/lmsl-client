@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {useReactMediaRecorder} from "react-media-recorder";
 import { useParams } from 'react-router-dom'
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function RecordVideos({ stream }) {
   let videoPreviewRef = React.useRef();
@@ -78,7 +79,9 @@ const WebcamUpload = () => {
       </button>
       <h3>Preview Recording</h3>
       <div>
-        <button onClick={handleUpload}>Contribute Video</button>
+        <Link to="/prompt-page">
+            <button onClick={handleUpload}>Contribute Video</button>
+        </Link>
       </div>
     </>
   );

@@ -22,6 +22,7 @@ const FileUpload = () => {
     } catch(error) {
       console.log(error)
     }
+    history.push("/prompt-page")
   };
   const handleFileSelect = (event) => {
     setSelectedFile(event.target.files[0]);
