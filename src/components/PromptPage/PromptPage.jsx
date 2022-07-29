@@ -14,7 +14,23 @@ function PromptPage() {
     const history = useHistory();
     const allPromptsList = useSelector(store => store.promptsInfo.allPromptsList);
     const allVideosList = useSelector(store => store.videosInfo.allVideosList);
+    const [question, setQuestion] = useState("");
+    const [prompt, setPrompt] = useState(false);
 
+
+    const handleSubmit = (evt) => {
+      evt.preventDefault();
+  
+      dispatch({
+        type: "NEW_PROMPTS_LIST",
+        payload: {
+          question,
+        },
+      });
+  
+      setQuestion("");
+      history.push("/prompt-page");
+    };
     // this will fetch prompts from DB and set in store allPromptsList
     // list is mapped over below
     useEffect(() => {
@@ -37,7 +53,13 @@ function PromptPage() {
                                 aria-controls="panel1a-content"
                                 id="panel1a-header"
                             >
-                            <Typography>{prompt.question}</Typography>
+                            <span>
+                                <div>{prompt.question}
+                                <Link className="submit-link" to="/login">
+                                    Submit Video
+                                </Link>
+                                </div>
+                            </span>
                             </AccordionSummary>
                             <AccordionDetails>
                                 {allVideosList.map(video => {
@@ -61,22 +83,40 @@ function PromptPage() {
                 })}
             </ul>
         
-            <center>
+            <center className='add-prompts-condit'>
             {/* show these buttons only if admin is logged in  */}
-                {user.admin &&
+                {user.admin && prompt && 
+                    <>
+                    <div className="landing-copy">What prompt would you like to add?</div>
+                    <form onSubmit={handleSubmit}>
+                        <input
+                        onChange={(event) => setQuestion(event.target.value)}
+                        value={question}
+                        className='input-box'
+                        />
+                        <input type="submit" value="Add Prompt" className="btn" />
+                    </form>
+                    </>
+                }
+                {user.admin && !prompt && 
                 <span>
                     <button 
-                        className="btn"
-                        onClick={(evt) => {history.push('/edit-page')}}
+                        className="add-prompts-btn"
+                        value={prompt} 
+                        onClick={() => setPrompt(!prompt)}
                     >
                         Add Prompt
                     </button>
-                    
+                </span>
+                }
+                {user.admin && prompt && 
+                <span>
                     <button 
-                        className="btn"
-                        onClick={(evt) => {history.push("/prompt-archive")}}
+                        className="nevermind-btn"
+                        value={prompt} 
+                        onClick={() => setPrompt(!prompt)}
                     >
-                        Archive Prompts
+                        Nevermind
                     </button>
                 </span>
                 }

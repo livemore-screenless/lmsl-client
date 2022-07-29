@@ -88,6 +88,7 @@ function App() {
           >
             <PromptEdit />
           </ProtectedRoute>
+          
           <ProtectedRoute
             exact
             path="/edit-page"
@@ -187,7 +188,7 @@ function App() {
             exact
             path="/review-submissions"
           >
-            {user.id !=1 ?
+            {!user.admin  ?
               // If the user is already logged in, 
               // redirect them to the /user page
               <Redirect to="/my-videos" />
