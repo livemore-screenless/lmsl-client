@@ -38,6 +38,12 @@ function PromptPage() {
         dispatch({ type: 'FETCH_VIDEO_LIST' })
     }, [])
 
+    function deletePrompt(){
+        console.log('delete pressed')
+        window.confirm("Are you sure you want the delete this prompt? You cant undo this action!"); 
+        dispatch({ type: 'DELETE_PROMPT', payload: id})
+    }
+
     return (
         <div>
             <center>
@@ -54,19 +60,23 @@ function PromptPage() {
                                 id="panel1a-header"
                             >
                             <span>
-                                <div>{prompt.question}
-                                {!user.admin &&
-                                    <button className="submit-link" 
-                                        onClick={() => {history.push(`/user-upload/${prompt.id}`)}}>
-                                            Submit Video
-                                    </button>
-                                }
-                                {user.admin &&
-                                    <button className="delete-link" 
-                                        onClick={console.log('delete pressed')}>
-                                            Delete Prompt
-                                    </button>
-                                }
+                                <div>
+                                    {prompt.question}
+                                    {!user.admin &&
+                                        <button className="submit-link" 
+                                            onClick={() => {history.push(`/user-upload/${prompt.id}`)}}>
+                                                Submit Video
+                                        </button>
+                                    }
+                                    {user.admin &&
+                                        <button 
+                                            id={prompt.id}
+                                            className="delete-link" 
+                                            onClick={deletePrompt}
+                                        >
+                                                Delete Prompt
+                                        </button>
+                                    }
                                 </div>
                             </span>
                             </AccordionSummary>
@@ -76,7 +86,7 @@ function PromptPage() {
                                         return (
                                             <p 
                                                 key={video.id}
-                                                onClick={(evt) => { history.push(`/prompt-videos/${prompt.id}/${video.id}`) }}
+                                                onClick={() => { history.push(`/prompt-videos/${prompt.id}/${video.id}`) }}
                                             >
                                                 {video.video_url}
                                             </p>
