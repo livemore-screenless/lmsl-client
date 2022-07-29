@@ -165,3 +165,25 @@ router.put('/update-reaction', rejectUnauthenticated, (req, res) => {
 });
 
 module.exports = router;
+
+
+router.put("/archived",rejectUnauthenticated, (req, res) => {
+    const id = req.params.id;
+    console.log("put request for id", id);
+    let sqlQuery = `
+      UPDATE "prompts" 
+      SET "archived" = $1
+      WHERE "id" = $2;
+    `;
+    const sqlParams = [true, id];
+    pool
+      .query(sqlQuery, sqlParams)
+      .then(() => {
+        console.log('prompts that have been set are ')
+        res.sendStatus(204);
+      })
+      .catch((error) => {
+        console.log('ERROR IN PUT')
+        res.sendStatus(500);
+      });
+  });

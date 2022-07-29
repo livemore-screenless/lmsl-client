@@ -41,21 +41,21 @@ const reactionCounts = (state = [], action) => {
     }
 }
 
-const archivePromptReducer = (state = [], action) => {
-    switch (action.type) {
-        //this is for a single item for the edit
-    case "SET_ARCHIVE_PROMPT":
-        return action.payload
-    default:
-        return state;
-    }
-}
+// const archivePromptReducer = (state = [], action) => {
+//     switch (action.type) {
+//         //this is for a single item for the edit
+//     case "SET_ARCHIVE_PROMPT":
+//         return action.payload
+//     default:
+//         return state;
+//     }
+// }
 
 export default combineReducers({
     allPromptsList,
     allReactionsList,
     reactionCounts,
-    archivePromptReducer,
+    // archivePromptReducer,
     singleReaction
 
 });

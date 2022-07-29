@@ -76,19 +76,33 @@ function* saveNewReaction(action) {
     }
 }
 
-//function grabs prompts details for the edit
-function* fetchPromptsToArchive(action) {
-    console.log("in ARCHIVE saga");
+// //function grabs prompts details for the edit
+// function* fetchPromptsToArchive(action) {
+//     console.log("in ARCHIVE saga");
+//     try {
+//       //GET request and setting res equal to what its finding for that id
+//       const res = yield axios.get(`/api/prompts/${action.payload.id}`);
+//       yield put({
+//         //SETTING Prompt is then setting to get the payload of "res.data"
+//         type: "SET_ARCHIVE_PROMPT",
+//         payload: res.data,
+//       });
+//     } catch (err) {
+//       console.log(`err in ARCHIVE prompt saga`, err);
+//     }
+//   }
+
+  function* fetchPromptsToArchive(action) {
     try {
-      //GET request and setting res equal to what its finding for that id
-      const res = yield axios.get(`/api/prompts/${action.payload.id}`);
-      yield put({
-        //SETTING Prompt is then setting to get the payload of "res.data"
-        type: "SET_ARCHIVE_PROMPT",
-        payload: res.data,
+      const response = yield axios({
+        method: "PUT",
+        url: `/api/prompts/${action.payload}/archived`
+        
       });
-    } catch (err) {
-      console.log(`err in ARCHIVE prompt saga`, err);
+      console.log("GET Completed prompts:", action.payload);
+      yield put({ type: "FETCH_PROMPTS_LIST" });
+    } catch {
+      console.log("GET/COMPLETED prompts error");
     }
   }
 

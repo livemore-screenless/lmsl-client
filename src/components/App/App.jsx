@@ -25,7 +25,7 @@ import PromptPage from '../PromptPage/PromptPage';
 import PromptVideos from '../PromptVideos/PromptVideos';
 import VideoItem from '../VideoItem/VideoItem';
 import AddPrompts from '../AddPrompts/AddPrompts';
-
+import ArchivedPage from '../ArchivedPage/ArchivedPage';
 import EditReactions from '../PromptPage/EditReactions';
 
 
@@ -82,11 +82,12 @@ function App() {
             <PromptPage />
           </ProtectedRoute>
 
+
           <ProtectedRoute
             exact
-            path="/prompt-edit"
+            path="/archivedpage/:id"
           >
-            <PromptEdit />
+            <ArchivedPage />
           </ProtectedRoute>
           
           <ProtectedRoute
