@@ -41,7 +41,9 @@ function PromptPage() {
     const deletePrompt = event => {
         const id = event.currentTarget.id;
         console.log('id', id)
-        dispatch({ type: 'DELETE_PROMPT', payload: id})
+        if (confirm("Are you sure you want to delete this prompt?") == true) {
+            dispatch({ type: 'DELETE_PROMPT', payload: id})
+        } 
     }
 
     return (
