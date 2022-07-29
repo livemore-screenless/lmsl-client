@@ -1,6 +1,6 @@
 import React from 'react'
 import FileUpload from './FileUpload'
-import WebcamUpload from './WebcamUpload'
+import WebcamUpload from './WebcamUpload';
 
 
 function UserUploadPage() {
