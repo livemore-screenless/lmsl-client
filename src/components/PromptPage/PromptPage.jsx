@@ -59,32 +59,30 @@ function PromptPage() {
                                 onClick={() => {history.push(`/user-upload/${prompt.id}`)}}>
                                     Submit Video
                                 </button>
+                                {user.admin &&
+                            <button className="delete-link" 
+                                onClick={console.log('delete pressed')}>
+                                    Delete Prompt
+                            </button>
+                        }
                                 </div>
                             </span>
                             </AccordionSummary>
                             <AccordionDetails>
                                 {allVideosList.map(video => {
-
                                     if (video.prompt_id === prompt.id) {
                                         return (
                                             <p 
                                                 key={video.id}
                                                 onClick={(evt) => { history.push(`/prompt-videos/${prompt.id}/${video.id}`) }}
                                             >
-                                                    {video.video_url}
+                                                {video.video_url}
                                             </p>
                                         )
-                                        }
-                                    
+                                    }
                                 })}
                             </AccordionDetails>
                         </Accordion>
-                        {user.admin &&
-                                <button className="delete-link" 
-                                    onClick={console.log('delete pressed')}>
-                                        Delete Prompt
-                                </button>
-                            }
                         </>
                     )
                 })}
