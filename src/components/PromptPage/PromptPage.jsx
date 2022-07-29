@@ -64,13 +64,7 @@ function PromptPage() {
                       </Link>
                     </div>
                   </span>
-                  <span>
-                    <button
-                      onClick={() => history.push(`/archivedpage/${prompt.id}`)}
-                    >
-                      archive
-                    </button>
-                  </span>
+                 
                 </AccordionSummary>
                 <AccordionDetails>
                   {allVideosList.map((video) => {
@@ -89,6 +83,15 @@ function PromptPage() {
                       );
                     }
                   })}
+                   {user.admin && prompt && (
+        <span>
+                    <button
+                      onClick={() => history.push(`/archivedpage/${prompt.id}`)}
+                    >
+                      archive
+                    </button>
+                  </span>
+                  )}
                  
                 </AccordionDetails>
               </Accordion>
@@ -99,6 +102,7 @@ function PromptPage() {
 
       <center className="add-prompts-condit">
         {/* show these buttons only if admin is logged in  */}
+        
         {user.admin && prompt && (
           <>
             <div className="landing-copy">
