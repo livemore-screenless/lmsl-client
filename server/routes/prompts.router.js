@@ -60,6 +60,26 @@ router.get('/:id/reaction', rejectUnauthenticated, (req, res) => {
         })
 });
 
+router.get('/:videoId/reaction-item', rejectUnauthenticated, (req, res) => {
+    const sqlQuery = `
+    SELECT * from "video-reactions"
+    WHERE "video-reactions".video_response_id = $1
+    AND "video-reactions".user_id = $2;      
+    `;
+    
+    const queryParams = [req.params.videoId, req.user.id]
+
+    pool.query(sqlQuery, queryParams)
+        .then(result => {
+            console.log('reactions are', result.rows)
+            res.send(result.rows);
+        })
+        .catch(err => {
+            console.error('error in getting all videos', err);
+            res.sendStatus(500);
+        })
+});
+
 router.get('/:id/:videoId/reaction-counts', rejectUnauthenticated, (req, res) => {
     const sqlQuery = `
         SELECT 

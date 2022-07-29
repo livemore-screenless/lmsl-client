@@ -60,8 +60,6 @@ function* denyVideo(action) {
     } yield put({ type: 'FETCH_UNAPPROVED_VIDEOS' })
 }
 
-
-
 function* videosSaga() {
     yield takeLatest('FETCH_MY_VIDEOS', fetchMyVideos);    
     yield takeLatest('FETCH_UNAPPROVED_VIDEOS', fetchUnapprovedVideos); 
@@ -69,7 +67,6 @@ function* videosSaga() {
     yield takeLatest('DENY_VIDEO', denyVideo);
     yield takeLatest('FETCH_VIDEO_LIST', fetchAllVideos);  
     yield takeLatest('FETCH_VIDEO_ITEM', fetchVideoItem);  
-   
 }
 
 export default videosSaga;
