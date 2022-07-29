@@ -39,10 +39,9 @@ function PromptPage() {
     }, [])
 
     const deletePrompt = event => {
-        console.log('delete pressed')
         const id = event.currentTarget.id;
         console.log('id', id)
-        // dispatch({ type: 'DELETE_PROMPT', payload: id})
+        dispatch({ type: 'DELETE_PROMPT', payload: id})
     }
 
     return (
