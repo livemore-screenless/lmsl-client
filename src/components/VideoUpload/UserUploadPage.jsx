@@ -31,7 +31,7 @@ function UserUploadPage() {
       </div>
         <button
           className="add-prompts-btn"
-          value={prompt}
+          value={webcam}
           onClick={() => setWebcam(!webcam)}
         > 
         Record Now 
@@ -42,7 +42,7 @@ function UserUploadPage() {
         <p>-or-</p>
         <button
           className="add-prompts-btn"
-          value={prompt}
+          value={upload}
           onClick={() => setUpload(!upload)}
         > 
         Upload File 
