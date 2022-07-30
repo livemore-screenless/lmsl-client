@@ -43,41 +43,90 @@ function VideoItem() {
                             </video>
 
                         </div>
+                        
+                        {user.admin ?
+                            <>
 
-                        {user.admin === true && <div><button className='btn'>Award Video</button></div>} {/**Button does nothing until there is an award to give */}
+                            <p className='landing-copy'>
+                                Submitted by: {videoItem.username}
+                            </p>
 
-                        <p className='landing-copy'
-                        >Submitted by: {videoItem.username}
-                        </p>
+                            {/* mapping over the reactions to create buttons to react to video */}
+                            {reactions.map(reaction => {
+                                let reactionNum = reaction.id
+                                return (
+                                    <>
+                                    {reactionCounts.map(count => {
+                                        if (count.reaction_id === reaction.id) {
+                                            return (
+                                                <>
+                                                    <Badge badgeContent={count.count} color="primary">
+                                                    <button
+                                                        className="btn"
+                                                        onClick={() => {
+                                                            dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
+                                                            dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
+                                                            setClicked(true)
+                                                        }}
+                                                    >{reaction.reaction}
+                                                    </button>
+                                                    </Badge>
+                                                </>
+                                            )
+                                        }
+                                    })}
+                                    </>
+                                )
+                            })}
+                            {clicked &&
+                                <div className='landing-copy'>Thanks for your vote!</div>
+                            }
+                            <br/>
+                            <a 
+                                className='btn_asLink'
+                                href={`mailto:${videoItem.email}`}
+                            >
+                                Award Video
+                            </a>
+                            </>
+                            :
+                            <>
+                            <p className='landing-copy'>
+                                Submitted by: {videoItem.username}
+                            </p>
 
-                        {/* mapping over the reactions to create buttons to react to video */}
-                        {reactions.map(reaction => {
-                            return (
-                                <>
-                                {reactionCounts.map(count => {
-                                    if (count.reaction_id === reaction.id) {
-                                        return (
-                                            <>
-                                                <Badge badgeContent={count.count} color="primary">
-                                                <button
-                                                    className="btn"
-                                                    onClick={() => {
-                                                        dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
-                                                        dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
-                                                        setClicked(true)
-                                                    }}
-                                                >{reaction.reaction}
-                                                </button>
-                                                </Badge>
-                                            </>
-                                        )
-                                    }
-                                })}
-                                </>
-                            )
-                        })}
-                        {clicked &&
-                            <div className='landing-copy'>Thanks for your vote!</div>}
+                            {/* mapping over the reactions to create buttons to react to video */}
+                            {reactions.map(reaction => {
+                                let reactionNum = reaction.id
+                                return (
+                                    <>
+                                    {reactionCounts.map(count => {
+                                        if (count.reaction_id === reaction.id) {
+                                            return (
+                                                <>
+                                                    <Badge badgeContent={count.count} color="primary">
+                                                    <button
+                                                        className="btn"
+                                                        onClick={() => {
+                                                            dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
+                                                            dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
+                                                            setClicked(true)
+                                                        }}
+                                                    >{reaction.reaction}
+                                                    </button>
+                                                    </Badge>
+                                                </>
+                                            )
+                                        }
+                                    })}
+                                    </>
+                                )
+                            })}
+                            {clicked &&
+                                <div className='landing-copy'>Thanks for your vote!</div>
+                            }
+                            </>
+                        } 
                     </center>
                 </>
             )}

@@ -42,6 +42,7 @@ router.get('/:id/:videoId/video-item', rejectUnauthenticated, (req, res) => {
       "video-responses".id,
       "video-responses".video_url,
       "user".username,
+      "user".email,
       prompts.question
       FROM "video-responses"
       JOIN "user"
