@@ -11,6 +11,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   logo: {
     maxWidth: 103.59,
+    paddingLeft: '5%',
   },
 }));
 

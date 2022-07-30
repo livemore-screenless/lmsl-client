@@ -3,7 +3,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 47px 107px;
   background-color: #ffffff;
   overflow: hidden;
   border: 2px #e5e5e5;
@@ -36,4 +35,6 @@
 
 .sub-nav-title {
   color: #2D769F;
+  padding-left: 10%;
+  white-space: nowrap;
 }

@@ -20,7 +20,7 @@ function LandingPage() {
       <div >
         <center>
           <div className='landing-image'>
-            <img src={require('./abstract.png')} />
+            <img src={require('./abstract.png')}/>
             <div className='landing-body'>
               <h1 className='landing-header'>DIGITAL WELLBEING</h1>
               <p className='main-landing-copy'>

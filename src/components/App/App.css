@@ -134,10 +134,12 @@ input {
   line-height: 32px;
   margin-left: 10%;
   margin-right: 10%;
+  padding-top: 5%;
 }
 
 ul {
-  list-style: none
+  list-style: none;
+  padding: 5%;
 }
 
 .prompts{
