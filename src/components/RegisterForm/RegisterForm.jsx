@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Popup from 'reactjs-popup';
 
 //mui imports
 import { alpha, styled } from '@mui/material/styles';
@@ -38,6 +39,8 @@ function RegisterForm() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+
+  
   const registerUser = (event) => {
     event.preventDefault();
 
@@ -117,7 +120,11 @@ function RegisterForm() {
       </center>
       <br/>
       <center>
-        <input className="btn btn_sizeFull" type="submit" name="submit" value="Create Account" />
+        <Popup trigger={<button className="btn btn_sizeFull">Create Account</button>} modal>
+          <input type="checkbox" value="Create Account" />
+          <input type="submit" value="Create Account"></input>
+           agree to the terms here</Popup>
+        
       </center>
     </form>
   );
