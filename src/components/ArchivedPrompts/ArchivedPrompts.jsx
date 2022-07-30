@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function PromptPage() {
+function ArchivedPrompts() {
     const user = useSelector((store) => store.user);
     const dispatch = useDispatch();
     const history = useHistory();
@@ -75,14 +75,11 @@ function PromptPage() {
     return (
         <div>
             <center>
-                <h2 className='page-subheadings'>Select a prompt to view related videos</h2>
-                <img src={require('./laptop.png')} className={classes.landingImages}/>
-                <img src={require('./phone.png')} className={classes.landingImages}/>
-                <img src={require('./computer.png')} className={classes.landingImages}/>
+                <h2 className='page-subheadings'>Archive</h2>
             </center>
             <ul >
                 {allPromptsList.map(prompt => {
-                    if (prompt.archived === false) {
+                    if (prompt.archived === true) {
                     return (
                         <>
                             <Accordion key={prompt.id}>
@@ -229,4 +226,4 @@ function PromptPage() {
     )
 
 }
-export default PromptPage;
+export default ArchivedPrompts;

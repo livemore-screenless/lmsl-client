@@ -57,7 +57,11 @@ function SubNav() {
             </Link>
 
             <Link className="sub-navLink" to="/prompt-page">
-              Review Prompts
+              Videos
+            </Link>
+
+            <Link className="sub-navLink" to="/archive">
+              Archive
             </Link>
 
             <LogOutButton className="sub-navLink" />
