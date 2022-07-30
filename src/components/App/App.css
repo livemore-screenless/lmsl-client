@@ -198,3 +198,15 @@ ul {
   outline: 0;
 }
 
+.reaction-buttons {
+  display: inline-block;
+  padding: 10px 10px;
+  border-width: 1px;
+  border-radius: 20px;
+  color: #2D769F;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+  margin: 10px
+}
+

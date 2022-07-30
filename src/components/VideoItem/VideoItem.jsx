@@ -46,7 +46,6 @@ function VideoItem() {
                         
                         {user.admin ?
                             <>
-
                             <p className='landing-copy'>
                                 Submitted by: {videoItem.username}
                             </p>
@@ -60,9 +59,26 @@ function VideoItem() {
                                         if (count.reaction_id === reaction.id) {
                                             return (
                                                 <>
-                                                    <Badge badgeContent={count.count} color="primary">
+                                                    <Badge badgeContent={count.count} color="primary" >
                                                     <button
-                                                        className="btn"
+                                                        className="reaction-buttons"
+                                                        onClick={() => {
+                                                            dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
+                                                            dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
+                                                            setClicked(true)
+                                                        }}
+                                                    >{reaction.reaction}
+                                                    </button>
+                                                    </Badge>
+                                                </>
+                                            )
+                                        }
+                                        if (count.reaction_id && reaction.id === 0) {
+                                            return (
+                                                <>
+                                                    <Badge badgeContent={count.count} color="primary" >
+                                                    <button
+                                                        className="reaction-buttons"
                                                         onClick={() => {
                                                             dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
                                                             dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
