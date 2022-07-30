@@ -206,4 +206,26 @@ router.delete('/:id', (req, res) => {
       })
   })
 
+// updated archive status
+router.put('/:id', (req, res) => {
+    let promptID = req.params.id;
+    console.log('Archive request for id', promptID);
+    let sqlQuery = `
+        UPDATE "prompts" 
+        SET "archived" = true
+        WHERE "id" = $1;
+    `;
+    const sqlParams = [
+        promptID,             
+    ];
+    pool.query(sqlQuery, sqlParams)
+      .then(() => {
+        console.log('prompt archived');
+        res.sendStatus(204);
+      }).catch( (error) => {
+        console.log(`Error making database query`, error);
+        res.sendStatus(500); 
+      })
+  })
+
 module.exports = router;

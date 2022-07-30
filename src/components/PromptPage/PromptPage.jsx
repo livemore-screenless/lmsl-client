@@ -74,7 +74,6 @@ function PromptPage() {
 
     const archivePrompt = event => {
         const id = event.currentTarget.id;
-        console.log('archivePrompt')
         alert("Prompt and related videos have been archived!")
         dispatch({ type: 'ARCHIVE_PROMPT', payload: id })
     }
