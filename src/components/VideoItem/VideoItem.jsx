@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Link, useParams } from 'react-router-dom';
 import axios from 'axios';
+//mui imports
+import Badge from '@mui/material/Badge';
 
 function VideoItem() {
 
@@ -61,21 +63,21 @@ function VideoItem() {
                                                 className="btn"
                                                 disabled
                                                 style={{ backgroundColor: 'pink' }}
-                                            >{reaction.reaction}</button>
+                                            >
+                                                {reaction.reaction}
+                                            </button>
                                         </>
                                         :
-                                        <button
-                                            className="btn"
-                                            onClick={() => {
-                                                dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
-                                                dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
-                                                setClicked(true)
-                                            }}
-                                            // style={{ backgroundColor: clicked && 'pink' }}
-                                        >{reaction.reaction}</button>
-
+                                            <button
+                                                className="btn"
+                                                onClick={() => {
+                                                    dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
+                                                    dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
+                                                    setClicked(true)
+                                                }}
+                                            >{reaction.reaction}
+                                            </button>
                                     }
-
 
                                     {/* only show votes if user is an admin */}
                                     {user.admin === true &&
