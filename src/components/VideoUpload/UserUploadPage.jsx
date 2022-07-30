@@ -17,11 +17,12 @@ function UserUploadPage() {
   console.log('this is id', id);
   console.log('all rpompts are ', prompts)
   return (
+    <center>
     <div>
-      <div>
+      <div >
         {prompts.map(thePrompt => {
           if (thePrompt.id == id) {
-            return ( <p>{thePrompt.question}</p>)
+            return ( <p className='my-video-title'>{thePrompt.question}</p>)
           }
         })}
       </div>
@@ -29,7 +30,9 @@ function UserUploadPage() {
         <WebcamUpload />
         <br></br>
         <FileUpload />
+
     </div>
+    </center>
   )
 }
 
