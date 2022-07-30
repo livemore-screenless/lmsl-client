@@ -76,8 +76,8 @@ function PromptPage() {
         <div>
             <center>
                 <h2 className='page-subheadings'>Select a prompt to view related videos</h2>
-                <img src={require('./phone.png')} className={classes.landingImages}/>
                 <img src={require('./laptop.png')} className={classes.landingImages}/>
+                <img src={require('./phone.png')} className={classes.landingImages}/>
                 <img src={require('./computer.png')} className={classes.landingImages}/>
             </center>
             <ul >
