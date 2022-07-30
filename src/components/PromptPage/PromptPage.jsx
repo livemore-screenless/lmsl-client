@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Link, useParams } from 'react-router-dom';
-import axios from 'axios';
+
+// mui imports
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { makeStyles } from '@material-ui/core/styles';
+
+//this is the mui styling 
+const useStyles = makeStyles((theme) => ({
+    landingImages: {
+      maxWidth: 100,
+      padding: '1%'
+    },
+  }));
 
 function PromptPage() {
     const user = useSelector((store) => store.user);
     const dispatch = useDispatch();
     const history = useHistory();
+    const classes = useStyles();
 
     const allPromptsList = useSelector(store => store.promptsInfo.allPromptsList);
     const allVideosList = useSelector(store => store.videosInfo.allVideosList);
@@ -54,8 +64,6 @@ function PromptPage() {
             dispatch({ type: 'FETCH_VIDEO_REACTIONS' })
     }, [])
 
-
-
     const deletePrompt = event => {
         const id = event.currentTarget.id;
         console.log('id', id)
@@ -64,17 +72,18 @@ function PromptPage() {
         }
     }
 
-
     return (
         <div>
             <center>
                 <h2 className='page-subheadings'>Select a prompt to view related videos</h2>
+                <img src={require('./phone.png')} className={classes.landingImages}/>
+                <img src={require('./laptop.png')} className={classes.landingImages}/>
+                <img src={require('./computer.png')} className={classes.landingImages}/>
             </center>
             <ul >
                 {allPromptsList.map(prompt => {
                     return (
                         <>
-
                             <Accordion key={prompt.id}>
                                 <AccordionSummary
                                     expandIcon={<ExpandMoreIcon />}
