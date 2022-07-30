@@ -72,6 +72,13 @@ function PromptPage() {
         }
     }
 
+    const archivePrompt = event => {
+        const id = event.currentTarget.id;
+        console.log('archivePrompt')
+        alert("Prompt and related videos have been archived!")
+        dispatch({ type: 'ARCHIVE_PROMPT', payload: id })
+    }
+
     return (
         <div>
             <center>
@@ -101,13 +108,23 @@ function PromptPage() {
                                                 </button>
                                             }
                                             {user.admin &&
+                                                <>
                                                 <button
                                                     id={prompt.id}
                                                     className="delete-link"
                                                     onClick={deletePrompt}
                                                 >
-                                                    Delete Prompt
+                                                Delete Prompt
                                                 </button>
+
+                                                <button
+                                                    id={prompt.id}
+                                                    className="archive-link"
+                                                    onClick={archivePrompt}
+                                                >
+                                                    Archive
+                                                </button>
+                                                </>
                                             }
                                         </div>
                                     </span>
