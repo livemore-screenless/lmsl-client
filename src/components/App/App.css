@@ -120,13 +120,6 @@ input {
   margin-bottom: 10px;
 }
 
-.landing-header {
-  color: #2D769F;
-  font-weight: 700;
-  font-size: 64px;
-  line-height: 77px;
-}
-
 .landing-copy {
  font-weight: 300;
  font-size: 20px;
@@ -141,10 +134,12 @@ input {
   line-height: 32px;
   margin-left: 10%;
   margin-right: 10%;
+  padding-top: 5%;
 }
 
 ul {
-  list-style: none
+  list-style: none;
+  padding: 5%;
 }
 
 .prompts{
