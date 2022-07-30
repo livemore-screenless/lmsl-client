@@ -4,9 +4,16 @@ import { useHistory, Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 //mui imports
 import Badge from '@mui/material/Badge';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    badges: {
+        color: '#E79487'
+    },
+  }));
 
 function VideoItem() {
-
+    const classes = useStyles();
     const dispatch = useDispatch();
     const history = useHistory();
     const { id, videoId } = useParams();
@@ -52,6 +59,7 @@ function VideoItem() {
 
                             {/* mapping over the reactions to create buttons to react to video */}
                             {reactions.map(reaction => {
+                                console.log('>>>>>>>', reactions)
                                 let reactionNum = reaction.id
                                 return (
                                     <>
@@ -59,7 +67,7 @@ function VideoItem() {
                                         if (count.reaction_id === reaction.id) {
                                             return (
                                                 <>
-                                                    <Badge badgeContent={count.count} color="primary" >
+                                                    <Badge badgeContent={count.count} className={classes.badges} >
                                                     <button
                                                         className="reaction-buttons"
                                                         onClick={() => {
@@ -120,7 +128,13 @@ function VideoItem() {
                                         if (count.reaction_id === reaction.id) {
                                             return (
                                                 <>
-                                                    <Badge badgeContent={count.count} color="primary">
+                                                    <Badge 
+                                                        badgeContent={count.count} sx={{
+                                                        "& .MuiBadge-badge": {
+                                                        color: "lightgreen",
+                                                        backgroundColor: "green"
+                                                        }
+                                                    }}>
                                                     <button
                                                         className="btn"
                                                         onClick={() => {
