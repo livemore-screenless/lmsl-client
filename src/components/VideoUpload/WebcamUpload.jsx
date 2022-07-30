@@ -66,25 +66,22 @@ const WebcamUpload = () => {
   return (
     <>
       {/* clearBlobUrl keeps you from clicking start video and it would start recording a second one while you are watching the preview */}
-      <br/>
-      <br/>
-      <button onClick={() => {
+      <div>
+        {/* does a recorded video exists, if so, preview it. Otherwise record the video opponent */}
+        {mediaBlobUrl ? <video src={mediaBlobUrl} controls autoPlay loop /> : <RecordVideos stream={previewStream} />}
+      </div>
+      <button className='start-btn_asLink'
+        onClick={() => {
         clearBlobUrl(); 
         startRecording()
         }} disabled={status === "recording"}>
         Start
       </button>
-      <button onClick={stopRecording} disabled={status !== "recording"}>
+      <button className='stop-btn_asLink' onClick={stopRecording} disabled={status !== "recording"}>
         Stop
       </button>
-      <div>
-        {/* does a recorded video exists, if so, preview it. Otherwise record the video opponent */}
-        {mediaBlobUrl ? <video src={mediaBlobUrl} controls autoPlay loop /> : <RecordVideos stream={previewStream} />}
-      </div>
-      <h3>Preview Recording</h3>
-      <div>
-            <button onClick={handleUpload}>Submit for Approval</button>
-      </div>
+      <button className='btn btn_sizeFull'onClick={handleUpload}>Submit for Approval</button>
+
     </>
   );
 };
