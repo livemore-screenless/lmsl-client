@@ -52,47 +52,28 @@ function VideoItem() {
 
                         {/* mapping over the reactions to create buttons to react to video */}
                         {reactions.map(reaction => {
-                            let reactionNum = reaction.id
                             return (
-                                // edit button that will edit buttons
-                                <span key={reaction.id}>
-                                    {/* if item has been clicked show a disabled pink button */}
-                                    {reactionItem && reactionItem.reaction_id === reaction.id ?
-                                        <>
-                                            <button
-                                                className="btn"
-                                                disabled
-                                                style={{ backgroundColor: 'pink' }}
-                                            >
-                                                {reaction.reaction}
-                                            </button>
-                                        </>
-                                        :
-                                            <button
-                                                className="btn"
-                                                onClick={() => {
-                                                    dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
-                                                    dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
-                                                    setClicked(true)
-                                                }}
-                                            >{reaction.reaction}
-                                            </button>
+                                <>
+                                {reactionCounts.map(count => {
+                                    if (count.reaction_id === reaction.id) {
+                                        return (
+                                            <>
+                                                <Badge badgeContent={count.count} color="primary">
+                                                <button
+                                                    className="btn"
+                                                    onClick={() => {
+                                                        dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
+                                                        dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
+                                                        setClicked(true)
+                                                    }}
+                                                >{reaction.reaction}
+                                                </button>
+                                                </Badge>
+                                            </>
+                                        )
                                     }
-
-                                    {/* only show votes if user is an admin */}
-                                    {user.admin === true &&
-                                        <span>
-                                            {reactionCounts.map(count => {
-                                                if (count.reaction_id === reaction.id) {
-                                                    return (
-                                                        <span className='landing-copy' key={reaction.id}>Votes: {count.count}</span>
-                                                    )
-                                                }
-                                            })}
-                                        </span>
-                                    }            
-                                </span>
-
+                                })}
+                                </>
                             )
                         })}
                         {clicked &&
@@ -104,3 +85,27 @@ function VideoItem() {
     )
 }
 export default VideoItem;
+
+
+
+// {reactionItem && reactionItem.reaction_id === reaction.id ?
+//     <>
+//         <button
+//             className="btn"
+//             disabled
+//             style={{ backgroundColor: 'pink' }}
+//         >
+//             {reaction.reaction}
+//         </button>
+//     </>
+//     :
+//         <button
+//             className="btn"
+//             onClick={() => {
+//                 dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
+//                 dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
+//                 setClicked(true)
+//             }}
+//         >{reaction.reaction}
+//         </button>
+// }
