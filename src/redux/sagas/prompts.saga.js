@@ -86,21 +86,7 @@ function* saveNewReaction(action) {
     }
 }
 
-//function grabs prompts details for the edit
-function* fetchPromptsToArchive(action) {
-    console.log("in ARCHIVE saga");
-    try {
-      //GET request and setting res equal to what its finding for that id
-      const res = yield axios.get(`/api/prompts/${action.payload.id}`);
-      yield put({
-        //SETTING Prompt is then setting to get the payload of "res.data"
-        type: "SET_ARCHIVE_PROMPT",
-        payload: res.data,
-      });
-    } catch (err) {
-      console.log(`err in ARCHIVE prompt saga`, err);
-    }
-  }
+
 
 function* deletePrompt(action) {
     // delete prompt
@@ -126,7 +112,6 @@ function* promptSaga() {
     yield takeLatest('FETCH_REACTION_COUNTS', fetchReactionCounts);     
     yield takeLatest('ADD_NEW_REACTION', addNewReaction);  
     yield takeLatest('NEW_PROMPTS_LIST', addNewPrompt);
-    yield takeLatest("FETCH_PROMPT_TO_ARCHIVE", fetchPromptsToArchive)    
     yield takeLatest('FETCH_SINGLE_REACTION', fetchSingleReaction);     
     yield takeLatest('SAVE_NEW_REACTION', saveNewReaction);    
     yield takeLatest('FETCH_REACTION_ITEM', fetchReactionItem);    

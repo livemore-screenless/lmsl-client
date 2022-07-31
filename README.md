@@ -4,7 +4,7 @@ LiveMore ScreenLess video application - Non-profit organization in Minneapolis, 
 ## Description
 Two Week Sprint
 
-I led a team of four to build a full stack application where a user is able to record and post videos to the site. The videos are responses to questions that help the user think about how to use technology in a healthier way, such as "How do you use technology to do creative things?"
+Our team had two weeks to build a full stack application where a user is able to record and post videos to the site. The videos are responses to questions that help the user think about how to use technology in a healthier way, such as "How do you use technology to do creative things?"
 These videos can be viewed by anyone, and can be voted on for badges such as "most creative", and "thought-provoking."
 
 The goal was to build an application which utilizes the full stack in order to run database requests, render items to the dom, and create a responsive and immersive experience within the app.
@@ -36,17 +36,6 @@ The goal was to build an application which utilizes the full stack in order to r
 <!--
 ## Usage
 
-1. The home page will be a list of all wines previously rated
-2. Click any of the wines to bring up a detailed view of the ratings from that tasting.
-3. Use the heart and trash can icons in order to favorite and delete these tastings.
-4. Favorited tastings can be seen in the favorites tab at the bottom
-5. Clicking "New Tasting" will bring user to a form to begin filling out the basic wine inforamtion.
-6. The following four pages are dedicated to the wine tasting process. 
-  - They are: appearance, nose, palate, and overall score.
-  There are basic wine tasting tips available on each page if the user is unsure what to look for in the wine. 
-  The user will rate the wine on a 0-100 scale, and can take any extra notes on the tasting if they wish.
-7. A QR code for the specific wine is created at the beginning of each tasting to have fiends scan it so that they can also rate this wine.
-8. At the end of the tasting users will be taken to a ratings page where all the scores for that wine will be averaged and shown to anyone on the same page.
 -->
 
 ## Built With
@@ -125,15 +114,13 @@ The goal was to build an application which utilizes the full stack in order to r
 7. In the deploy section, select manual deploy
 
 ## Authors
-Jean-Luc LaCosse - all work -
+- Jeannie Branstrator
+- Jean-Luc LaCosse
+- John Maras
+- Badra Mohamed
+ 
 
-<a href="https://www.linkedin.com/in/jean-luc-lacosse-572b64172/" rel="nofollow"><img src="https://camo.githubusercontent.com/f80827f692b8a8ff3e0b4ce542f20931cca613dd401058f2366f32231683ef84/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4c696e6b6564496e2d626c75653f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e6b6564696e" alt="LinkedIn" data-canonical-src="https://img.shields.io/badge/-LinkedIn-blue?style=for-the-badge&amp;logo=linkedin" style="max-width: 100%;"></a>
-
-<a href="mailto:jeanlacosse@gmail.com"><img src="https://camo.githubusercontent.com/d39b68056b9a4c09bb85fb3a01302c28a28841f080b703028a238d627293a7ab/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d676d61696c2d6f72616e67653f7374796c653d666f722d7468652d6261646765266c6f676f3d676d61696c" alt="Email" data-canonical-src="https://img.shields.io/badge/-gmail-orange?style=for-the-badge&amp;logo=gmail" style="max-width: 100%;"></a>
 
 ## Acknowledgement
-Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality.
+Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped us to make this application a reality.
 
-## Support
-If you have suggestions or issues, please email me at [jeanlacosse@gmail.com](www.google.com)
-<a href="mailto:jeanlacosse@gmail.com"><img src="https://camo.githubusercontent.com/d39b68056b9a4c09bb85fb3a01302c28a28841f080b703028a238d627293a7ab/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d676d61696c2d6f72616e67653f7374796c653d666f722d7468652d6261646765266c6f676f3d676d61696c" alt="Email" data-canonical-src="https://img.shields.io/badge/-gmail-orange?style=for-the-badge&amp;logo=gmail" style="max-width: 100%;"></a>
