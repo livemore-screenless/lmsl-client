@@ -97,19 +97,14 @@ function* deletePrompt(action) {
     } yield put({ type: 'FETCH_PROMPTS_LIST' })
 };
 
-function* archivePrompts(action) {
+function* archivePrompt(action) {
+    // archive prompt
     try {
-      const response = yield axios({
-        method: "PUT",
-        url: `/api/prompts/${action.payload}`
-      });
-      console.log("GET Completed prompts:", action.payload);
-      yield put({ type: "FETCH_PROMPTS_LIST" });
+        yield axios.put(`/api/prompts/`+ action.payload);
     } catch {
-      console.log("GET/COMPLETED prompts error");
-    }
-  }
-
+        console.log('archive prompts error');
+    } yield put({ type: 'FETCH_PROMPTS_LIST' })
+};
 
 function* promptSaga() {
     yield takeLatest('FETCH_PROMPTS_LIST', fetchAllPrompts);    
@@ -121,7 +116,7 @@ function* promptSaga() {
     yield takeLatest('SAVE_NEW_REACTION', saveNewReaction);    
     yield takeLatest('FETCH_REACTION_ITEM', fetchReactionItem);    
     yield takeLatest('DELETE_PROMPT', deletePrompt);
-    yield takeLatest('ARCHIVE_PROMPT', archivePrompts);
+    yield takeLatest('ARCHIVE_PROMPT', archivePrompt);
 }
 
 export default promptSaga;

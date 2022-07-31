@@ -15,6 +15,7 @@ import SubNav from '../SubNav/SubNav';
 
 //pages
 import AboutPage from '../AboutPage/AboutPage';
+import ArchivedPrompts from '../ArchivedPrompts/ArchivedPrompts';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import MyVideos from '../MyVideos/MyVideos';
@@ -180,6 +181,21 @@ function App() {
               :
               // Otherwise, show the registration page
               <ReviewSubmissions />
+            }
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/archive"
+          >
+            {!user.admin  ?
+              // If the user is already logged in, 
+              // redirect them to the /user page
+              <Redirect to="/my-videos" />
+              :
+              // Otherwise, show the registration page
+              <ArchivedPrompts />
             }
           </ProtectedRoute>
 

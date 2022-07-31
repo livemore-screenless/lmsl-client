@@ -72,15 +72,13 @@ function PromptPage() {
             dispatch({ type: 'DELETE_PROMPT', payload: id })
         }
     }
+
     const archivePrompt = event => {
         const id = event.currentTarget.id;
-        console.log('id', id)
-        if (confirm("Are you sure you want to archive this prompt?") == true) {
-            dispatch({ type: 'ARCHIVE_PROMPT', payload: id })
-        }
-        
-        
+        alert("Prompt and related videos have been archived!")
+        dispatch({ type: 'ARCHIVE_PROMPT', payload: id })
     }
+
     return (
         <div>
             <center>
@@ -91,6 +89,7 @@ function PromptPage() {
             </center>
             <ul >
                 {allPromptsList.map(prompt => {
+                    if (prompt.archived === false) {
                     return (
                         <>
                             <Accordion key={prompt.id}>
@@ -109,6 +108,7 @@ function PromptPage() {
                                                 </button>
                                             }
                                             {user.admin &&
+                                                <>
                                                 <button
                                                     id={prompt.id}
                                                     className="delete-link"
@@ -123,8 +123,9 @@ function PromptPage() {
                                                     className="archive-link"
                                                     onClick={archivePrompt}
                                                 >
-                                                    Archive Prompt
+                                                    Archive
                                                 </button>
+                                                </>
                                             }
                                         </div>
                                     </span>
@@ -154,6 +155,7 @@ function PromptPage() {
                             </Accordion>
                         </>
                     )
+                    }
                 })}
             </ul>
 
