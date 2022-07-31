@@ -198,3 +198,42 @@ ul {
   outline: 0;
 }
 
+.my-video-title {
+  color: black;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+
+.start-btn_asLink {
+  padding: 1%;
+  border-width: 0;
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  color: #27466B;
+  text-decoration: underline;
+}
+
+.stop-btn_asLink {
+  padding: 1%;
+  border-width: 0;
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  color: red;
+  text-decoration: underline;
+}
+
+.start-btn_asLink:hover {
+  color: #2D769F;
+  cursor: pointer;
+}
+
+.stop-btn_asLink:hover {
+  color: rgb(255, 113, 113);
+  cursor: pointer;
+}
