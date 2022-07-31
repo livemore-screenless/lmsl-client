@@ -120,13 +120,6 @@ input {
   margin-bottom: 10px;
 }
 
-.landing-header {
-  color: #2D769F;
-  font-weight: 700;
-  font-size: 64px;
-  line-height: 77px;
-}
-
 .landing-copy {
  font-weight: 300;
  font-size: 20px;
@@ -141,10 +134,12 @@ input {
   line-height: 32px;
   margin-left: 10%;
   margin-right: 10%;
+  padding-top: 5%;
 }
 
 ul {
-  list-style: none
+  list-style: none;
+  padding: 5%;
 }
 
 .prompts{
@@ -209,4 +204,44 @@ ul {
   width: 80%;
   padding: 20px;
   border: 1px solid black;
+}
+
+.my-video-title {
+  color: black;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+
+.start-btn_asLink {
+  padding: 1%;
+  border-width: 0;
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  color: #27466B;
+  text-decoration: underline;
+}
+
+.stop-btn_asLink {
+  padding: 1%;
+  border-width: 0;
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  color: red;
+  text-decoration: underline;
+}
+
+.start-btn_asLink:hover {
+  color: #2D769F;
+  cursor: pointer;
+}
+
+.stop-btn_asLink:hover {
+  color: rgb(255, 113, 113);
+  cursor: pointer;
 }
