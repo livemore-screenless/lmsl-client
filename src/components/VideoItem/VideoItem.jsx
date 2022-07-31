@@ -15,10 +15,11 @@ function VideoItem() {
     // this will fetch prompts from DB and set in store allPromptsList
     // list is mapped over below
     useEffect(() => {
-        dispatch({ type: 'FETCH_VIDEO_ITEM', payload: { id, videoId } }),
+            dispatch({ type: 'FETCH_VIDEO_ITEM', payload: { id, videoId } }),
             dispatch({ type: 'FETCH_VIDEO_REACTIONS' }),
             dispatch({ type: 'FETCH_REACTION_COUNTS', payload: { id, videoId } }),
-            dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
+            dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } }),
+            dispatch({ type: 'FETCH_VIDEO_REACTIONS_NUMBER' })
     }, [id, videoId])
 
     const videoItem = useSelector(store => store.videosInfo.videoItem[0]);
@@ -54,44 +55,46 @@ function VideoItem() {
                             {reactions.map(reaction => {
                                 console.log('>>>>>>>', reactions)
                                 let reactionNum = reaction.id
+                                if (reaction.counts != [])
+                                    return (
+                                        <>
+                                        {reactionCounts.map(count => {
+                                            console.log(count.reaction_id);
+                                            console.log(reaction.id);
+                                            if (count.reaction_id === reaction.id) {
+                                                return (
+                                                    <>
+                                                        <Badge badgeContent={count.count} color="primary">
+                                                        <button
+                                                            className="reaction-buttons"
+                                                            onClick={() => {
+                                                                dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
+                                                                dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
+                                                                setClicked(true)
+                                                            }}
+                                                        >{reaction.reaction}
+                                                        </button>
+                                                        </Badge>
+                                                    </>
+                                                )
+                                            }
+                                        })}
+                                        </>
+                                    )
+                                if (reaction.counts === [])
                                 return (
                                     <>
-                                    {reactionCounts.map(count => {
-                                        if (count.reaction_id === reaction.id) {
-                                            return (
-                                                <>
-                                                    <Badge badgeContent={count.count} color="primary">
-                                                    <button
-                                                        className="reaction-buttons"
-                                                        onClick={() => {
-                                                            dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
-                                                            dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
-                                                            setClicked(true)
-                                                        }}
-                                                    >{reaction.reaction}
-                                                    </button>
-                                                    </Badge>
-                                                </>
-                                            )
-                                        }
-                                        if (count.reaction_id && reaction.id === 0) {
-                                            return (
-                                                <>
-                                                    <Badge badgeContent={count.count} color="primary" >
-                                                    <button
-                                                        className="reaction-buttons"
-                                                        onClick={() => {
-                                                            dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
-                                                            dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
-                                                            setClicked(true)
-                                                        }}
-                                                    >{reaction.reaction}
-                                                    </button>
-                                                    </Badge>
-                                                </>
-                                            )
-                                        }
-                                    })}
+                                        <Badge badgeContent={0} color="primary" showZero>
+                                        <button
+                                            className="reaction-buttons"
+                                            onClick={() => {
+                                                dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
+                                                dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
+                                                setClicked(true)
+                                            }}
+                                        >{reaction.reaction}
+                                        </button>
+                                        </Badge>
                                     </>
                                 )
                             })}
