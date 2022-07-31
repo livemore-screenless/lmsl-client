@@ -45,106 +45,59 @@ function VideoItem() {
 
                         </div>
                         
-                        {user.admin ?
-                            <>
-                            <p className='landing-copy'>
-                                Submitted by: {videoItem.username}
-                            </p>
+                        <p className='landing-copy'>Submitted by: {videoItem.username}</p>
 
-                            {/* mapping over the reactions to create buttons to react to video */}
-                            {reactions.map(reaction => {
-                                console.log('>>>>>>>', reactions)
-                                let reactionNum = reaction.id
-                                if (reaction.counts != [])
-                                    return (
+                        {/* mapping over the reactions to create buttons to react to video */}
+                        {reactions.map(reaction => {
+                            let reactionNum = reaction.id
+                            return (
+                                <span key={reaction.id}>
+                                    {/* if item has been clicked show a disabled pink button */}
+                                    {reactionItem && reactionItem.reaction_id === reaction.id ?
                                         <>
-                                        {reactionCounts.map(count => {
-                                            console.log(count.reaction_id);
-                                            console.log(reaction.id);
-                                            if (count.reaction_id === reaction.id) {
-                                                return (
-                                                    <>
-                                                        <Badge badgeContent={count.count} color="primary">
-                                                        <button
-                                                            className="reaction-buttons"
-                                                            onClick={() => {
-                                                                dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
-                                                                dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
-                                                                setClicked(true)
-                                                            }}
-                                                        >{reaction.reaction}
-                                                        </button>
-                                                        </Badge>
-                                                    </>
-                                                )
-                                            }
-                                        })}
+                                            <button
+                                                className="btn"
+                                                disabled
+                                                style={{ backgroundColor: 'pink' }}
+                                            >{reaction.reaction}</button>
                                         </>
-                                    )
-                                if (reaction.counts === [])
-                                return (
-                                    <>
-                                        <Badge badgeContent={0} color="primary" showZero>
+                                        :
                                         <button
-                                            className="reaction-buttons"
+                                            className="btn"
                                             onClick={() => {
                                                 dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
-                                                dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
+                                                    dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
                                                 setClicked(true)
                                             }}
-                                        >{reaction.reaction}
-                                        </button>
-                                        </Badge>
-                                    </>
-                                )
-                            })}
-                            {clicked &&
-                                <div className='landing-copy'>Thanks for your vote!</div>
-                            }
-                            <br/>
-                            <a 
-                                className='btn_asLink'
-                                href={`mailto:${videoItem.email}`}
-                            >
-                                Award Video
-                            </a>
-                            </>
-                            :
-                            <>
-                            <p className='landing-copy'>
-                                Submitted by: {videoItem.username}
-                            </p>
+                                        // style={{ backgroundColor: clicked && 'pink' }}
+                                        >{reaction.reaction}</button>
 
-                            {/* mapping over the reactions to create buttons to react to video */}
-                            {reactions.map(reaction => {
-                                let reactionNum = reaction.id
-                                return (
-                                    <>
-                                    {reactionCounts.map(count => {
-                                        if (count.reaction_id === reaction.id) {
-                                            return (
-                                                <>
-                                                    <button
-                                                        className="reaction-buttons"
-                                                        onClick={() => {
-                                                            dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
-                                                            dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
-                                                            setClicked(true)
-                                                        }}
-                                                    >{reaction.reaction}
-                                                    </button>
-                                                </>
-                                            )
-                                        }
-                                    })}
-                                    </>
-                                )
-                            })}
-                            {clicked &&
-                                <div className='landing-copy'>Thanks for your vote!</div>
-                            }
-                            </>
-                        } 
+                                    }
+
+
+                                    {/* only show votes if user is an admin */}
+                                    {user.admin &&
+                                        <span>
+                                            {reactionCounts.map(count => {
+                                                if (count.reaction_id === reaction.id) {
+                                                    return (
+                                                        <span className='landing-copy' key={reaction.id}>Votes: {count.count}</span>
+                                                    )
+                                                }
+                                            })}
+                                        </span>
+                                    }
+                                </span>
+                            )
+                        })}
+
+                        {clicked &&
+                        <>
+                            <div className='landing-copy'>Thanks for your vote!</div>}
+                            <br/>
+                            <a className='btn_asLink' href={`mailto:${videoItem.email}`}>Award Video</a>
+                        </>
+                        }
                     </center>
                 </>
             )}
@@ -155,24 +108,3 @@ export default VideoItem;
 
 
 
-// {reactionItem && reactionItem.reaction_id === reaction.id ?
-//     <>
-//         <button
-//             className="btn"
-//             disabled
-//             style={{ backgroundColor: 'pink' }}
-//         >
-//             {reaction.reaction}
-//         </button>
-//     </>
-//     :
-//         <button
-//             className="btn"
-//             onClick={() => {
-//                 dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
-//                 dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
-//                 setClicked(true)
-//             }}
-//         >{reaction.reaction}
-//         </button>
-// }
