@@ -36,7 +36,7 @@ function VideoItem() {
                     <center>
                         <p className='page-subheadings'>{videoItem.question}</p>
                         <div>
-                            <video src={videoItem.video_url} type="video/mp4" width="320" height="240" controls>
+                            <video src={videoItem.video_url} type="video/mp4" width="640" height="480" controls>
                                 Your browser does not support the video tag.
                             </video>
 
@@ -47,6 +47,10 @@ function VideoItem() {
                         <p className='landing-copy'
                         >Submitted by: {videoItem.username}
                         </p>
+                        {user.admin &&
+                            <div className='landing-copy'>email: {videoItem.email}</div>
+                        }
+
 
                         {/* mapping over the reactions to create buttons to react to video */}
                         {reactions.map(reaction => {
@@ -68,17 +72,17 @@ function VideoItem() {
                                             className="btn"
                                             onClick={() => {
                                                 dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
-                                                dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
+                                                    dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
                                                 setClicked(true)
                                             }}
-                                            // style={{ backgroundColor: clicked && 'pink' }}
+                                        // style={{ backgroundColor: clicked && 'pink' }}
                                         >{reaction.reaction}</button>
 
                                     }
 
 
                                     {/* only show votes if user is an admin */}
-                                    {user.admin === true &&
+                                    {user.admin &&
                                         <span>
                                             {reactionCounts.map(count => {
                                                 if (count.reaction_id === reaction.id) {
@@ -88,7 +92,7 @@ function VideoItem() {
                                                 }
                                             })}
                                         </span>
-                                    }            
+                                    }
                                 </span>
 
                             )
