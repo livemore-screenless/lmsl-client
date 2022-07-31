@@ -35,6 +35,19 @@ Button
   margin: 10px
 }
 
+.deny-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-width: 1px;
+  border-radius: 20px;
+  background-color: #9f2d2d;
+  color: #f8f8f8;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+  margin: 10px
+}
+
 .btnOutlined {
   display: inline-block;
   padding: 10px 20px;
@@ -65,6 +78,11 @@ Button
 
 .btn:hover {
   background-color: #27466B;
+  text-decoration: none;
+}
+
+.deny-btn:hover {
+  background-color: #6b2727;
   text-decoration: none;
 }
 
