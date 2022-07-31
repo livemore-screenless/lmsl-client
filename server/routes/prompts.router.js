@@ -205,24 +205,27 @@ router.delete('/:id', (req, res) => {
         res.sendStatus(500); 
       })
   })
-  router.put('/:id', (req, res) => {
-    let promptID = req.params.id;
-    console.log('archive request for id', promptID);
+
+  // put for archive 
+  router.put("/:id",rejectUnauthenticated, (req, res) => {
+    const id = req.params.id;
+    console.log("put request for id", id);
     let sqlQuery = `
-      UPDATE FROM "prompts" 
-      WHERE "id" = $1;
+      UPDATE "prompts" 
+      SET "archived" = $1
+      WHERE "id" = $2;
     `;
-    const sqlParams = [
-        promptID,             
-    ];
-    pool.query(sqlQuery, sqlParams)
+    const sqlParams = [true, id];
+    pool
+      .query(sqlQuery, sqlParams)
       .then(() => {
-        console.log('prompt deleted');
+        console.log('prompts that have been set are ')
         res.sendStatus(204);
-      }).catch( (error) => {
-        console.log(`Error making database query`, error);
-        res.sendStatus(500); 
       })
-  })
+      .catch((error) => {
+        console.log('ERROR IN PUT')
+        res.sendStatus(500);
+      });
+  });
 
 module.exports = router;

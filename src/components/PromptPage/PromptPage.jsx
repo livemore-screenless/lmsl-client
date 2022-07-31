@@ -78,6 +78,8 @@ function PromptPage() {
         if (confirm("Are you sure you want to archive this prompt?") == true) {
             dispatch({ type: 'ARCHIVE_PROMPT', payload: id })
         }
+        
+        
     }
     return (
         <div>
