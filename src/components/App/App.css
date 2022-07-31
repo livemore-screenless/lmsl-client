@@ -216,6 +216,10 @@ ul {
   outline: 0;
 }
 
+.delete-link:hover {
+  background-color: transparent;
+  font-size: 20px;
+}
 .reaction-buttons {
   display: inline-block;
   padding: 10px 10px;
