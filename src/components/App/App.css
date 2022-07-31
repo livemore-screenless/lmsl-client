@@ -198,6 +198,14 @@ ul {
   outline: 0;
 }
 
+.popup {
+  margin: auto;
+  background: #ffffff;
+  width: 80%;
+  padding: 20px;
+  border: 1px solid black;
+}
+
 .my-video-title {
   color: black;
   font-weight: 500;
