@@ -123,7 +123,6 @@ function* promptSaga() {
     yield takeLatest('SAVE_NEW_REACTION', saveNewReaction);    
     yield takeLatest('FETCH_REACTION_ITEM', fetchReactionItem);    
     yield takeLatest('DELETE_PROMPT', deletePrompt);
-
 }
 
 export default promptSaga;
