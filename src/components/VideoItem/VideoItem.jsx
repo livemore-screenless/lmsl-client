@@ -4,16 +4,9 @@ import { useHistory, Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 //mui imports
 import Badge from '@mui/material/Badge';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
-    badges: {
-        color: '#E79487'
-    },
-  }));
 
 function VideoItem() {
-    const classes = useStyles();
     const dispatch = useDispatch();
     const history = useHistory();
     const { id, videoId } = useParams();
@@ -67,7 +60,7 @@ function VideoItem() {
                                         if (count.reaction_id === reaction.id) {
                                             return (
                                                 <>
-                                                    <Badge badgeContent={count.count} className={classes.badges} >
+                                                    <Badge badgeContent={count.count} color="primary">
                                                     <button
                                                         className="reaction-buttons"
                                                         onClick={() => {
@@ -128,15 +121,8 @@ function VideoItem() {
                                         if (count.reaction_id === reaction.id) {
                                             return (
                                                 <>
-                                                    <Badge 
-                                                        badgeContent={count.count} sx={{
-                                                        "& .MuiBadge-badge": {
-                                                        color: "lightgreen",
-                                                        backgroundColor: "green"
-                                                        }
-                                                    }}>
                                                     <button
-                                                        className="btn"
+                                                        className="reaction-buttons"
                                                         onClick={() => {
                                                             dispatch({ type: 'ADD_NEW_REACTION', payload: { reactionNum, id, videoId } }),
                                                             dispatch({ type: 'FETCH_REACTION_ITEM', payload: { videoId } })
@@ -144,7 +130,6 @@ function VideoItem() {
                                                         }}
                                                     >{reaction.reaction}
                                                     </button>
-                                                    </Badge>
                                                 </>
                                             )
                                         }
