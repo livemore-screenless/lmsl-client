@@ -47,6 +47,14 @@ function VideoItem() {
                         
                         <p className='landing-copy'>Submitted by: {videoItem.username}</p>
 
+                        {user.admin && 
+                        <>
+                            <a className='btn_asLink' href={`mailto:${videoItem.email}`}>Award Video</a>
+                            <br/>
+                            <br/>
+                        </>
+                        }
+
                         {/* mapping over the reactions to create buttons to react to video */}
                         {reactions.map(reaction => {
                             let reactionNum = reaction.id
@@ -93,9 +101,7 @@ function VideoItem() {
 
                         {clicked &&
                         <>
-                            <div className='landing-copy'>Thanks for your vote!</div>}
-                            <br/>
-                            <a className='btn_asLink' href={`mailto:${videoItem.email}`}>Award Video</a>
+                            <div className='landing-copy'>Thanks for your vote!</div>
                         </>
                         }
                     </center>
