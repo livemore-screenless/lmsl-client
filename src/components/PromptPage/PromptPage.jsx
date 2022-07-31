@@ -8,14 +8,15 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
+import Card from '@mui/material/Card';
 
 //this is the mui styling 
 const useStyles = makeStyles((theme) => ({
     landingImages: {
-      maxWidth: 100,
-      padding: '1%'
+        maxWidth: 100,
+        padding: '1%'
     },
-  }));
+}));
 
 function PromptPage() {
     const user = useSelector((store) => store.user);
@@ -76,9 +77,9 @@ function PromptPage() {
         <div>
             <center>
                 <h2 className='page-subheadings'>Select a prompt to view related videos</h2>
-                <img src={require('./laptop.png')} className={classes.landingImages}/>
-                <img src={require('./phone.png')} className={classes.landingImages}/>
-                <img src={require('./computer.png')} className={classes.landingImages}/>
+                <img src={require('./laptop.png')} className={classes.landingImages} />
+                <img src={require('./phone.png')} className={classes.landingImages} />
+                <img src={require('./computer.png')} className={classes.landingImages} />
             </center>
             <ul >
                 {allPromptsList.map(prompt => {
@@ -115,14 +116,20 @@ function PromptPage() {
                                     {allVideosList.map(video => {
                                         if (video.prompt_id === prompt.id) {
                                             return (
-                                                <p
-                                                    key={video.id}
-                                                    onClick={() => { history.push(`/prompt-videos/${prompt.id}/${video.id}`) }}
-                                                >
-                                                    <video src={video.video_url} type="video/mp4" width="320" height="240" poster >
-                                                        Your browser does not support the video tag.
-                                                    </video>                                                    
-                                                </p>
+                                                <Card sx={{ maxWidth: '320px', display: 'inline-block' }}>
+                                                    <span
+                                                        className="video-list-item"
+                                                        key={video.id}
+                                                        onClick={() => { history.push(`/prompt-videos/${prompt.id}/${video.id}`) }}
+                                                    >
+                                                        <video className="watch-video" src={video.video_url} type="video/mp4" width="320" height="240" poster >
+                                                            Your browser does not support the video tag.
+                                                        </video>
+
+                                                        <div className='overlay'><img src={require('./play-btn.png')} class="play-button" /></div>
+
+                                                    </span>
+                                                </Card>
                                             )
                                         }
                                     })}
