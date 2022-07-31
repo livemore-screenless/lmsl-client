@@ -39,7 +39,7 @@ function VideoItem() {
                     <center>
                         <p className='page-subheadings'>{videoItem.question}</p>
                         <div>
-                            <video src={videoItem.video_url} type="video/mp4" width="320" height="240" controls>
+                            <video src={videoItem.video_url} type="video/mp4" width="640" height="480" controls>
                                 Your browser does not support the video tag.
                             </video>
 

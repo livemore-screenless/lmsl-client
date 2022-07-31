@@ -29,7 +29,7 @@ function MyVideos() {
             {videos.map(video => {
               return (
                   <div key={video.id}>
-                      <h3>{video.question}</h3>
+                      <h3 className='my-video-title'>{video.question}</h3>
                       { video.approved &&
                         <p>This submission was approved 🎉</p>
                       }
