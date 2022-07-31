@@ -116,8 +116,6 @@ function PromptPage() {
                                                 >
                                                     X
                                                 </button>
-                                            }
-                                             {user.admin &&
                                                 <button
                                                     id={prompt.id}
                                                     className="archive-link"
