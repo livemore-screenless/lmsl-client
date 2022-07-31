@@ -62,7 +62,7 @@ function ReviewSubmissions() {
                     <button 
                         id={video.id}
                         onClick={denyVideo}
-                        className="btn"
+                        className="deny-btn"
                     > 
                         deny 
                     </button>

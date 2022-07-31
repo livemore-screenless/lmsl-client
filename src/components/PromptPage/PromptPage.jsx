@@ -114,7 +114,7 @@ function PromptPage() {
                                                     className="delete-link"
                                                     onClick={deletePrompt}
                                                 >
-                                                    Delete Prompt
+                                                    X
                                                 </button>
                                             }
                                              {user.admin &&

@@ -122,7 +122,6 @@ function* promptSaga() {
     yield takeLatest('FETCH_REACTION_ITEM', fetchReactionItem);    
     yield takeLatest('DELETE_PROMPT', deletePrompt);
     yield takeLatest('ARCHIVE_PROMPT', archivePrompts);
-
 }
 
 export default promptSaga;
