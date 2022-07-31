@@ -63,10 +63,6 @@ function SubNav() {
             <Link className="sub-navLink" to="/archive">
               Archive
             </Link>
-            <Link className="sub-navLink" to="/archive-page">
-Archived            
-</Link>
-
 
             <LogOutButton className="sub-navLink" />
           </>
