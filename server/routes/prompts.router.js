@@ -205,5 +205,24 @@ router.delete('/:id', (req, res) => {
         res.sendStatus(500); 
       })
   })
+  router.put('/:id', (req, res) => {
+    let promptID = req.params.id;
+    console.log('archive request for id', promptID);
+    let sqlQuery = `
+      UPDATE FROM "prompts" 
+      WHERE "id" = $1;
+    `;
+    const sqlParams = [
+        promptID,             
+    ];
+    pool.query(sqlQuery, sqlParams)
+      .then(() => {
+        console.log('prompt deleted');
+        res.sendStatus(204);
+      }).catch( (error) => {
+        console.log(`Error making database query`, error);
+        res.sendStatus(500); 
+      })
+  })
 
 module.exports = router;

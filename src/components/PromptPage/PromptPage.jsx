@@ -72,7 +72,13 @@ function PromptPage() {
             dispatch({ type: 'DELETE_PROMPT', payload: id })
         }
     }
-
+    const archivePrompt = event => {
+        const id = event.currentTarget.id;
+        console.log('id', id)
+        if (confirm("Are you sure you want to archive this prompt?") == true) {
+            dispatch({ type: 'ARCHIVE_PROMPT', payload: id })
+        }
+    }
     return (
         <div>
             <center>
@@ -107,6 +113,15 @@ function PromptPage() {
                                                     onClick={deletePrompt}
                                                 >
                                                     Delete Prompt
+                                                </button>
+                                            }
+                                             {user.admin &&
+                                                <button
+                                                    id={prompt.id}
+                                                    className="archive-link"
+                                                    onClick={archivePrompt}
+                                                >
+                                                    Archive Prompt
                                                 </button>
                                             }
                                         </div>
