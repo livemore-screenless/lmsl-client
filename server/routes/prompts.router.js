@@ -8,6 +8,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 router.get('/all-prompts', rejectUnauthenticated, (req, res) => {
 
+    
     const sqlQuery = `
     SELECT * FROM prompts;
     `;
@@ -81,6 +82,12 @@ router.get('/:videoId/reaction-item', rejectUnauthenticated, (req, res) => {
 });
 
 router.get('/:id/:videoId/reaction-counts', rejectUnauthenticated, (req, res) => {
+
+    if (!req.user.admin) {
+        res.sendStatus(403);
+        return;
+    }
+
     const sqlQuery = `
         SELECT 
     "video-reactions".reaction_id,
@@ -165,6 +172,11 @@ router.post( '/', rejectUnauthenticated, ( req, res )=>{
 
 router.put('/update-reaction', rejectUnauthenticated, (req, res) => {
     // get reactions to loop over and the reaction numbers for each
+    if (!req.user.admin) {
+        res.sendStatus(403);
+        return;
+    }
+
     const sqlQuery = `
     UPDATE reactions 
     SET reaction = $1
@@ -186,7 +198,13 @@ router.put('/update-reaction', rejectUnauthenticated, (req, res) => {
 
 
 // delete record from db 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+
+    if (!req.user.admin) {
+        res.sendStatus(403);
+        return;
+    }
+
     let promptID = req.params.id;
     console.log('Delete request for id', promptID);
     let sqlQuery = `
@@ -207,7 +225,13 @@ router.delete('/:id', (req, res) => {
   })
 
 // updated archive status
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+
+    if (!req.user.admin) {
+        res.sendStatus(403);
+        return;
+    }
+
     let promptID = req.params.id;
     console.log('Archive request for id', promptID);
     let sqlQuery = `
