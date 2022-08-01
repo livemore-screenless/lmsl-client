@@ -34,15 +34,11 @@ const WebcamUpload = () => {
 
     setSelectedVideo(fileOfBlob)
   };
-  
+
   const [selectedVideo, setSelectedVideo] = useState({})
   const { id } = useParams()
   const history = useHistory();
-  const [recording, setRecording] = useState(false);
-
-  const recordingHandler = () => {
-    setRecording(!recording);
-  }
+  
 
   //destructuring out from useReactMediaRecorder "hook" to use them
   const { status, startRecording, stopRecording, mediaBlobUrl, previewStream, clearBlobUrl } =
@@ -79,11 +75,15 @@ const WebcamUpload = () => {
         {/* does a recorded video exists, if so, preview it. Otherwise record the video opponent */}
         {mediaBlobUrl ? <video src={mediaBlobUrl} controls autoPlay loop /> : <RecordVideos stream={previewStream} />}
       </div>
+      {/* this is not showing up, why? */}
+      {status === "recording" && 
+      <div>🔴 Recording</div>
+      }
+      
       <button className='start-btn_asLink'
         onClick={() => {
         clearBlobUrl(); 
         startRecording();
-        recordingHandler
         }} disabled={status === "recording"}>
         Start
       </button>
