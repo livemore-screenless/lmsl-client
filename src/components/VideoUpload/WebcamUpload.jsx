@@ -5,6 +5,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 function RecordVideos({ stream }) {
+
   let videoPreviewRef = React.useRef();
   React.useEffect(() => {
     if (videoPreviewRef.current && stream) {
@@ -23,6 +24,8 @@ function RecordVideos({ stream }) {
   </div>)
 }
 
+
+
 const WebcamUpload = () => {
   const onRecordStop = (blobURL, blob) => {
     console.log({ blob });
@@ -31,9 +34,11 @@ const WebcamUpload = () => {
 
     setSelectedVideo(fileOfBlob)
   };
+
   const [selectedVideo, setSelectedVideo] = useState({})
   const { id } = useParams()
   const history = useHistory();
+  
 
   //destructuring out from useReactMediaRecorder "hook" to use them
   const { status, startRecording, stopRecording, mediaBlobUrl, previewStream, clearBlobUrl } =
@@ -70,10 +75,15 @@ const WebcamUpload = () => {
         {/* does a recorded video exists, if so, preview it. Otherwise record the video opponent */}
         {mediaBlobUrl ? <video src={mediaBlobUrl} controls autoPlay loop /> : <RecordVideos stream={previewStream} />}
       </div>
+      {/* this is not showing up, why? */}
+      {status === "recording" && 
+      <div>🔴 Recording</div>
+      }
+      
       <button className='start-btn_asLink'
         onClick={() => {
         clearBlobUrl(); 
-        startRecording()
+        startRecording();
         }} disabled={status === "recording"}>
         Start
       </button>
