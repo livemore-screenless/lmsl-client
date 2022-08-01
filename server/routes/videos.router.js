@@ -8,7 +8,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 router.get('/all-videos', rejectUnauthenticated, (req, res) => {
 
-    const sqlQuery = `
+  const sqlQuery = `
       SELECT 
       "video-responses".id,
       "video-responses".video_url,
@@ -23,21 +23,21 @@ router.get('/all-videos', rejectUnauthenticated, (req, res) => {
       AND "video-responses".approved = TRUE;
     `;
 
-    pool.query(sqlQuery)
-        .then(result => {
-            res.send(result.rows);
-        })
-        .catch(err => {
-            console.error('error in getting all videos', err);
-            res.sendStatus(500);
-        })
+  pool.query(sqlQuery)
+    .then(result => {
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.error('error in getting all videos', err);
+      res.sendStatus(500);
+    })
 });
 
 /** GET route for specific video on page load for that prompt
  */
 router.get('/:id/:videoId/video-item', rejectUnauthenticated, (req, res) => {
 
-    const sqlQuery = `
+  const sqlQuery = `
       SELECT 
       "video-responses".id,
       "video-responses".video_url,
@@ -52,63 +52,74 @@ router.get('/:id/:videoId/video-item', rejectUnauthenticated, (req, res) => {
       WHERE "video-responses".id = $1;
     `;
 
-    pool.query(sqlQuery, [req.params.videoId])
-        .then(result => {
-            console.log('question is', result.rows)
-            res.send(result.rows);
-        })
-        .catch(err => {
-            console.error('error in getting all videos', err);
-            res.sendStatus(500);
-        })
+  pool.query(sqlQuery, [req.params.videoId])
+    .then(result => {
+      console.log('question is', result.rows)
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.error('error in getting all videos', err);
+      res.sendStatus(500);
+    })
 });
 
 /**
  * GET route for my-videos page
  */
- router.get('/my-videos', (req, res) => {
-    console.log('made it to the get route')
-    const sqlQuery = `
+router.get('/my-videos', rejectUnauthenticated, (req, res) => {
+  console.log('made it to the get route')
+  const sqlQuery = `
       SELECT *
       FROM "video-responses"
       JOIN "prompts" ON "prompts"."id"="video-responses"."prompt_id"
       WHERE USER_ID = $1;
     `;
-    pool.query(sqlQuery, [req.user.id])
-      .then( result => {
-        res.send(result.rows);
-      })
-      .catch(err => {
-        console.log('ERROR: GET videos', err);
-        res.sendStatus(500)
-      })
-  });
+  pool.query(sqlQuery, [req.user.id])
+    .then(result => {
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('ERROR: GET videos', err);
+      res.sendStatus(500)
+    })
+});
 
 /**
  * GET route for review-submissions page
  */
-  router.get('/video-responses', (req, res) => {
-    console.log('made it to the get route')
-    const sqlQuery = `
+router.get('/video-responses', rejectUnauthenticated, (req, res) => {
+  if (!req.user.admin) {
+    res.sendStatus(403);
+    return;
+  }
+
+  console.log('made it to the get route')
+  const sqlQuery = `
     SELECT "video-responses".id, "video-responses".video_url, "user".username, "prompts".question
     FROM "video-responses"
     JOIN "prompts" ON "prompts"."id"="video-responses"."prompt_id"
     JOIN "user" ON "user"."id"="video-responses"."user_id"
     WHERE APPROVED IS NULL;
     `;
-    pool.query(sqlQuery)
-      .then( result => {
-        res.send(result.rows);
-      })
-      .catch(err => {
-        console.log('ERROR: GET videos', err);
-        res.sendStatus(500)
-      })
-  });
+  pool.query(sqlQuery)
+    .then(result => {
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('ERROR: GET videos', err);
+      res.sendStatus(500)
+    })
+});
 
 // update video to approved
-router.put('/approve/:id', (req, res) => {
-  const  id  = req.params.id;
+router.put('/approve/:id', rejectUnauthenticated, (req, res) => {
+
+  if (!req.user.admin) {
+    res.sendStatus(403);
+    return;
+  }
+
+  const id = req.params.id;
   console.log('put request for id', id);
   let sqlQuery = `
     UPDATE "video-responses" 
@@ -119,14 +130,20 @@ router.put('/approve/:id', (req, res) => {
   pool.query(sqlQuery, sqlParams)
     .then(() => {
       res.sendStatus(204);
-    }).catch( (error) => {
-      res.sendStatus(500); 
+    }).catch((error) => {
+      res.sendStatus(500);
     })
 })
 
 // update video to denied
-router.put('/deny/:id', (req, res) => {
-  const  id  = req.params.id;
+router.put('/deny/:id', rejectUnauthenticated, (req, res) => {
+
+  if (!req.user.admin) {
+    res.sendStatus(403);
+    return;
+  }
+
+  const id = req.params.id;
   console.log('put request for id', id);
   let sqlQuery = `
     UPDATE "video-responses" 
@@ -137,8 +154,8 @@ router.put('/deny/:id', (req, res) => {
   pool.query(sqlQuery, sqlParams)
     .then(() => {
       res.sendStatus(204);
-    }).catch( (error) => {
-      res.sendStatus(500); 
+    }).catch((error) => {
+      res.sendStatus(500);
     })
 })
 
