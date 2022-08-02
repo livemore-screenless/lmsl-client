@@ -2,6 +2,12 @@ const { S3 } = require("aws-sdk");
 const uuid = require("uuid").v4
 require('dotenv').config();
 
+
+
+
+//THIS IS NO LONGER BEING USED - THIS WAS WHEN YOU WERE STORING IN MEMORY BEFORE GETTING THAT LIBRARY FOR SENDING THROUGH S3MULTER
+
+
                     //pass in file
 const s3Uploadv2 = async (file) => {
     //lowercase equal to the imported S3
@@ -13,7 +19,7 @@ const s3Uploadv2 = async (file) => {
         //this will upload to the folder 'uploads' with the unique key and file name
         Key: `uploads/${uuid()}-${file.originalname}`,
         //buffer object - file in memory take the file from the client and we provide buffer for aws
-        Body: file.buffer,
+        //Body: file.buffer,
         //to make s3 know what type of file it is
         // separate what type of video files we want to accept here
         ContentType: 'video/mp4, video/webm',

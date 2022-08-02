@@ -12,15 +12,15 @@ function RecordVideos({ stream }) {
     }
   }, [stream]);
 
-  if (!stream) {
+    if (!stream) {
     console.log("Sorry, try again! No stream available");
     return null;
-  }
-  return (
+    }
+    return (
     //if stream has started, then render the video preview while recording
-  <div>
-    {stream && <video ref={videoPreviewRef} width={520} height={480} autoPlay />}
-  </div>)
+    <div>
+      {stream && <video ref={videoPreviewRef} width={520} height={480} autoPlay />}
+    </div>)
 }
 
 const WebcamUpload = () => {
@@ -50,6 +50,7 @@ const WebcamUpload = () => {
   const handleUpload = async () => {
     const formData = new FormData();
     formData.append("file", selectedVideo);
+    // formData.append('description', "awesome video"); and this would be req.body.description on server side if you wanted to add some description to something you're uploading
     //should be a saga
     try {
         axios.post(`/api/upload/${id}`,
