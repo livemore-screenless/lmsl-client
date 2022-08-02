@@ -6,6 +6,7 @@ import {useParams, useHistory} from 'react-router-dom'
 const FileUpload = () => {
     //store it locally in state before uploading it to aws
   const [selectedFile, setSelectedFile] = useState({})
+    // id is the promptId
   const { id } = useParams()
   const history = useHistory();
   
@@ -37,6 +38,9 @@ const FileUpload = () => {
         <input className="btnOutlined" type="file" onChange={handleFileSelect} />
         <input className="btn" type="submit" value="Upload File" />
       </form>
+      {/* {selectedFile &&
+        <video src={URL.createObjectURL(selectedFile)} width="500" height="500" controls autoPlay 
+      />} */}
     </div>
   );
 };
