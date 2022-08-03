@@ -106,22 +106,22 @@ The goal was to build an application which utilizes the full stack in order to r
 
 ## Screen Shots
 <img src="https://i.imgur.com/Tz8xwO5.png" height="280">
-- Logged in as a user, you have the option to view the prompts and submit a video to enter into the contest.
+Logged in as a user, you have the option to view the prompts and submit a video to enter into the contest.
 
 <img src="https://i.imgur.com/HtMpk2Y.png" height="280">
-- Logged in as an adminstrator, you are able to delete prompts, create new prompts, edit video reactions, or archive prompts from the past. 
+Logged in as an adminstrator, you are able to delete prompts, create new prompts, edit video reactions, or archive prompts from the past. 
 
 <img src="https://i.imgur.com/cE4xcAG.png" height="280">
-- When you click to submit a video, you have an option to upload a file from your computer or an option to just record an answer to the prompt in the browser and submit it. 
+When you click to submit a video, you have an option to upload a file from your computer or an option to just record an answer to the prompt in the browser and submit it. 
  
 <img src="https://i.imgur.com/MZ3e182.png" height="280">
-- After a video is submitted, an adminstrator must approve the video before it enters the contest. 
-<br>
+After a video is submitted, an adminstrator must approve the video before it enters the contest. 
+
 <img src="https://i.imgur.com/tJH7jDH.png" height="280">
-- Once the video is approved, the video will appear back in the prompts page and non-logged in users, logged in users, and adminstrators may vote on the video with different reactions. 
+Once the video is approved, the video will appear back in the prompts page and non-logged in users, logged in users, and adminstrators may vote on the video with different reactions. 
 <br>
 <img src="https://i.imgur.com/9gWwmjZ.png" height="280">
-- Non-logged in users and logged in users can't see how many votes a video has but an administrator can see the vote count so that the administrator can award videos at the end of the contest. 
+Non-logged in users and logged in users can't see how many votes a video has but an administrator can see the vote count so that the administrator can award videos at the end of the contest. 
 
 
 ## Deployment
