@@ -113,7 +113,7 @@ The goal was to build an application which utilizes the full stack in order to r
 
 <img src="https://i.imgur.com/HtMpk2Y.png" height="280">
 
-- Logged in as an adminstrator, you are able to delete prompts, create new prompts, edit video reactions, or archive prompts from the past. 
+- As a logged in Administrator, you are able to delete prompts, create new prompts, edit video reactions, or archive prompts from the past. 
 
 
 <img src="https://i.imgur.com/cE4xcAG.png" height="280">
@@ -123,12 +123,12 @@ The goal was to build an application which utilizes the full stack in order to r
 
 <img src="https://i.imgur.com/MZ3e182.png" height="280">
 
-- After a video is submitted, an adminstrator must approve the video before it enters the contest. 
+- After a video is submitted, an administrator must approve the video before it enters the contest. 
 
 
 <img src="https://i.imgur.com/tJH7jDH.png" height="280">
 
-- Once the video is approved, the video will appear back in the prompts page and non-logged in users, logged in users, and adminstrators may vote on the video with different reactions. 
+- Once the video is approved, the video will appear back in the prompts page and non-logged in users, logged in users, and administrator may vote on the video with different reactions. 
 
 
 <img src="https://i.imgur.com/9gWwmjZ.png" height="280">
