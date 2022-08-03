@@ -115,11 +115,13 @@ Logged in as an adminstrator, you are able to delete prompts, create new prompts
 
 
 <img src="https://i.imgur.com/cE4xcAG.png" height="280">
+
 - When you click to submit a video, you have an option to upload a file from your computer or an option to just record an answer to the prompt in the browser and submit it. 
 
 
 <img src="https://i.imgur.com/MZ3e182.png" height="280">
-After a video is submitted, an adminstrator must approve the video before it enters the contest. 
+
+-After a video is submitted, an adminstrator must approve the video before it enters the contest. 
 
 
 <img src="https://i.imgur.com/tJH7jDH.png" height="280">
