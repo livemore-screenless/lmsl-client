@@ -108,7 +108,7 @@ The goal was to build an application which utilizes the full stack in order to r
 
 <img src="https://i.imgur.com/Tz8xwO5.png" height="280">
 
-- Logged in as a user, you have the option to view the prompts and submit a video to enter into the contest.
+- As a logged in user, you have the option to view the prompts and submit a video to enter into the contest.
 
 
 <img src="https://i.imgur.com/HtMpk2Y.png" height="280">
