@@ -103,6 +103,8 @@ The goal was to build an application which utilizes the full stack in order to r
             alt="Express" data-canonical-src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge"
             style="max-width: 100%;"></a>
 </p>
+## Screen Shots
+<img src="https://i.imgur.com/Tz8xwO5.png" height="100">
 
 ## Deployment
 1. Create a new Heroku project
