@@ -104,7 +104,7 @@ The goal was to build an application which utilizes the full stack in order to r
             style="max-width: 100%;"></a>
 </p>
 ## Screen Shots
-<img src="https://i.imgur.com/Tz8xwO5.png" height="100">
+<img src="https://i.imgur.com/Tz8xwO5.png" height="250">
 
 ## Deployment
 1. Create a new Heroku project
