@@ -140,14 +140,9 @@ The goal was to build an application which utilizes the full stack in order to r
 
 - Non-logged in users and logged in users can't see how many votes a video has but an administrator can see the vote count so that the administrator can award videos at the end of the contest. 
 
-## Deployment
-1. Create a new Heroku project
-2. Link the Heroku project to the project GitHub Repo
-3. Create an Heroku Postgres database
-4. Connect to the Heroku Postgres database from Postico
-5. Create the necessary tables
-6. Add an environment variable for SERVER_SESSION_SECRET with a nice random string for security
-7. In the deploy section, select manual deploy
+## Heroku Link
+
+https://quiet-mountain-30766.herokuapp.com/#/home
 
 ## Authors
 - Jeannie Branstrator
