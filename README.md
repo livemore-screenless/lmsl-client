@@ -140,15 +140,20 @@ https://quiet-mountain-30766.herokuapp.com/#/home
 To deploy to Heroku:
 In the terminal:
 - commit the code
+- heroku git:remote -a quiet-mountain-30766
 - git push origin Heroku
 - heroku open
 
 Pricing information can be found [Here](https://www.heroku.com/pricing)
 ## Authors
 - Jeannie Branstrator
+<a href="https://www.linkedin.com/in/jean-luc-lacosse-572b64172/" rel="nofollow"><img src="https://camo.githubusercontent.com/f80827f692b8a8ff3e0b4ce542f20931cca613dd401058f2366f32231683ef84/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4c696e6b6564496e2d626c75653f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e6b6564696e" alt="LinkedIn" data-canonical-src="https://img.shields.io/badge/-LinkedIn-blue?style=for-the-badge&amp;logo=linkedin" style="max-width: 100%;"></a>
 - Jean-Luc LaCosse
+<a href="https://www.linkedin.com/in/jean-luc-lacosse-572b64172/" rel="nofollow"><img src="https://camo.githubusercontent.com/f80827f692b8a8ff3e0b4ce542f20931cca613dd401058f2366f32231683ef84/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4c696e6b6564496e2d626c75653f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e6b6564696e" alt="LinkedIn" data-canonical-src="https://img.shields.io/badge/-LinkedIn-blue?style=for-the-badge&amp;logo=linkedin" style="max-width: 100%;"></a>
 - John Maras
+<a href="https://www.linkedin.com/in/jean-luc-lacosse-572b64172/" rel="nofollow"><img src="https://camo.githubusercontent.com/f80827f692b8a8ff3e0b4ce542f20931cca613dd401058f2366f32231683ef84/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4c696e6b6564496e2d626c75653f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e6b6564696e" alt="LinkedIn" data-canonical-src="https://img.shields.io/badge/-LinkedIn-blue?style=for-the-badge&amp;logo=linkedin" style="max-width: 100%;"></a>
 - Badra Mohamed
+<a href="https://www.linkedin.com/in/jean-luc-lacosse-572b64172/" rel="nofollow"><img src="https://camo.githubusercontent.com/f80827f692b8a8ff3e0b4ce542f20931cca613dd401058f2366f32231683ef84/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4c696e6b6564496e2d626c75653f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e6b6564696e" alt="LinkedIn" data-canonical-src="https://img.shields.io/badge/-LinkedIn-blue?style=for-the-badge&amp;logo=linkedin" style="max-width: 100%;"></a>
  
 
 
