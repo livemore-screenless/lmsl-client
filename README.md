@@ -22,7 +22,7 @@ The goal was to build an application which utilizes the full stack in order to r
 ### Prerequisites
 
 - PostgreSQL database connectivity
-  - can be installed <a src="https://www.postgresql.org/download/">Here</a>
+  - can be installed [Here](https://www.postgresql.org/download/)Here
 - Node.js
 - Chrome browser
 
@@ -152,7 +152,7 @@ In the terminal:
 - git push origin Heroku
 - heroku open
 
-Pricing information can be found <a src="https://www.heroku.com/pricing">Here</a>
+Pricing information can be found [Here](https://www.heroku.com/pricing)
 ## Authors
 - Jeannie Branstrator
 - Jean-Luc LaCosse
