@@ -9,20 +9,11 @@ These videos can be viewed by anyone, and can be voted on for badges such as "mo
 
 The goal was to build an application which utilizes the full stack in order to run database requests, render items to the dom, and create a responsive and immersive experience within the app.
 
-<!--
-## Screen Shots
-<span>
-<img src="./documentation/images/Screen%20Shot%202022-07-11%20at%203.06.37%20PM.png" style="width: 20%;">
-<img src="./documentation/images/Screen%20Shot%202022-07-11%20at%203.06.49%20PM.png" style="width: 20%;">
-<img src="./documentation/images/Screen%20Shot%202022-07-11%20at%203.07.26%20PM.png" style="width: 20%;">
-<img src="./documentation/images/Screen%20Shot%202022-07-11%20at%203.07.59%20PM.png" style="width: 20%;">
-  </span>
-  -->
 
 ### Prerequisites
 
 - PostgreSQL database connectivity
-  - can be installed [Here](https://www.postgresql.org/download/)Here
+  - can be installed [Here](https://www.postgresql.org/download/)
 - Node.js
 - Chrome browser
 
