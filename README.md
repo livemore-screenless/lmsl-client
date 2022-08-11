@@ -22,6 +22,8 @@ The goal was to build an application which utilizes the full stack in order to r
 ### Prerequisites
 
 - PostgreSQL database connectivity
+  - can be installed <a src="https://www.postgresql.org/download/">Here</a>
+- Node.js
 - Chrome browser
 
 ## Installation
@@ -140,10 +142,17 @@ The goal was to build an application which utilizes the full stack in order to r
 
 - Non-logged in users and logged in users can't see how many votes a video has but an administrator can see the vote count so that the administrator can award videos at the end of the contest. 
 
-## Heroku Link
-
+## Heroku
+Link to the current website on Heroku:
 https://quiet-mountain-30766.herokuapp.com/#/home
 
+To deploy to Heroku:
+In the terminal:
+- commit the code
+- git push origin Heroku
+- heroku open
+
+Pricing information can be found <a src="https://www.heroku.com/pricing">Here</a>
 ## Authors
 - Jeannie Branstrator
 - Jean-Luc LaCosse
